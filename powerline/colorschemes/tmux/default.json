@@ -1,0 +1,19 @@
+{
+	"name": "Default color scheme for shell prompts",
+	"groups": {
+        "session":          { "fg": "black", "bg": "darkblue", "attrs": ["bold"] },
+		"hostname":         { "fg": "darkblue", "bg": "black", "attrs": [] },
+		"jobnum":           { "fg": "brightyellow", "bg": "mediumorange", "attrs": [] },
+		"exit_fail":        { "fg": "white", "bg": "darkestred", "attrs": [] },
+		"exit_success":     { "fg": "white", "bg": "darkestgreen", "attrs": [] },
+		"environment":      { "fg": "white", "bg": "darkestpurple", "attrs": [] },
+		"branch":           { "fg": "white", "bg": "darkgreen", "attrs": [] },
+		"mode":             { "fg": "darkestgreen", "bg": "brightgreen", "attrs": ["bold"] },
+		"attached_clients": { "fg": "white", "bg": "darkestgreen", "attrs": [] },
+		"system_load_gradient":     { "fg": "blue_red", "bg": "black", "attrs": [] },
+		"background":                { "fg": "white", "bg": "black", "attrs": [] },
+		"background:divider":        { "fg": "black", "bg": "black", "attrs": [] },
+		"time:divider":              { "fg": "black", "bg": "black", "attrs": [] },
+		"window":               {"fg": "black",      "bg": "black",    "attrs": []}
+	}
+}
