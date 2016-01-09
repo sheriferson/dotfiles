@@ -64,7 +64,28 @@ alias figlet="figlet -f roman"
 alias vim="reattach-to-user-namespace mvim"
 
 # export some to do counts that I use in shell prompt
+# code from: https://github.com/oh-my-fish/theme-agnoster/blob/master/fish_prompt.fish
+# with tiny modifications to export the clean/dirty indicator for powerline segment
 function -v _ todos
     export tnum=(python ~/t/t.py --list ~/Dropbox/Text/tasks/tasks.txt -g @today | wc -l | sed -e's/ *//')
     export tDoneCount=(python ~/t/t.py --list ~/Dropbox/Text/tasks/.tasks.txt.done | wc -l | sed -e's/ *//')
+end
+
+# put dirty branch indicator in prompt
+set -g __fish_git_prompt_showdirtystate 'yes'
+set -g __fish_git_prompt_char_dirtystate '±'
+
+function -v _ parse_git_dirty
+  set -l submodule_syntax
+  set submodule_syntax "--ignore-submodules=dirty"
+  set git_dirty (command git status -s $submodule_syntax  2> /dev/null)
+  if [ -n "$git_dirty" ]
+    if [ $__fish_git_prompt_showdirtystate = "yes" ]
+      export branchStatus="$__fish_git_prompt_char_dirtystate"
+    end
+  else
+    if [ $__fish_git_prompt_showdirtystate = "yes" ]
+      set -e branchStatus
+    end
+  end
 end
