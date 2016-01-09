@@ -30,17 +30,16 @@
 				"function": "powerline.segments.shell.jobnum",
 				"priority": 20
 			},
+			{
+				"function": "powerline.segments.common.vcs.branch",
+				"priority": 40
+			},
             {
                 "function": "powerline.segments.common.env.environment",
                 "args": {
                     "variable": "branchStatus"
-            },
-			{
-				"function": "powerline.segments.common.vcs.branch",
-				"priority": 40
-			}
-    }
-
+                    }
+            }
 		],
 		"right": [
 			{
