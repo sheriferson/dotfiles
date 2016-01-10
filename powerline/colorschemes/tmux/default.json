@@ -14,6 +14,8 @@
 		"background":                { "fg": "white", "bg": "black", "attrs": [] },
 		"background:divider":        { "fg": "black", "bg": "black", "attrs": [] },
 		"time:divider":              { "fg": "black", "bg": "black", "attrs": [] },
-		"window":               {"fg": "black",      "bg": "black",    "attrs": []}
+		"window":               {"fg": "black",      "bg": "black",    "attrs": []},
+        "window:divider":       {"fg": "gray4",      "bg": "black",    "attrs": []},
+        "active_window_status": {"fg": "darkblue",   "bg": "black",    "attrs": []}
 	}
 }
