@@ -1,5 +1,5 @@
 " let g:airline_powerline_fonts = 1 " Allows vim-airline status bar to use patched powerline fonts
-let g:vim_markdown_folding_disabled=1   " disable markdown folding
+" let g:vim_markdown_folding_disabled=1   " disable markdown folding
 let g:vim_markdown_frontmatter=1 " format YAML frontmatter
 let g:vim_markdown_math=1 " LaTeX math
 let g:enable_bold_font = 0 " for Material design theme
