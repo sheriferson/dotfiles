@@ -1,1 +1,5 @@
+.DS_Store
 jupyter/migrated
+ipython/profile_default/history.sqlite
+ipython/profile_default/startup/
+
