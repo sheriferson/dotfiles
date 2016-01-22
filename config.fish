@@ -5,6 +5,12 @@ powerline-setup
 # colors
 export LSCOLORS=xeGxBxCxxxEgEdxBxBxexe
 
+# reference: https://gist.github.com/netmute/6761892
+# make Vim the default editor
+set --export EDITOR "mvim -f"
+# make Vim usable with git
+set --export GIT_EDITOR "mvim -f"
+
 #           oooo   o8o                                        
 #           `888   `"'                                        
 #  .oooo.    888  oooo   .oooo.    .oooo.o  .ooooo.   .oooo.o 
