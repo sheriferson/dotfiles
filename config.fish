@@ -2,6 +2,22 @@
 set fish_function_path $fish_function_path "/usr/local/lib/python2.7/site-packages/powerline/bindings/fish"
 powerline-setup
 
+# Improve fish greeting with some fortune
+# reference: https://gist.github.com/montanaflynn/04246fc5da998d15e713
+function fish_greeting
+    if not type fortune > /dev/null 2>&1
+        brew install fortune
+    end
+
+    if not type cowsay > /dev/null 2>&1
+        brew install cowsay
+    end
+
+    fortune | cowsay -f moose
+end
+
+funcsave fish_greeting
+
 # colors
 export LSCOLORS=xeGxBxCxxxEgEdxBxBxexe
 
