@@ -93,21 +93,43 @@ function -v _ todos
     export tDoneCount=(python ~/t/t.py --list ~/Dropbox/Text/tasks/.tasks.txt.done | wc -l | sed -e's/ *//')
 end
 
-# put dirty branch indicator in prompt
-set -g __fish_git_prompt_showdirtystate 'yes'
-set -g __fish_git_prompt_char_dirtystate '±'
+#             o8o      .   
+#             `"'    .o8   
+#  .oooooooo oooo  .o888oo 
+# 888' `88b  `888    888   
+# 888   888   888    888   
+# `88bod8P'   888    888 . 
+# `8oooooo.  o888o   "888" 
+# d"     YD                
+# "Y88888P'                
 
-function -v _ parse_git_dirty
-  set -l submodule_syntax
-  set submodule_syntax "--ignore-submodules=dirty"
-  set git_dirty (command git status -s $submodule_syntax  2> /dev/null)
-  if [ -n "$git_dirty" ]
-    if [ $__fish_git_prompt_showdirtystate = "yes" ]
-      export branchStatus="$__fish_git_prompt_char_dirtystate"
+# put dirty branch indicator in prompt
+set -g __fish_git_prompt_char_dirtystate '±'
+set -g __fish_git_prompt_char_stashed '✈︎'
+set -g __fish_git_prompt_char_dirty_and_stashed '± ✈︎'
+
+function -v _ parse_git
+    set -l submodule_syntax
+    set submodule_syntax "--ignore-submodules=dirty"
+    set git_dirty (command git status -s $submodule_syntax  2> /dev/null)
+    set git_stashed (command git rev-parse --verify --quiet refs/stash 2>/dev/null)
+
+    #  reference: https://github.com/oh-my-fish/theme-bobthefish/blob/master/fish_prompt.fish
+    # I don't like the solution below. Ideally I would use multiple
+    # conditionals in the if statement, but apparently that is either
+    # impossible or really hard to do in fish. I spent a long time looking.
+    # and I don't want to waste any more time.
+    if [ -n "$git_dirty" ]
+        if [ "$git_stashed" ]
+            export branchStatus="$__fish_git_prompt_char_dirty_and_stashed"
+        else
+            export branchStatus="$__fish_git_prompt_char_dirty"
+        end
+    else
+        if [ "$git_stashed" ]
+            export branchStatus="$__fish_git_prompt_char_stashed"
+        else
+            set -e branchStatus
+        end
     end
-  else
-    if [ $__fish_git_prompt_showdirtystate = "yes" ]
-      set -e branchStatus
-    end
-  end
 end
