@@ -104,7 +104,7 @@ end
 # "Y88888P'                
 
 # put dirty branch indicator in prompt
-set -g __fish_git_prompt_char_dirtystate '±'
+set -g __fish_git_prompt_char_dirty '±'
 set -g __fish_git_prompt_char_stashed '✈︎'
 set -g __fish_git_prompt_char_dirty_and_stashed '± ✈︎'
 
