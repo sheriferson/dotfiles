@@ -5,16 +5,16 @@
 		"jobnum":            { "fg": "brightyellow", "bg": "mediumorange", "attrs": [] },
 		"critical:failure":  { "fg": "brightred", "bg": "black", "attrs": ["bold"] },
 		"critical:success":  { "fg": "darkestgreen", "bg": "black", "attrs": [] },
-		"environment":       { "fg": "skyblue1", "bg": "black", "attrs": [] },
-		"branch":            { "fg": "white", "bg": "darkgreen", "attrs": [] },
+		"environment":       { "fg": "brightgreen", "bg": "black", "attrs": [] },
+		"branch":            { "fg": "darkgreen", "bg": "black", "attrs": ["bold"] },
 		"branch_clean":      { "fg": "white", "bg": "darkgreen", "attrs": [] },
 		"branch_dirty":      { "fg": "gray2", "bg": "brightyellow", "attrs": [] },
 		"mode":              { "fg": "darkestgreen", "bg": "brightgreen", "attrs": ["bold"] },
 		"attached_clients":  { "fg": "white", "bg": "darkestgreen", "attrs": [] },
-        "user":              { "fg": "white", "bg": "darkblue", "attrs": ["bold"] },
+		"user":              { "fg": "darkblue", "bg": "black", "attrs": ["bold"] },
 		"cwd":               { "fg": "gray9", "bg": "black", "attrs": [] },
-        "cwd:current_folder":{ "fg": "gray9", "bg": "gray1", "attrs": [] },
-        "cwd:divider":       { "fg": "gray7", "bg": "black", "attrs": [] }
+		"cwd:current_folder":{ "fg": "gray9", "bg": "gray1", "attrs": [] },
+		"cwd:divider":       { "fg": "gray7", "bg": "black", "attrs": [] }
 	},
 	"mode_translations": {
 		"vicmd": {
