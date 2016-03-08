@@ -113,12 +113,14 @@ function -v _ parse_git
     set submodule_syntax "--ignore-submodules=dirty"
     set git_dirty (command git status -s $submodule_syntax  2> /dev/null)
     set git_stashed (command git rev-parse --verify --quiet refs/stash 2>/dev/null)
+    set git_commit_count (command git rev-list --all --count 2> /dev/null)
 
     #  reference: https://github.com/oh-my-fish/theme-bobthefish/blob/master/fish_prompt.fish
     # I don't like the solution below. Ideally I would use multiple
     # conditionals in the if statement, but apparently that is either
     # impossible or really hard to do in fish. I spent a long time looking.
     # and I don't want to waste any more time.
+    set -e branchStatus
     if [ -n "$git_dirty" ]
         if [ "$git_stashed" ]
             export branchStatus="$__fish_git_prompt_char_dirty_and_stashed"
@@ -131,5 +133,15 @@ function -v _ parse_git
         else
             set -e branchStatus
         end
+    end
+
+    if [ -n "$git_commit_count" ]
+        if [ -n "$branchStatus" ]
+            export branchStatus="($git_commit_count) ""$branchStatus"
+        else
+            export branchStatus="($git_commit_count)"
+        end
+    else
+        set -e branchStatus
     end
 end
