@@ -9,11 +9,11 @@
 
 */
 
-/* Uncomment to use a custom font
+
+/* Uncomment to use a custom font */
 div#notebook, div.CodeMirror, div.output_area pre, div.output_wrapper, div.prompt {
-  font-family: 'Custom Font Name', monospace !important;
+  font-family: 'M+ 1m light', monospace !important;
 }
-*/
 
 
 /*Sherif's customizations*/
@@ -24,6 +24,9 @@ div#notebook-container {background-color: #1e1e1e;}
 
 /*Don't need to see jupyter logo, filename, last saved, etc.*/
 div#header-container { display: none; }
+
+div.prompt.input_prompt { font-size: 10px; }
+div.prompt.output_prompt { font-size: 10px; }
 
 /*This prevents scrollable output from having an ugly grey
 shadow around it*/
