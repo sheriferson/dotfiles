@@ -1,5 +1,17 @@
 " let g:airline_powerline_fonts = 1 " Allows vim-airline status bar to use patched powerline fonts
 " let g:vim_markdown_folding_disabled=1   " disable markdown folding
+
+function! s:goyo_enter()
+    colorscheme pencil
+endfunction
+
+function! s:goyo_leave()
+    colorscheme badwolf
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
 let g:vim_markdown_frontmatter=1 " format YAML frontmatter
 let g:vim_markdown_math=1 " LaTeX math
 let g:enable_bold_font = 0 " for Material design theme
