@@ -140,6 +140,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
+Plugin 'reedes/vim-colors-pencil'
 
 au BufRead,BufNewFile *.md set filetype=markdown    " this is to make markdown syn-hi work for .md
 
