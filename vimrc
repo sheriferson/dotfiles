@@ -42,6 +42,8 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_color_change_percent = 3
 let g:indent_guides_enable_on_vim_startup = 1
 
+let g:table_mode_corner="|"
+
 set guifont=M+\ 1m\ light\ for\ Powerline:h13
 
 set encoding=utf-8
@@ -153,6 +155,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
 Plugin 'reedes/vim-colors-pencil'
+Plugin 'dhruvasagar/vim-table-mode'
 
 au BufRead,BufNewFile *.md set filetype=markdown    " this is to make markdown syn-hi work for .md
 
