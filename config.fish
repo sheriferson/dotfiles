@@ -40,6 +40,8 @@ alias site='t -g @site'
 alias b='python ~/t/t.py --task-dir . --list _todo.txt'
 alias bdone='echo $bdcount'
 
+alias caplog='python3 ~/caplog/caplog.py'
+
 #     .                                             
 #   .o8                                             
 # .o888oo ooo. .oo.  .oo.   oooo  oooo  oooo    ooo 
