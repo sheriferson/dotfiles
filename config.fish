@@ -25,16 +25,11 @@ set --export GIT_EDITOR "mvim -f"
 # better ls
 alias ls='ls -lGFah'
 
-# easier python 3
-alias p3='python3'
-
 # task related aliases
 alias t='python ~/t/t.py --task-dir ~/Dropbox/text/tasks --list tasks.txt'
-alias tg='t -g'
 alias macl='t -g @macl'
 alias music='t -g @music'
 alias today='t -g @today'
-alias site='t -g @site'
 
 # b for bug/task tracking
 alias b='python ~/t/t.py --task-dir . --list _todo.txt'
