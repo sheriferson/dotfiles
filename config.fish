@@ -35,7 +35,9 @@ alias today='t -g @today'
 alias b='python ~/t/t.py --task-dir . --list _todo.txt'
 alias bdone='echo $bdcount'
 
-alias caplog='python3 ~/caplog/caplog.py'
+alias caplog='python3 ~/projects/caplog/caplog.py'
+
+alias desktop='bash ~/scripts/desktop.sh'
 
 #     .                                             
 #   .o8                                             
