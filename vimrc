@@ -1,6 +1,3 @@
-" let g:airline_powerline_fonts = 1 " Allows vim-airline status bar to use patched powerline fonts
-" let g:vim_markdown_folding_disabled=1   " disable markdown folding
-
 function! s:goyo_enter()
     colorscheme pencil
 endfunction
@@ -133,21 +130,16 @@ Plugin 'gmarik/Vundle.vim'
 "#########  Vundle plugins #########
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'skammer/vim-css-color'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-pandoc/vim-criticmarkup'
-Plugin 'goldfeld/criticmarkup-vim'
 Plugin 'mattly/vim-markdown-enhancements'
 Plugin 'itchyny/lightline.vim'
-Plugin 'benjaminwhite/Benokai'
 Plugin 'blerins/flattown'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'sjl/badwolf'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
@@ -198,7 +190,6 @@ nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
 " colorscheme flattown
-" colorscheme hybrid_material
 colorscheme badwolf
 
 filetype indent on              " OPTIONAL This enables automatic indentation as you type.
