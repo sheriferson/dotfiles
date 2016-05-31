@@ -138,16 +138,16 @@ Plugin 'vim-pandoc/vim-criticmarkup'
 Plugin 'mattly/vim-markdown-enhancements'
 Plugin 'itchyny/lightline.vim'
 Plugin 'blerins/flattown'
-Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'sjl/badwolf'
-Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
 Plugin 'reedes/vim-colors-pencil'
 Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'easymotion/vim-easymotion'
 
 au BufRead,BufNewFile *.md set filetype=markdown    " this is to make markdown syn-hi work for .md
 
