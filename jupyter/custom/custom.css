@@ -87,6 +87,15 @@ a {color: #7587a6;}
 /* INTRO PAGE */
 .toolbar_info, .list_container {color: #c3c3c3;}
 
+/* list of notebooks */
+div.list_item.row:hover {
+    background-color: DarkSlateGray;
+}
+
+div.dynamic-instructions {
+    color: white;
+}
+
 /* NOTEBOOK */
 
 /* comment out this line to bring the toolbar back */
@@ -95,6 +104,7 @@ a {color: #7587a6;}
 div.input_prompt {color: #9b703f;}
 div.output_prompt {color: #9b859d;}
 div.input_area {
+  background: DarkGray;
   border-radius: 0px;
   border: 1px solid #464b50;
 }
