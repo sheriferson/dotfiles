@@ -148,6 +148,7 @@ Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
+Plugin 'scwood/vim-hybrid'
 
 au BufRead,BufNewFile *.md set filetype=markdown    " this is to make markdown syn-hi work for .md
 
@@ -191,6 +192,9 @@ nmap <silent> <c-l> :wincmd l<CR>
 
 " colorscheme flattown
 colorscheme badwolf
+
+autocmd BufEnter *.js colorscheme hybrid
+autocmd BufEnter *.html colorscheme hybrid
 
 filetype indent on              " OPTIONAL This enables automatic indentation as you type.
 set autoread                    " read changes to file that happen on disk
