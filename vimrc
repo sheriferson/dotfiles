@@ -274,7 +274,7 @@ nnoremap ; :
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-map <leader>n :NERDTree<CR>
+map <C-c> :NERDTreeToggle<CR>
 
 if &term=="xterm" || &term=="xterm-color"
     :imap <Esc>Oq 1
