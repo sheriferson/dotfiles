@@ -38,6 +38,7 @@ let g:ycm_filetype_specific_completion_to_disable = {
 let g:indent_guides_guide_size = 1
 let g:indent_guides_color_change_percent = 3
 let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'html', 'javascript']
 
 let g:table_mode_corner="|"
 
@@ -136,19 +137,25 @@ Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mattly/vim-markdown-enhancements'
 Plugin 'itchyny/lightline.vim'
-Plugin 'blerins/flattown'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'sjl/badwolf'
 Plugin 'majutsushi/tagbar'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
-Plugin 'reedes/vim-colors-pencil'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
+" colorschemes
+Plugin 'blerins/flattown'
+Plugin 'sjl/badwolf'
+Plugin 'reedes/vim-colors-pencil'
 Plugin 'scwood/vim-hybrid'
+Plugin 'Haron-Prime/Antares'
+Plugin 'jscappini/material.vim'
+" javascript
+Plugin 'jelera/vim-javascript-syntax'           " general javscript syntax improvements
+Plugin 'ternjs/tern_for_vim'                    " Tern-based JavaScript editing support. 
 
 au BufRead,BufNewFile *.md set filetype=markdown    " this is to make markdown syn-hi work for .md
 
@@ -193,8 +200,8 @@ nmap <silent> <c-l> :wincmd l<CR>
 " colorscheme flattown
 colorscheme badwolf
 
-autocmd BufEnter *.js colorscheme hybrid
-autocmd BufEnter *.html colorscheme hybrid
+autocmd BufEnter *.js colorscheme antares
+autocmd BufEnter *.html colorscheme antares
 
 filetype indent on              " OPTIONAL This enables automatic indentation as you type.
 set autoread                    " read changes to file that happen on disk
