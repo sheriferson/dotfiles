@@ -49,7 +49,7 @@ div.output.output_scroll {
 	background: #484848; 
 }
 
-/*give strings a bit of highlight*/
+/* give strings a bit of highlight */
 .cm-s-ipython span.cm-string {
     color: #f9ee98;
     padding-left: 2px;
@@ -58,7 +58,7 @@ div.output.output_scroll {
     border-radius: 3px;
 }
 
-/*Make comments grey, not italic, and give them an easy background*/
+/* Make comments grey, not italic, and give them an easy background */
 .cm-s-ipython span.cm-comment {
     color: #838383;
     padding-left: 2px;
@@ -68,7 +68,7 @@ div.output.output_scroll {
     border-radius: 3px;
 }
 
-/*Make ` ` code blocks look better than black text with white background*/
+/* Make ` ` code blocks look better than black text with white background */
 .rendered_html code {
     padding-left: 3px;
     padding-right: 3px;
@@ -77,6 +77,12 @@ div.output.output_scroll {
     border-width: 1px;
     color: #53a1fe;
 }
+
+/* give plots a non-black background so that black text and labels are visible */
+div.output_area img, div.output_area svg {
+    background-color: lightblue;
+}
+
 /*########################*/
 
 
