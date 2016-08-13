@@ -3,7 +3,7 @@ function! s:goyo_enter()
 endfunction
 
 function! s:goyo_leave()
-    colorscheme badwolf
+    colorscheme antares
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
@@ -198,10 +198,10 @@ nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
 " colorscheme flattown
-colorscheme badwolf
+colorscheme antares
 
-autocmd BufEnter *.js colorscheme antares
-autocmd BufEnter *.html colorscheme antares
+" autocmd BufEnter *.js colorscheme antares
+" autocmd BufEnter *.html colorscheme antares
 
 filetype indent on              " OPTIONAL This enables automatic indentation as you type.
 set autoread                    " read changes to file that happen on disk
