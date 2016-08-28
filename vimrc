@@ -38,7 +38,7 @@ let g:ycm_filetype_specific_completion_to_disable = {
 let g:indent_guides_guide_size = 1
 let g:indent_guides_color_change_percent = 3
 let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'html', 'javascript']
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'html', 'javascript', 'python']
 
 let g:table_mode_corner="|"
 
