@@ -10,9 +10,9 @@ export LSCOLORS=xeGxBxCxxxEgEdxBxBxexe
 
 # reference: https://gist.github.com/netmute/6761892
 # make Vim the default editor
-set --export EDITOR "mvim -f"
+set --export EDITOR "nvim -f"
 # make Vim usable with git
-set --export GIT_EDITOR "mvim -f"
+set --export GIT_EDITOR "nvim -f"
 
 #           oooo   o8o                                        
 #           `888   `"'                                        
@@ -68,8 +68,9 @@ alias gitl='git log --pretty=oneline'
 # better figlet font
 alias figlet="figlet -f roman"
 
-# vim should be = mvim
-alias vim="reattach-to-user-namespace mvim"
+# vim should be = nvim
+alias vim="reattach-to-user-namespace nvim"
+alias mvim="reattach-to-user-namespace mvim"
 
 # export some to do counts that I use in shell prompt
 # code from: https://github.com/oh-my-fish/theme-agnoster/blob/master/fish_prompt.fish
