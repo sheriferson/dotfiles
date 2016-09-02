@@ -2,18 +2,8 @@
 	"segments": {
 		"left": [
 			{
-                "function": "powerline.segments.common.env.environment",
-                "args": {
-                    "variable": "tnum"
-                    }
-            },
-			{
 				"function": "powerline.segments.common.net.hostname",
 				"priority": 10
-			},
-			{
-				"function": "powerline.segments.common.env.user",
-				"priority": 30
 			},
 			{
 				"function": "powerline.segments.common.env.virtualenv",
@@ -22,9 +12,10 @@
 			{
 				"function": "powerline.segments.shell.cwd",
                 "args" : {
-                    "dir_limit_depth": 2
+                    "dir_limit_depth": 1
                 },
-				"priority": 10
+				"priority": 10,
+                "before": "λ "
 			},
 			{
 				"function": "powerline.segments.shell.jobnum",
@@ -46,6 +37,12 @@
 				"function": "powerline.segments.shell.last_pipe_status",
 				"priority": 10
 			},
+			{
+                "function": "powerline.segments.common.env.environment",
+                "args": {
+                    "variable": "tnum"
+                    }
+            },
 			{
                 "function": "powerline.segments.common.env.environment",
                 "args": {
