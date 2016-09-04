@@ -44,7 +44,6 @@ let g:table_mode_corner="|"
 
 set guifont=M+\ 1m\ light\ for\ Powerline:h13
 
-set encoding=utf-8
 " let g:indentLine_color_gui = '#01DFD7' " blue PICK
 "let g:indentLine_color_gui = '#a9a9a9' " blue PICK
 " let g:indentLine_char = ''
@@ -146,6 +145,7 @@ Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
+Plugin 'editorconfig/editorconfig-vim'
 " colorschemes
 Plugin 'blerins/flattown'
 Plugin 'sjl/badwolf'
