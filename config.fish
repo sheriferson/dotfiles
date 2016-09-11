@@ -3,7 +3,12 @@ set fish_function_path $fish_function_path "/usr/local/lib/python2.7/site-packag
 powerline-setup
 
 # disable fis greeting
-set fish_greeting
+# set fish_greeting
+function fish_greeting
+    Rscript /Users/sherif/scripts/fortune.R
+end
+
+funcsave fish_greeting
 
 # colors
 export LSCOLORS=xeGxBxCxxxEgEdxBxBxexe
