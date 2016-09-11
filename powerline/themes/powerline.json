@@ -2,7 +2,7 @@
 	"dividers": {
 		"left": {
 			"hard": " ",
-			"soft": " "
+			"soft": "/ "
 		},
 		"right": {
 			"hard": " ",
@@ -16,7 +16,7 @@
 		},
 		"cwd": {
 			"args": {
-				"ellipsis": "⋯"
+				"ellipsis": "⋯ "
 			}
 		},
 
