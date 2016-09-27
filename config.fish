@@ -1,5 +1,5 @@
 # use powerline (pip install powerline-status)
-set fish_function_path $fish_function_path "/usr/local/lib/python2.7/site-packages/powerline/bindings/fish"
+set fish_function_path $fish_function_path "/usr/local/lib/python3.5/site-packages/powerline/bindings/fish"
 powerline-setup
 
 # disable fis greeting
