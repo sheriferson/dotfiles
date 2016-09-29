@@ -20,6 +20,7 @@
         "activity_status":      {"fg": "yellow",     "bg": "black",    "attrs": []},
 		"cwd":               { "fg": "gray3", "bg": "black", "attrs": [] },
 		"cwd:current_folder":{ "fg": "gray4", "bg": "black", "attrs": [] },
-		"cwd:divider":       { "fg": "gray7", "bg": "black", "attrs": [] }
+		"cwd:divider":       { "fg": "gray7", "bg": "black", "attrs": [] },
+		"player":            { "fg": "mediumorange", "bg": "black", "attrs": [] }
 	}
 }
