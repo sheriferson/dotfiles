@@ -81,8 +81,10 @@ alias mvim="reattach-to-user-namespace mvim"
 # code from: https://github.com/oh-my-fish/theme-agnoster/blob/master/fish_prompt.fish
 # with tiny modifications to export the clean/dirty indicator for powerline segment
 function -v _ todos
-    export tnum=(python ~/t/t.py --list ~/Dropbox/Text/tasks/tasks.txt -g @today | wc -l | sed -e's/ *//')
-    export tDoneCount=(python ~/t/t.py --list ~/Dropbox/Text/tasks/.tasks.txt.done | wc -l | sed -e's/ *//')
+    # For doing a check over dates in t tasks - commented out for now
+    # python ~/t/t.py --list ~/Dropbox/Text/tasks/tasks.txt > /dev/null ^&1
+    export tnum=(cat ~/Dropbox/Text/tasks/tasks.txt | grep "@today" | wc -l | sed -e's/ *//')
+    export tDoneCount=(cat ~/Dropbox/Text/tasks/.tasks.txt.done | wc -l | sed -e's/ *//')
 end
 
 #             o8o      .   
