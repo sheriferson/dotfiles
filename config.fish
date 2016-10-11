@@ -139,3 +139,15 @@ function -v _ parse_git
         set -e branchStatus
     end
 end
+
+# In order for gpg to find gpg-agent, gpg-agent must be running,
+# and there must be an env variable pointing GPG to the gpg-agent socket.
+# This little script, which must be sourced
+# in your shell's init script (ie, .bash_profile, .zshrc, whatever),
+# will either start gpg-agent or set up the
+# GPG_AGENT_INFO variable if it's already running.
+set gpgstart "gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info"
+
+if [ -z (pgrep gpg-agent) ]
+    eval $gpgstart
+end > /dev/null
