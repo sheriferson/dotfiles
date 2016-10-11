@@ -6,6 +6,7 @@
 - `jupyter/custom/custom.css` Dark mode styling for jupyter notebooks.
 - `ipython/profile_default/ipython_kernel_config.py` for some python notebook configuration.
 - `powerline/colorschemes` and `powerline/themes` for [powerline](https://github.com/powerline/powerline)
+- `gnupg/gpg.config` and `gnupg/gpg-agent.config` for having `gpg-agent` running and ready to help sign my git commits.
 
 ## to do
 
