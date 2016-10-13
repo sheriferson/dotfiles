@@ -74,7 +74,7 @@ alias gitl='git log --pretty=oneline'
 alias figlet="figlet -f roman"
 
 # vim should be = nvim
-alias vim="reattach-to-user-namespace nvim"
+alias vim="nvim"
 alias mvim="reattach-to-user-namespace mvim"
 
 # export some to do counts that I use in shell prompt
