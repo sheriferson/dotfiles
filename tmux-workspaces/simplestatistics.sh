@@ -38,6 +38,15 @@ else
     tmux send-keys "vim index.rst" C-m
     tmux split-window -v
 
+    # set up window 2 - changelogs
+    tmux new-window -n changelogs
+    tmux send-keys "cd ~/projects/simplestatistics/" C-m
+    tmux send-keys "vim changelog.txt" C-m
+    
+    tmux split-window -h
+    tmux send-keys "cd ~/projects/simplestatistics/" C-m
+    tmux send-keys "vim HISTORY.rst" C-m
+
     # back to window 0 - main
     # 2 panes: both will be used to edit main statistics functions
     tmux select-window -t 0
