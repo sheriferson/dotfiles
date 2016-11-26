@@ -56,6 +56,9 @@ alias tnew='tmux new -s'
 alias tgo='tmux a -t'
 alias tls='tmux ls'
 
+# shotcuts to running tmux workspace scripts
+alias tmsimple='fish ~/dotfiles/tmux-workspaces/simplestatistics.sh'
+
 #                    o8o                     
 #                    `"'                     
 # ooo. .oo.  .oo.   oooo   .oooo.o  .ooooo.  
