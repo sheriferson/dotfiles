@@ -55,6 +55,8 @@ alias desktop='bash ~/scripts/desktop.sh'
 alias tnew='tmux new -s'
 alias tgo='tmux a -t'
 alias tls='tmux ls'
+alias tkill='tmux kill-session -t'
+alias tkillall='tmux kill-server'
 
 # shotcuts to running tmux workspace scripts
 alias tmsimple='fish ~/dotfiles/tmux-workspaces/simplestatistics.sh'
