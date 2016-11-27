@@ -13,6 +13,9 @@ let g:vim_markdown_frontmatter=1 " format YAML frontmatter
 let g:vim_markdown_math=1 " LaTeX math
 let g:enable_bold_font = 0 " for Material design theme
 
+" emmet
+let g:user_emmet_leader_key='<C-Z>'
+
 let g:ycm_filetype_blacklist = {
       \ 'tagbar' : 1,
       \ 'qf' : 1,
@@ -157,6 +160,8 @@ Plugin 'jscappini/material.vim'
 " javascript
 Plugin 'jelera/vim-javascript-syntax'           " general javscript syntax improvements
 Plugin 'ternjs/tern_for_vim'                    " Tern-based JavaScript editing support. 
+" html
+Plugin 'mattn/emmet-vim'
 
 au BufRead,BufNewFile *.md set filetype=markdown    " this is to make markdown syn-hi work for .md
 
