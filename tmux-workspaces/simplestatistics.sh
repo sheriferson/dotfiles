@@ -55,5 +55,11 @@ else
     tmux split-window -h
     tmux send-keys "cd ~/projects/simplestatistics/simplestatistics/statistics" C-m
 
+    tmux select-pane -t 0
+    tmux split-window -v
+    tmux send-keys "cd ~/projects/simplestatistics" C-m
+    tmux send-keys "bpython" C-m
+    tmux select-pane -t 0
+
     tmux attach-session -t simplestatistics
 end
