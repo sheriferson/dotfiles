@@ -44,6 +44,9 @@ alias caplog='python3 ~/projects/caplog/caplog.py'
 
 alias desktop='bash ~/scripts/desktop.sh'
 
+#julia
+alias julia=' exec /Applications/Julia-0.5.app/Contents/Resources/julia/bin/julia'
+
 #     .                                             
 #   .o8                                             
 # .o888oo ooo. .oo.  .oo.   oooo  oooo  oooo    ooo 
