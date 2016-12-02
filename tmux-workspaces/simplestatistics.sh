@@ -48,12 +48,17 @@ else
     tmux send-keys "vim HISTORY.rst" C-m
 
     # back to window 0 - main
-    # 2 panes: both will be used to edit main statistics functions
+    # 2 vertical panes: both will be used to edit main statistics functions
     tmux select-window -t 0
     tmux send-keys "cd ~/projects/simplestatistics/simplestatistics/statistics" C-m
     tmux send-keys "ls" C-m
     tmux split-window -h
     tmux send-keys "cd ~/projects/simplestatistics/simplestatistics/statistics" C-m
+
+        # split vertical pane 0 (on the left) to run bpython
+    tmux select-pane -t 0
+    tmux split-window -v
+    tmux send-keys "bpython" C-m
 
     tmux attach-session -t simplestatistics
 end
