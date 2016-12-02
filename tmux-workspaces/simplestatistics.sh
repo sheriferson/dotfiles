@@ -58,6 +58,7 @@ else
         # split vertical pane 0 (on the left) to run bpython
     tmux select-pane -t 0
     tmux split-window -v
+    tmux send-keys "cd ~/projects/simplestatistics/" C-m
     tmux send-keys "bpython" C-m
 
     tmux attach-session -t simplestatistics
