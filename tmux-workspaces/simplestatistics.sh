@@ -22,7 +22,7 @@ else
     # fourth empty pane
     tmux new-window -n documentation
 
-    tmux split-window -h
+    tmux split-window -h -p 45
     tmux select-pane -t 0
     tmux split-window -v
     tmux select-pane -t 0
