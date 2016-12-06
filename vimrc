@@ -150,6 +150,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'JuliaEditorSupport/julia-vim'
 " colorschemes
 Plugin 'blerins/flattown'
 Plugin 'sjl/badwolf'

@@ -48,7 +48,7 @@ else
     tmux send-keys "vim HISTORY.rst" C-m
 
     # back to window 0 - main
-    # 2 panes: both will be used to edit main statistics functions
+    # 2 vertical panes: both will be used to edit main statistics functions
     tmux select-window -t 0
     tmux send-keys "cd ~/projects/simplestatistics/simplestatistics/statistics" C-m
     tmux send-keys "ls" C-m
