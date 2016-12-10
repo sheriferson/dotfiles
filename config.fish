@@ -63,6 +63,7 @@ alias tkillall='tmux kill-server'
 
 # shotcuts to running tmux workspace scripts
 alias tmsimple='fish ~/dotfiles/tmux-workspaces/simplestatistics.sh'
+alias tmjsimple='fish ~/dotfiles/tmux-workspaces/jsimplestats.sh'
 
 #                    o8o                     
 #                    `"'                     
