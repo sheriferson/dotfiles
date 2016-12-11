@@ -78,10 +78,17 @@ div.output.output_scroll {
     color: #53a1fe;
 }
 
-/* give plots a non-black background so that black text and labels are visible */
-div.output_area img, div.output_area svg {
-    background-color: lightblue;
+/* change the color of the cursor */
+.cm-s-ipython .CodeMirror-cursor {
+    width: 2px;
+    background-color: darkcyan;
+    /* margin-top: 2px; */
 }
+
+/* give plots a non-black background so that black text and labels are visible */
+/* div.output_area img, div.output_area svg { */
+/*     background-color: lightblue; */
+/* } */
 
 /*########################*/
 
@@ -143,7 +150,7 @@ div.output_stderr pre {color: #c3c3c3;}
 .cm-s-ipython div.CodeMirror-selected {background: #323537 !important;}
 .cm-s-ipython .CodeMirror-gutters {background: #1e1e1e; border-right: 0px;}
 .cm-s-ipython .CodeMirror-linenumber {color: #5f5a60;}
-.cm-s-ipython .CodeMirror-cursor {border-left: 1px solid #838184 !important;}
+/* .cm-s-ipython .CodeMirror-cursor {border-left: 1px solid #838184 !important;} */
 
 .cm-s-ipython span.cm-atom {color: #9b859d;}
 .cm-s-ipython span.cm-number {color: #9b859d;}
