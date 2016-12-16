@@ -199,10 +199,10 @@ endi
 "##############################################################################                                                                         
 
 " Use ctrl-[hjkl] to select the active split!
-nmap <silent> <c-k> :wincmd k<CR>
-nmap <silent> <c-j> :wincmd j<CR>
-nmap <silent> <c-h> :wincmd h<CR>
-nmap <silent> <c-l> :wincmd l<CR>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " " Copy to clipboard
 " from: https://www.reddit.com/r/neovim/comments/3fricd/easiest_way_to_copy_from_neovim_to_system/
@@ -296,6 +296,10 @@ nnoremap k gk
 
 " not have to press shift before colon to type commands
 nnoremap ; :
+
+" use tab to jump to matching <({[
+nnoremap <tab> %
+vnoremap <tab> %
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
