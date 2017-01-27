@@ -163,6 +163,8 @@ Plugin 'jelera/vim-javascript-syntax'           " general javscript syntax impro
 Plugin 'ternjs/tern_for_vim'                    " Tern-based JavaScript editing support. 
 " html
 Plugin 'mattn/emmet-vim'
+" R
+Plugin 'jalvesaq/Nvim-R'
 
 au BufRead,BufNewFile *.md set filetype=markdown    " this is to make markdown syn-hi work for .md
 
@@ -199,10 +201,10 @@ endi
 "##############################################################################                                                                         
 
 " Use ctrl-[hjkl] to select the active split!
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
 
 " " Copy to clipboard
 " from: https://www.reddit.com/r/neovim/comments/3fricd/easiest_way_to_copy_from_neovim_to_system/
@@ -216,6 +218,11 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
+
+" " pipe for nvim-R
+autocmd FileType r inoremap <buffer> > <Esc>:normal! a%>%<CR>a 
+autocmd FileType rnoweb inoremap <buffer> > <Esc>:normal! a%>%<CR>a 
+autocmd FileType rmd inoremap <buffer> > <Esc>:normal! a%>%<CR>a 
 
 " colorscheme flattown
 colorscheme antares
