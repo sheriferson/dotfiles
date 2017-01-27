@@ -276,9 +276,9 @@ set wrap                        " The following two lines wrap lines without bre
 set wildmenu                    " file autocomplete will show up in menu
 
 " keep vim's backup, swap, and undo files in those directories.
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
-set undodir=~/.vim/undo//
+set backupdir=~/.config/nvim/backup//
+set directory=~/.config/nvim/swap//
+set undodir=~/.config/nvim/undo//
 
 " disable spell check for the following file types
 "autocmd BufNewFile,BufRead *.py setlocal nospell
@@ -303,10 +303,6 @@ nnoremap k gk
 
 " not have to press shift before colon to type commands
 nnoremap ; :
-
-" use tab to jump to matching <({[
-nnoremap <tab> %
-vnoremap <tab> %
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
