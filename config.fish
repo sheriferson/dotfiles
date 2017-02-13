@@ -1,5 +1,5 @@
 # use powerline (pip install powerline-status)
-set fish_function_path $fish_function_path "/usr/local/lib/python3.5/site-packages/powerline/bindings/fish"
+set fish_function_path $fish_function_path "/usr/local/lib/python3.6/site-packages/powerline/bindings/fish"
 powerline-setup
 
 # colors
@@ -81,8 +81,8 @@ alias mvim="reattach-to-user-namespace mvim"
 # export some to do counts that I use in shell prompt
 # code from: https://github.com/oh-my-fish/theme-agnoster/blob/master/fish_prompt.fish
 # with tiny modifications to export the clean/dirty indicator for powerline segment
-function -v _ todos
-    # For doing a check over dates in t tasks - commented out for now
+function todos -v _
+    # For doing a check over dates in tasks - commented out for now
     # python ~/t/t.py --list ~/Dropbox/Text/tasks/tasks.txt > /dev/null ^&1
     export tnum=(cat ~/Dropbox/Text/tasks/tasks.txt | grep "@today" | wc -l | sed -e's/ *//')
     export tDoneCount=(cat ~/Dropbox/Text/tasks/.tasks.txt.done | wc -l | sed -e's/ *//')
@@ -103,7 +103,7 @@ set -g __fish_git_prompt_char_dirty '±'
 set -g __fish_git_prompt_char_stashed '✈︎'
 set -g __fish_git_prompt_char_dirty_and_stashed '± ✈︎'
 
-function -v _ parse_git
+function parse_git -v _ 
     set -l submodule_syntax
     set submodule_syntax "--ignore-submodules=dirty"
     set git_dirty (command git status -s $submodule_syntax  2> /dev/null)
