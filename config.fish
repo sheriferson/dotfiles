@@ -23,8 +23,7 @@ set --export GIT_EDITOR "nvim -f"
 alias ls='ls -lGFah'
 
 # task related aliases
-alias t='python ~/t/t.py --task-dir ~/Dropbox/text/tasks --list tasks.txt'
-alias macl='t -g @macl'
+alias t='python ~/t/t.py --task-dir ~/mytasks --list tasks.txt'
 alias music='t -g @music'
 alias today='t -g @today'
 
@@ -82,10 +81,10 @@ alias mvim="reattach-to-user-namespace mvim"
 # code from: https://github.com/oh-my-fish/theme-agnoster/blob/master/fish_prompt.fish
 # with tiny modifications to export the clean/dirty indicator for powerline segment
 function todos -v _
-    # For doing a check over dates in tasks - commented out for now
-    # python ~/t/t.py --list ~/Dropbox/Text/tasks/tasks.txt > /dev/null ^&1
-    export tnum=(cat ~/Dropbox/Text/tasks/tasks.txt | grep "@today" | wc -l | sed -e's/ *//')
-    export tDoneCount=(cat ~/Dropbox/Text/tasks/.tasks.txt.done | wc -l | sed -e's/ *//')
+    # For doing a check over dates in t tasks
+    python ~/t/t.py --list ~/mytasks/tasks.txt > /dev/null ^&1
+    export tnum=(cat ~/mytasks/tasks.txt | grep "@today" | wc -l | sed -e's/ *//')
+    export tDoneCount=(cat ~/mytasks/.tasks.txt.done | wc -l | sed -e's/ *//')
 end
 
 #             o8o      .   
@@ -152,3 +151,5 @@ set gpgstart "gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info"
 if [ -z (pgrep gpg-agent) ]
     eval $gpgstart
 end > /dev/null
+
+set -gx PATH $BRAZIL_CLI_BIN $PATH
