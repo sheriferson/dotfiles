@@ -16,6 +16,21 @@ let g:enable_bold_font = 0 " for Material design theme
 " emmet
 let g:user_emmet_leader_key='<C-Z>'
 
+" nvim-R
+let R_assign_map = "--"
+let R_args_in_stline = 1
+let R_min_editor_width = 80
+let R_rconsole_width = 100
+let R_show_args = 1
+" pipe for nvim-R >> to %>%
+autocmd FileType r inoremap <buffer> >> <Esc>:normal! a %>%<CR>a 
+autocmd FileType rnoweb inoremap <buffer> >> <Esc>:normal! a %>%<CR>a 
+autocmd FileType rmd inoremap <buffer> >> <Esc>:normal! a %>%<CR>a 
+
+" Press the space bar to send lines and selection to R:
+vmap <Space> <Plug>RDSendSelection
+nmap <Space> <Plug>RDSendLine
+
 let g:ycm_filetype_blacklist = {
       \ 'tagbar' : 1,
       \ 'qf' : 1,
@@ -28,14 +43,16 @@ let g:ycm_filetype_blacklist = {
       \ 'infolog' : 1,
       \ 'mail' : 1,
       \ 'mkd.markdown' : 1,
-      \ 'tex' : 1
+      \ 'tex' : 1,
+      \ 'r' : 1
       \}
 
 let g:ycm_filetype_specific_completion_to_disable = {
       \ 'gitcommit': 1,
       \ 'markdown': 1,
       \ 'mkd.markdown' : 1,
-      \ 'tex' : 1
+      \ 'tex' : 1,
+      \ 'r' : 1
       \}
 
 let g:indent_guides_guide_size = 1
@@ -219,11 +236,6 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
-" " pipe for nvim-R
-autocmd FileType r inoremap <buffer> > <Esc>:normal! a%>%<CR>a 
-autocmd FileType rnoweb inoremap <buffer> > <Esc>:normal! a%>%<CR>a 
-autocmd FileType rmd inoremap <buffer> > <Esc>:normal! a%>%<CR>a 
-
 " colorscheme flattown
 colorscheme antares
 
@@ -250,11 +262,13 @@ set foldenable                  " sets folding
 set foldlevelstart=10           " open most folds by default
 set foldmethod=indent           " fold based on indent
 set foldnestmax=10              " deepest fold is 10 levels
-nnoremap <space> za
+" nnoremap <space> za
 " space open/closes folds
 
-" set number      		        " Show line numbers
+" the next two in that order turn on hybrid line number;
 set relativenumber              " Show relative line numbers
+set number      		        " Show line numbers
+
 set cursorline                  " highlight current line
 set ruler
 set scrolloff=8	    	        " Maintain 8 lines while scrolling
@@ -265,10 +279,10 @@ set shiftwidth=4
 set showmatch                   " set show matching parentheses
 
 " tabs
-set expandtab                   " Convert tabs into spaces
-set tabstop=4	            	" Specifies the number of spaces in a tab
-set softtabstop=4               " when editing
-set smarttab
+" set expandtab                   " Convert tabs into spaces
+" set tabstop=4	            	" Specifies the number of spaces in a tab
+" set softtabstop=4               " when editing
+" set smarttab
 
 set visualbell	        	    " Errors are visual
 set undofile                    " create a file that contains undo information
@@ -293,7 +307,7 @@ let g:tex_flavor='latex'
 let g:Tex_ViewRule_pdf = 'Preview'
 
 " ^ + f will erase whitespace at end of line
-map <C-f> :s/\s\+$//<CR>
+" map <C-f> :s/\s\+$//<CR>
 
 "This unsets the 'last search pattern' register by hitting return
 nnoremap <CR> :noh<CR><CR>
@@ -379,3 +393,8 @@ augroup reload_vimrc
     autocmd!
     autocmd bufwritepost $MYVIMRC nested source $MYVIMRC
 augroup END
+
+" nvim-R -> remapping tab to C-x C-o
+" placed here to happen after Youcompleteme loads because it rewrites tab
+" remapping
+autocmd FileType r inoremap <buffer> <tab> <C-x><C-o>
