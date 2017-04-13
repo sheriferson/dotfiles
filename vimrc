@@ -9,9 +9,9 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
-let g:vim_markdown_frontmatter=1 " format YAML frontmatter
-let g:vim_markdown_math=1 " LaTeX math
-let g:enable_bold_font = 0 " for Material design theme
+" settings for vim-pandoc
+let g:pandoc#folding#fdc = 0
+let g:pandoc#spell#enabled = 0
 
 " emmet
 let g:user_emmet_leader_key='<C-Z>'
@@ -150,12 +150,12 @@ Plugin 'VundleVim/Vundle.vim'
 
 "#########  Vundle plugins #########
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
-Plugin 'mattly/vim-markdown-enhancements'
 Plugin 'itchyny/lightline.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
@@ -168,6 +168,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'JuliaEditorSupport/julia-vim'
+Plugin 'vim-pandoc/vim-criticmarkup'
 " colorschemes
 Plugin 'blerins/flattown'
 Plugin 'sjl/badwolf'
@@ -245,7 +246,9 @@ colorscheme antares
 filetype indent on              " OPTIONAL This enables automatic indentation as you type.
 set autoread                    " read changes to file that happen on disk
 set gcr=a:blinkon0              " disable cursor blink
-" set colorcolumn=85
+set colorcolumn=80
+highlight ColorColumn ctermbg=23 guibg=14
+
 set hidden                      " Makes vim not complain when there are hidden buffers
 
 " search
@@ -279,10 +282,17 @@ set shiftwidth=4
 set showmatch                   " set show matching parentheses
 
 " tabs
-" set expandtab                   " Convert tabs into spaces
-" set tabstop=4	            	" Specifies the number of spaces in a tab
-" set softtabstop=4               " when editing
-" set smarttab
+set expandtab                   " Convert tabs into spaces
+set tabstop=4	            	" Specifies the number of spaces in a tab
+set softtabstop=4               " when editing
+set smarttab
+"
+"  for R/SQL files, 2 spaces
+autocmd Filetype sql setlocal ts=2 sw=2 expandtab
+autocmd Filetype R setlocal ts=2 sw=2 expandtab
+
+"  for Python files, 4 spaces
+autocmd Filetype Python setlocal ts=4 sw=4 expandtab
 
 set visualbell	        	    " Errors are visual
 set undofile                    " create a file that contains undo information
