@@ -5,7 +5,7 @@
                 "function": "powerline.segments.common.players.spotify",
                 "name": "player",
                 "args": {
-                    "format": "{state_symbol} {title} by {artist} | {album}"
+                    "format": "{state_symbol} {artist} - {title} | {album}"
                 }
             },
 			{
