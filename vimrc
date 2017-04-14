@@ -9,6 +9,9 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
+" disabled if deciding to continue disabling vim-markdown plugin
+" let g:vim_markdown_frontmatter=1 " format YAML frontmatter
+" let g:vim_markdown_math=1 " LaTeX math
 " settings for vim-pandoc
 let g:pandoc#folding#fdc = 0
 let g:pandoc#spell#enabled = 0
@@ -26,6 +29,20 @@ let R_show_args = 1
 autocmd FileType r inoremap <buffer> >> <Esc>:normal! a %>%<CR>a 
 autocmd FileType rnoweb inoremap <buffer> >> <Esc>:normal! a %>%<CR>a 
 autocmd FileType rmd inoremap <buffer> >> <Esc>:normal! a %>%<CR>a 
+
+" syntastic and lintr
+let g:syntastic_enable_r_lintr_checker = 1
+let g:syntastic_r_checkers = ['lintr']
+let g:syntastic_r_lintr_linters = "with_defaults(line_length_linter = line_length_linter(120), single_quotes_linter = NULL)"
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Press the space bar to send lines and selection to R:
 vmap <Space> <Plug>RDSendSelection
@@ -73,13 +90,20 @@ set guifont=M+\ 1m\ light\ for\ Powerline:h13
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename' ] ]
+      \             [ 'fugitive', 'filename' ] ],
+      \   'right': [ ['syntastic', 'lineinfo'] ]
       \ },
       \ 'component_function': {
       \   'fugitive': 'MyFugitive',
       \   'readonly': 'MyReadonly',
       \   'filename': 'MyFilename',
       \   'modified': 'MyModified',
+      \ },
+      \ 'component_expand': {
+      \   'syntastic': 'SyntasticStatuslineFlag',
+      \ },
+      \ 'component_type': {
+      \   'syntastic': 'error',
       \ }
       \ }
 
@@ -131,6 +155,15 @@ function! MyFilename()
        \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
+augroup AutoSyntastic
+  autocmd!
+  autocmd BufWritePost *.c,*.cpp call s:syntastic()
+augroup END
+function! s:syntastic()
+  SyntasticCheck
+  call lightline#update()
+endfunction
+
 au VimEnter * hi Cursor guibg=#FF4500
 au InsertLeave * hi Cursor guibg=#FF4500
 au InsertEnter * hi Cursor guibg=green
@@ -169,6 +202,8 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'JuliaEditorSupport/julia-vim'
 Plugin 'vim-pandoc/vim-criticmarkup'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'jimhester/lintr'
 " colorschemes
 Plugin 'blerins/flattown'
 Plugin 'sjl/badwolf'
@@ -408,3 +443,6 @@ augroup END
 " placed here to happen after Youcompleteme loads because it rewrites tab
 " remapping
 autocmd FileType r inoremap <buffer> <tab> <C-x><C-o>
+
+" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+" match OverLength /\%81v.\+/
