@@ -281,8 +281,6 @@ colorscheme antares
 filetype indent on              " OPTIONAL This enables automatic indentation as you type.
 set autoread                    " read changes to file that happen on disk
 set gcr=a:blinkon0              " disable cursor blink
-set colorcolumn=80
-highlight ColorColumn ctermbg=23 guibg=14
 
 set hidden                      " Makes vim not complain when there are hidden buffers
 
@@ -338,15 +336,6 @@ set wildmenu                    " file autocomplete will show up in menu
 set backupdir=~/.config/nvim/backup//
 set directory=~/.config/nvim/swap//
 set undodir=~/.config/nvim/undo//
-
-" disable spell check for the following file types
-"autocmd BufNewFile,BufRead *.py setlocal nospell
-"autocmd BufNewFile,BufRead *.R setlocal nospell
-"autocmd BufNewFile,BufRead *.vimrc setlocal nospell
-"autocmd BufNewFile,BufRead *.vim setlocal nospell
-"autocmd BufNewFile,BufRead *.c setlocal nospell
-"autocmd BufNewFile,BufRead *.Rnw set ft=tex nospell
-"autocmd BufNewFile,BufRead .profile setlocal nospell
 
 let g:tex_flavor='latex'
 let g:Tex_ViewRule_pdf = 'Preview'
@@ -414,10 +403,10 @@ endif
 "hi StatusLine term=reverse ctermfg=11 ctermbg=232 gui=bold,reverse
 
 " 2013/12/2
-" the following should allow me to use Ctrl-shift-P to inspect
+" the following should allow me to use Ctrl-J to inspect
 " an element to find out which group it belongs to
 " for coloring purposes
-nmap <C-S-P> :call <SID>SynStack()<CR>
+nmap <C-J> :call <SID>SynStack()<CR>
 function! <SID>SynStack()
     if !exists("*synstack")
         return
@@ -446,3 +435,10 @@ autocmd FileType r inoremap <buffer> <tab> <C-x><C-o>
 
 " highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 " match OverLength /\%81v.\+/
+
+" set coneal chars with black bg and red fg
+" this has to happen at the end, since something in the middle
+" probably a colorscheme overrides it
+highlight conceal ctermbg=black ctermfg=9
+highlight ColorColumn ctermbg=23 guibg=14
+autocmd FileType Python set colorcolumn=80
