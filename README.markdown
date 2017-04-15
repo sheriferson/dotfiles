@@ -10,6 +10,12 @@
 - `tmux-workspaces/` containing script(s) for setting up various tmux workspaces.
 - `terminfo/` containing `*.terminfo` files to enable italics in terminal and tmux.
 
+# setup
+
+```bash
+$ ./setup.sh
+```
+
 ## to do
 
-- [ ] shell script to create necessary directories and symlink files on a new system.
+- [x] shell script to create necessary directories and symlink files on a new system.
