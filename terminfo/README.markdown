@@ -19,7 +19,7 @@ To confirm that italics now work, use the following command:
 fish shell:
 
 ```bash
-echo (tput sitm)'italics' (tput ritm) (tput smso)'standout'(tput rmso)<Paste>
+echo (tput sitm)'italics' (tput ritm) (tput smso)'standout'(tput rmso)
 ```
 
 or bash
