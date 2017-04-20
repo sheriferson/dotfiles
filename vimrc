@@ -1,3 +1,8 @@
+" R macros
+let @a = ':s/<-/ <- /g'
+let @c = ':s/,/, /g'
+let @e = ':s/=/ = /g'
+
 function! s:goyo_enter()
     colorscheme pencil
 endfunction
@@ -9,9 +14,6 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
-" disabled if deciding to continue disabling vim-markdown plugin
-" let g:vim_markdown_frontmatter=1 " format YAML frontmatter
-" let g:vim_markdown_math=1 " LaTeX math
 " settings for vim-pandoc
 let g:pandoc#folding#fdc = 0
 let g:pandoc#spell#enabled = 0
@@ -29,11 +31,14 @@ let R_show_args = 1
 autocmd FileType r inoremap <buffer> >> <Esc>:normal! a %>%<CR>a 
 autocmd FileType rnoweb inoremap <buffer> >> <Esc>:normal! a %>%<CR>a 
 autocmd FileType rmd inoremap <buffer> >> <Esc>:normal! a %>%<CR>a 
+" Press the space bar to send lines and selection to R:
+vmap <Space> <Plug>RDSendSelection
+nmap <Space> <Plug>RDSendLine
 
 " syntastic and lintr
 let g:syntastic_enable_r_lintr_checker = 1
 let g:syntastic_r_checkers = ['lintr']
-let g:syntastic_r_lintr_linters = "with_defaults(line_length_linter = line_length_linter(120), single_quotes_linter = NULL)"
+let g:syntastic_r_lintr_linters = "with_defaults(line_length_linter = line_length_linter(120), single_quotes_linter = NULL, object_name_linter = NULL)"
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -43,10 +48,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
-" Press the space bar to send lines and selection to R:
-vmap <Space> <Plug>RDSendSelection
-nmap <Space> <Plug>RDSendLine
 
 let g:ycm_filetype_blacklist = {
       \ 'tagbar' : 1,
@@ -79,8 +80,6 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'html', 'javascript
 
 let g:table_mode_corner="|"
 
-set guifont=M+\ 1m\ light\ for\ Powerline:h13
-
 " let g:indentLine_color_gui = '#01DFD7' " blue PICK
 "let g:indentLine_color_gui = '#a9a9a9' " blue PICK
 " let g:indentLine_char = ''
@@ -88,6 +87,7 @@ set guifont=M+\ 1m\ light\ for\ Powerline:h13
 "let g:indentLine_char=u"U+DFF0"
 
 let g:lightline = {
+      \ 'colorscheme': 'seoul256',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'fugitive', 'filename' ] ],
@@ -135,7 +135,7 @@ function! MyReadonly()
   if &filetype == "help"
     return ""
   elseif &readonly
-    return "⭤"
+    return ""
   else
     return ""
   endif
@@ -144,7 +144,7 @@ endfunction
 function! MyFugitive()
   if exists("*fugitive#head")
     let _ = fugitive#head()
-    return strlen(_) ? "⭠"." "._ : ''
+    return strlen(_) ? ""." "._ : ''
   endif
   return ''
 endfunction
@@ -183,6 +183,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 "#########  Vundle plugins #########
 Plugin 'godlygeek/tabular'
+Plugin 'tpope/vim-fugitive'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'airblade/vim-gitgutter'
@@ -274,9 +275,6 @@ vnoremap <leader>P "+P
 
 " colorscheme flattown
 colorscheme antares
-
-" autocmd BufEnter *.js colorscheme antares
-" autocmd BufEnter *.html colorscheme antares
 
 filetype indent on              " OPTIONAL This enables automatic indentation as you type.
 set autoread                    " read changes to file that happen on disk
@@ -403,7 +401,7 @@ endif
 "hi StatusLine term=reverse ctermfg=11 ctermbg=232 gui=bold,reverse
 
 " 2013/12/2
-" the following should allow me to use Ctrl-J to inspect
+" the following should allow me to use Ctrl-I to inspect
 " an element to find out which group it belongs to
 " for coloring purposes
 nmap <C-J> :call <SID>SynStack()<CR>
@@ -414,7 +412,7 @@ function! <SID>SynStack()
     echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
-set guifont=M+\ 1m\ light\ for\ Powerline:h15
+set guifont=Iosevka:h15
 
 " FIX: PluginUpdate => git pull: git-sh-setup: No such file or directory in MacVim (OK in non-GUI version of Vim)
 if has("gui_macvim")
