@@ -1,7 +1,7 @@
 {
 	"name": "Default color scheme for shell prompts",
 	"groups": {
-        "session":          { "fg": "black", "bg": "darkblue", "attrs": ["bold"] },
+        "session":          { "fg": "black", "bg": "solarized:cyan", "attrs": [] },
 		"hostname":         { "fg": "darkblue", "bg": "black", "attrs": [] },
 		"jobnum":           { "fg": "brightyellow", "bg": "mediumorange", "attrs": [] },
 		"exit_fail":        { "fg": "white", "bg": "darkestred", "attrs": [] },
@@ -14,13 +14,17 @@
 		"background":                { "fg": "white", "bg": "black", "attrs": [] },
 		"background:divider":        { "fg": "black", "bg": "black", "attrs": [] },
 		"time:divider":              { "fg": "black", "bg": "black", "attrs": [] },
-		"window":               {"fg": "black",      "bg": "black",    "attrs": []},
-        "window:divider":       {"fg": "gray4",      "bg": "black",    "attrs": []},
-        "active_window_status": {"fg": "darkblue",   "bg": "black",    "attrs": []},
         "activity_status":      {"fg": "yellow",     "bg": "black",    "attrs": []},
 		"cwd":               { "fg": "gray3", "bg": "black", "attrs": [] },
 		"cwd:current_folder":{ "fg": "gray4", "bg": "black", "attrs": [] },
 		"cwd:divider":       { "fg": "gray7", "bg": "black", "attrs": [] },
-		"player":            { "fg": "mediumorange", "bg": "black", "attrs": [] }
+		"player":            { "fg": "mediumorange", "bg": "black", "attrs": [] },
+
+		"window":               {"fg": "darkblue",      "bg": "black",    "attrs": []},
+        "window:divider":       {"fg": "gray4",      "bg": "black",    "attrs": []},
+        "active_window_status": {"fg": "darkblue",   "bg": "black",    "attrs": []},
+		"window:current":       {"fg": "red", "bg": "black", "attrs": []},
+		"window_name":          {"fg": "red",      "bg": "black", "attrs": []},
+		"window_status":        {"fg": "darkblue",     "bg": "black",    "attrs": []}
 	}
 }
