@@ -2,6 +2,9 @@
 set fish_function_path $fish_function_path "/usr/local/lib/python3.6/site-packages/powerline/bindings/fish"
 powerline-setup
 
+# disable fish greeting
+set fish_greeting ""
+
 # colors
 export LSCOLORS=xeGxBxCxxxEgEdxBxBxexe
 
