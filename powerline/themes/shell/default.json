@@ -16,7 +16,7 @@
                     "use_path_separator": false
                 },
 				"priority": 10,
-                "before": "λ "
+                "before": "∴ "
 			},
 			{
 				"function": "powerline.segments.shell.jobnum",
