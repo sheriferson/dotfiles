@@ -1,7 +1,7 @@
 " R macros
-let @a = ':s/<-/ <- /g'
-let @c = ':s/,/, /g'
-let @e = ':s/=/ = /g'
+let @a = ':%s/\(\S\)<-\(\S\)/\1 <- \2/gc'
+let @c = ':%s/\(\S\),\(\S\)/\1, \2/gc'
+let @e = ':%s/\(\S\)=\(\S\)/\1 = \2/gc'
 
 function! s:goyo_enter()
     colorscheme pencil
@@ -36,9 +36,14 @@ vmap <Space> <Plug>RDSendSelection
 nmap <Space> <Plug>RDSendLine
 
 " syntastic and lintr
+" for pylint, disable:
+"   - C0103: variable and constant name checker
+"   - C1801: len(sequence) as condition value - `if mystring` is less readable
+let g:syntastic_python_pylint_post_args= "--disable=C0103,C1801"
+
 let g:syntastic_enable_r_lintr_checker = 1
 let g:syntastic_r_checkers = ['lintr']
-let g:syntastic_r_lintr_linters = "with_defaults(line_length_linter = line_length_linter(120), single_quotes_linter = NULL, object_name_linter = NULL)"
+let g:syntastic_r_lintr_linters = "with_defaults(line_length_linter = line_length_linter(120), single_quotes_linter = NULL, object_name_linter = NULL, closed_curly_linter = NULL)"
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -248,11 +253,11 @@ if exists(":Tabularize")
   vmap <Leader>a= :Tabularize /=<CR>
   nmap <Leader>a: :Tabularize /:\zs<CR>
   vmap <Leader>a: :Tabularize /:\zs<CR>
-endi    
+endi
 
-"##############################################################################                                                                         
-" Easier split navigation                                                                                                                               
-"##############################################################################                                                                         
+"##############################################################################
+" Easier split navigation
+"##############################################################################
 
 " Use ctrl-[hjkl] to select the active split!
 nmap <silent> <c-k> :wincmd k<CR>
@@ -338,8 +343,8 @@ set undodir=~/.config/nvim/undo//
 let g:tex_flavor='latex'
 let g:Tex_ViewRule_pdf = 'Preview'
 
-" ^ + f will erase whitespace at end of line
-" map <C-f> :s/\s\+$//<CR>
+" <leader> + f will erase whitespace at end of line
+map <leader>f :s/\s\+$//<CR>
 
 "This unsets the 'last search pattern' register by hitting return
 nnoremap <CR> :noh<CR><CR>
@@ -440,3 +445,10 @@ autocmd FileType r inoremap <buffer> <tab> <C-x><C-o>
 highlight conceal ctermbg=black ctermfg=9
 highlight ColorColumn ctermbg=23 guibg=14
 autocmd FileType Python set colorcolumn=80
+
+highlight ExtraWhitespace ctermbg=yellow guibg=yellow
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
