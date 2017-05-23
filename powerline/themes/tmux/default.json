@@ -8,6 +8,13 @@
                     "format": "{state_symbol} {artist} - {title} | {album}"
                 }
             },
+            {
+                "function": "powerline.segments.common.players.itunes",
+                "name": "player",
+                "args": {
+                    "format": "{state_symbol} {artist} - {title} | {album}"
+                }
+            },
 			{
 				"function": "powerline.segments.common.sys.system_load",
 				"priority": 50
