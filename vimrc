@@ -1,7 +1,7 @@
 " R macros
-let @a = ':%s/\(\S\)<-\(\S\)/\1 <- \2/gc'
-let @c = ':%s/\(\S\),\(\S\)/\1, \2/gc'
-let @e = ':%s/\(\S\)=\(\S\)/\1 = \2/gc'
+let @a = ':s/\(\S\)<-\(\S\)/\1 <- \2/g'
+let @c = ':s/\(\S\),\(\S\)/\1, \2/g'
+let @e = ':s/\(\S\)=\(\S\)/\1 = \2/g'
 
 function! s:goyo_enter()
     colorscheme pencil
@@ -25,7 +25,7 @@ let g:user_emmet_leader_key='<C-Z>'
 let R_assign_map = "--"
 let R_args_in_stline = 1
 let R_min_editor_width = 80
-let R_rconsole_width = 100
+let R_rconsole_width = 130
 let R_show_args = 1
 " pipe for nvim-R >> to %>%
 autocmd FileType r inoremap <buffer> >> <Esc>:normal! a %>%<CR>a 
@@ -78,18 +78,17 @@ let g:ycm_filetype_specific_completion_to_disable = {
       \ 'r' : 1
       \}
 
-let g:indent_guides_guide_size = 1
-let g:indent_guides_color_change_percent = 3
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'html', 'javascript', 'python']
+" let g:indent_guides_guide_size = 1
+" let g:indent_guides_color_change_percent = 10
+" let g:indent_guides_enable_on_vim_startup = 1
+" let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'html', 'javascript']
 
 let g:table_mode_corner="|"
 
+let g:indentLine_color_term = 239
 " let g:indentLine_color_gui = '#01DFD7' " blue PICK
-"let g:indentLine_color_gui = '#a9a9a9' " blue PICK
-" let g:indentLine_char = ''
-"let g:indentLine_char = " ︙"
-"let g:indentLine_char=u"U+DFF0"
+" let g:indentLine_color_gui = '#a9a9a9' " blue PICK
+let g:indentLine_char = '⋮'
 
 let g:lightline = {
       \ 'colorscheme': 'seoul256',
@@ -169,9 +168,9 @@ function! s:syntastic()
   call lightline#update()
 endfunction
 
-au VimEnter * hi Cursor guibg=#FF4500
-au InsertLeave * hi Cursor guibg=#FF4500
-au InsertEnter * hi Cursor guibg=green
+" au VimEnter * hi Cursor guibg=#FF4500
+" au InsertLeave * hi Cursor guibg=#FF4500
+" au InsertEnter * hi Cursor guibg=green
 
 set nocompatible                " be iMproved, required
 filetype off                    " required - Vundle
@@ -210,6 +209,8 @@ Plugin 'JuliaEditorSupport/julia-vim'
 Plugin 'vim-pandoc/vim-criticmarkup'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'jimhester/lintr'
+Plugin 'Yggdroot/indentLine'         " 2017-05-10
+Plugin 'ntpeters/vim-better-whitespace' " 2017-05-31
 " colorschemes
 Plugin 'blerins/flattown'
 Plugin 'sjl/badwolf'
@@ -219,7 +220,7 @@ Plugin 'Haron-Prime/Antares'
 Plugin 'jscappini/material.vim'
 " javascript
 Plugin 'jelera/vim-javascript-syntax'           " general javscript syntax improvements
-Plugin 'ternjs/tern_for_vim'                    " Tern-based JavaScript editing support. 
+Plugin 'ternjs/tern_for_vim'                    " Tern-based JavaScript editing support.
 " html
 Plugin 'mattn/emmet-vim'
 " R
@@ -343,7 +344,7 @@ set undodir=~/.config/nvim/undo//
 let g:tex_flavor='latex'
 let g:Tex_ViewRule_pdf = 'Preview'
 
-" <leader> + f will erase whitespace at end of line
+" leader + f will erase whitespace at end of line
 map <leader>f :s/\s\+$//<CR>
 
 "This unsets the 'last search pattern' register by hitting return
@@ -442,13 +443,7 @@ autocmd FileType r inoremap <buffer> <tab> <C-x><C-o>
 " set coneal chars with black bg and red fg
 " this has to happen at the end, since something in the middle
 " probably a colorscheme overrides it
-highlight conceal ctermbg=black ctermfg=9
 highlight ColorColumn ctermbg=23 guibg=14
 autocmd FileType Python set colorcolumn=80
 
-highlight ExtraWhitespace ctermbg=yellow guibg=yellow
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+highlight conceal ctermbg=black ctermfg=9
