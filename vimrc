@@ -23,10 +23,10 @@ let g:user_emmet_leader_key='<C-Z>'
 
 " nvim-R
 let R_assign_map = "--"
-let R_args_in_stline = 1
+" let R_args_in_stline = 1
 let R_min_editor_width = 80
-let R_rconsole_width = 130
-let R_show_args = 1
+let R_rconsole_width = 1000 " force the console to show up at the bottom
+" let R_show_args = 1
 " pipe for nvim-R >> to %>%
 autocmd FileType r inoremap <buffer> >> <Esc>:normal! a %>%<CR>a 
 autocmd FileType rnoweb inoremap <buffer> >> <Esc>:normal! a %>%<CR>a 
@@ -39,20 +39,20 @@ nmap <Space> <Plug>RDSendLine
 " for pylint, disable:
 "   - C0103: variable and constant name checker
 "   - C1801: len(sequence) as condition value - `if mystring` is less readable
-let g:syntastic_python_pylint_post_args= "--disable=C0103,C1801"
+" let g:syntastic_python_pylint_post_args= "--disable=C0103,C1801"
 
-let g:syntastic_enable_r_lintr_checker = 1
-let g:syntastic_r_checkers = ['lintr']
-let g:syntastic_r_lintr_linters = "with_defaults(line_length_linter = line_length_linter(120), single_quotes_linter = NULL, object_name_linter = NULL, closed_curly_linter = NULL)"
+" let g:syntastic_enable_r_lintr_checker = 1
+" let g:syntastic_r_checkers = ['lintr']
+" let g:syntastic_r_lintr_linters = "with_defaults(line_length_linter = line_length_linter(120), single_quotes_linter = NULL, object_name_linter = NULL, closed_curly_linter = NULL)"
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
 let g:ycm_filetype_blacklist = {
       \ 'tagbar' : 1,
@@ -66,16 +66,14 @@ let g:ycm_filetype_blacklist = {
       \ 'infolog' : 1,
       \ 'mail' : 1,
       \ 'mkd.markdown' : 1,
-      \ 'tex' : 1,
-      \ 'r' : 1
+      \ 'tex' : 1
       \}
 
 let g:ycm_filetype_specific_completion_to_disable = {
       \ 'gitcommit': 1,
       \ 'markdown': 1,
       \ 'mkd.markdown' : 1,
-      \ 'tex' : 1,
-      \ 'r' : 1
+      \ 'tex' : 1
       \}
 
 " let g:indent_guides_guide_size = 1
@@ -95,19 +93,13 @@ let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'fugitive', 'filename' ] ],
-      \   'right': [ ['syntastic', 'lineinfo'] ]
+      \   'right': [ ['lineinfo'] ]
       \ },
       \ 'component_function': {
       \   'fugitive': 'MyFugitive',
       \   'readonly': 'MyReadonly',
       \   'filename': 'MyFilename',
       \   'modified': 'MyModified',
-      \ },
-      \ 'component_expand': {
-      \   'syntastic': 'SyntasticStatuslineFlag',
-      \ },
-      \ 'component_type': {
-      \   'syntastic': 'error',
       \ }
       \ }
 
@@ -159,15 +151,6 @@ function! MyFilename()
        \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
-augroup AutoSyntastic
-  autocmd!
-  autocmd BufWritePost *.c,*.cpp call s:syntastic()
-augroup END
-function! s:syntastic()
-  SyntasticCheck
-  call lightline#update()
-endfunction
-
 " au VimEnter * hi Cursor guibg=#FF4500
 " au InsertLeave * hi Cursor guibg=#FF4500
 " au InsertEnter * hi Cursor guibg=green
@@ -207,7 +190,6 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'JuliaEditorSupport/julia-vim'
 Plugin 'vim-pandoc/vim-criticmarkup'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'jimhester/lintr'
 Plugin 'Yggdroot/indentLine'         " 2017-05-10
 Plugin 'ntpeters/vim-better-whitespace' " 2017-05-31
