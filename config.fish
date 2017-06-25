@@ -14,13 +14,13 @@ set --export EDITOR "nvim -f"
 # make Vim usable with git
 set --export GIT_EDITOR "nvim -f"
 
-#           oooo   o8o                                        
-#           `888   `"'                                        
-#  .oooo.    888  oooo   .oooo.    .oooo.o  .ooooo.   .oooo.o 
-# `P  )88b   888  `888  `P  )88b  d88(  "8 d88' `88b d88(  "8 
-#  .oP"888   888   888   .oP"888  `"Y88b.  888ooo888 `"Y88b.  
-# d8(  888   888   888  d8(  888  o.  )88b 888    .o o.  )88b 
-# `Y888""8o o888o o888o `Y888""8o 8""888P' `Y8bod8P' 8""888P' 
+#           oooo   o8o
+#           `888   `"'
+#  .oooo.    888  oooo   .oooo.    .oooo.o  .ooooo.   .oooo.o
+# `P  )88b   888  `888  `P  )88b  d88(  "8 d88' `88b d88(  "8
+#  .oP"888   888   888   .oP"888  `"Y88b.  888ooo888 `"Y88b.
+# d8(  888   888   888  d8(  888  o.  )88b 888    .o o.  )88b
+# `Y888""8o o888o o888o `Y888""8o 8""888P' `Y8bod8P' 8""888P'
 
 # better ls
 alias ls='ls -lGFah'
@@ -41,13 +41,13 @@ alias desktop='bash ~/scripts/desktop.sh'
 #julia
 alias julia='/Applications/Julia-0.5.app/Contents/Resources/julia/bin/julia'
 
-#     .                                             
-#   .o8                                             
-# .o888oo ooo. .oo.  .oo.   oooo  oooo  oooo    ooo 
-#   888   `888P"Y88bP"Y88b  `888  `888   `88b..8P'  
-#   888    888   888   888   888   888     Y888'    
-#   888 .  888   888   888   888   888   .o8"'88b   
-#   "888" o888o o888o o888o  `V88V"V8P' o88'   888o 
+#     .
+#   .o8
+# .o888oo ooo. .oo.  .oo.   oooo  oooo  oooo    ooo
+#   888   `888P"Y88bP"Y88b  `888  `888   `88b..8P'
+#   888    888   888   888   888   888     Y888'
+#   888 .  888   888   888   888   888   .o8"'88b
+#   "888" o888o o888o o888o  `V88V"V8P' o88'   888o
 
 alias tnew='tmux new -s'
 alias tgo='tmux a -t'
@@ -59,13 +59,13 @@ alias tkillall='tmux kill-server'
 alias tmsimple='fish ~/dotfiles/tmux-workspaces/simplestatistics.sh'
 alias tmjsimple='fish ~/dotfiles/tmux-workspaces/jsimplestats.sh'
 
-#                    o8o                     
-#                    `"'                     
-# ooo. .oo.  .oo.   oooo   .oooo.o  .ooooo.  
-# `888P"Y88bP"Y88b  `888  d88(  "8 d88' `"Y8 
-#  888   888   888   888  `"Y88b.  888       
-#  888   888   888   888  o.  )88b 888   .o8 
-# o888o o888o o888o o888o 8""888P' `Y8bod8P' 
+#                    o8o
+#                    `"'
+# ooo. .oo.  .oo.   oooo   .oooo.o  .ooooo.
+# `888P"Y88bP"Y88b  `888  d88(  "8 d88' `"Y8
+#  888   888   888   888  `"Y88b.  888
+#  888   888   888   888  o.  )88b 888   .o8
+# o888o o888o o888o o888o 8""888P' `Y8bod8P'
 
 # show me job id
 alias jobs='jobs -l'
@@ -90,22 +90,22 @@ function todos -v _
     export tDoneCount=(cat ~/mytasks/.tasks.txt.done | wc -l | sed -e's/ *//')
 end
 
-#             o8o      .   
-#             `"'    .o8   
-#  .oooooooo oooo  .o888oo 
-# 888' `88b  `888    888   
-# 888   888   888    888   
-# `88bod8P'   888    888 . 
-# `8oooooo.  o888o   "888" 
-# d"     YD                
-# "Y88888P'                
+#             o8o      .
+#             `"'    .o8
+#  .oooooooo oooo  .o888oo
+# 888' `88b  `888    888
+# 888   888   888    888
+# `88bod8P'   888    888 .
+# `8oooooo.  o888o   "888"
+# d"     YD
+# "Y88888P'
 
 # put dirty branch indicator in prompt
 set -g __fish_git_prompt_char_dirty '±'
 set -g __fish_git_prompt_char_stashed '✈︎'
 set -g __fish_git_prompt_char_dirty_and_stashed '± ✈︎'
 
-function parse_git -v _ 
+function parse_git -v _
     set -l submodule_syntax
     set submodule_syntax "--ignore-submodules=dirty"
     set git_dirty (command git status -s $submodule_syntax  2> /dev/null)
