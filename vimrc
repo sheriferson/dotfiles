@@ -1,8 +1,3 @@
-" R macros
-let @a = ':s/\(\S\)<-\(\S\)/\1 <- \2/g'
-let @c = ':s/\(\S\),\(\S\)/\1, \2/g'
-let @e = ':s/\(\S\)=\(\S\)/\1 = \2/g'
-
 function! s:goyo_enter()
     colorscheme pencil
 endfunction
@@ -23,97 +18,84 @@ let g:user_emmet_leader_key='<C-Z>'
 
 " nvim-R
 let R_assign_map = "--"
-" let R_args_in_stline = 1
 let R_min_editor_width = 80
 let R_rconsole_width = 1000 " force the console to show up at the bottom
-" let R_show_args = 1
-" pipe for nvim-R >> to %>%
-autocmd FileType r inoremap <buffer> >> <Esc>:normal! a %>%<CR>a 
-autocmd FileType rnoweb inoremap <buffer> >> <Esc>:normal! a %>%<CR>a 
-autocmd FileType rmd inoremap <buffer> >> <Esc>:normal! a %>%<CR>a 
+let R_show_args = 1
 " Press the space bar to send lines and selection to R:
 vmap <Space> <Plug>RDSendSelection
 nmap <Space> <Plug>RDSendLine
 
-" syntastic and lintr
-" for pylint, disable:
-"   - C0103: variable and constant name checker
-"   - C1801: len(sequence) as condition value - `if mystring` is less readable
-" let g:syntastic_python_pylint_post_args= "--disable=C0103,C1801"
+" Neomake
+let g:neomake_open_list = 2
 
-" let g:syntastic_enable_r_lintr_checker = 1
-" let g:syntastic_r_checkers = ['lintr']
-" let g:syntastic_r_lintr_linters = "with_defaults(line_length_linter = line_length_linter(120), single_quotes_linter = NULL, object_name_linter = NULL, closed_curly_linter = NULL)"
-
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
+let g:neomake_python_pylint_maker = {
+    \ 'args': [
+    \ '-d', 'C0103,C1801',
+    \ '-f', 'text',
+    \ '--msg-template="{path}:{line}:{column}:{C}: [{symbol}] {msg}"',
+    \ '-r', 'n'
+    \ ],
+    \ 'errorformat':
+    \ '%A%f:%l:%c:%t: %m,' .
+    \ '%A%f:%l: %m,' .
+    \ '%A%f:(%l): %m,' .
+    \ '%-Z%p^%.%#,' .
+    \ '%-G%.%#',
+    \ }
 
 let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'qf' : 1,
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'unite' : 1,
-      \ 'text' : 1,
-      \ 'vimwiki' : 1,
-      \ 'pandoc' : 1,
-      \ 'infolog' : 1,
-      \ 'mail' : 1,
-      \ 'mkd.markdown' : 1,
-      \ 'tex' : 1
-      \}
+    \ 'tagbar' : 1,
+    \ 'qf' : 1,
+    \ 'notes' : 1,
+    \ 'markdown' : 1,
+    \ 'unite' : 1,
+    \ 'text' : 1,
+    \ 'vimwiki' : 1,
+    \ 'pandoc' : 1,
+    \ 'infolog' : 1,
+    \ 'mail' : 1,
+    \ 'mkd.markdown' : 1,
+    \ 'tex' : 1
+    \}
 
 let g:ycm_filetype_specific_completion_to_disable = {
-      \ 'gitcommit': 1,
-      \ 'markdown': 1,
-      \ 'mkd.markdown' : 1,
-      \ 'tex' : 1
-      \}
+    \ 'gitcommit': 1,
+    \ 'markdown': 1,
+    \ 'mkd.markdown' : 1,
+    \ 'tex' : 1
+    \}
 
-" let g:indent_guides_guide_size = 1
-" let g:indent_guides_color_change_percent = 10
-" let g:indent_guides_enable_on_vim_startup = 1
-" let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'html', 'javascript']
+" disable preview window by YouCompleteMe
+set completeopt-=preview
 
 let g:table_mode_corner="|"
 
-let g:indentLine_color_term = 239
-" let g:indentLine_color_gui = '#01DFD7' " blue PICK
-" let g:indentLine_color_gui = '#a9a9a9' " blue PICK
-let g:indentLine_char = '⋮'
-
 let g:lightline = {
-      \ 'colorscheme': 'seoul256',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename' ] ],
-      \   'right': [ ['lineinfo'] ]
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'MyFugitive',
-      \   'readonly': 'MyReadonly',
-      \   'filename': 'MyFilename',
-      \   'modified': 'MyModified',
-      \ }
-      \ }
+    \ 'colorscheme': 'seoul256',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'fugitive', 'filename' ] ],
+    \   'right': [ ['lineinfo'] ]
+    \ },
+    \ 'component_function': {
+    \   'fugitive': 'MyFugitive',
+    \   'readonly': 'MyReadonly',
+    \   'filename': 'MyFilename',
+    \   'modified': 'MyModified',
+    \ }
+    \ }
 
 let g:lightline.mode_map = {
-        \ 'n' : 'N',
-        \ 'i' : 'I',
-        \ 'R' : 'R',
-        \ 'v' : 'V',
-        \ 'V' : 'V',
-        \ "\<C-v>": 'V',
-        \ 's' : 'S',
-        \ 'S' : 'S',
-        \ "\<C-s>": 'S'
-        \ }
+    \ 'n' : 'N',
+    \ 'i' : 'I',
+    \ 'R' : 'R',
+    \ 'v' : 'V',
+    \ 'V' : 'V',
+    \ "\<C-v>": 'V',
+    \ 's' : 'S',
+    \ 'S' : 'S',
+    \ "\<C-s>": 'S'
+    \ }
 
 function! MyModified()
   if &filetype == "help"
@@ -151,10 +133,6 @@ function! MyFilename()
        \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
-" au VimEnter * hi Cursor guibg=#FF4500
-" au InsertLeave * hi Cursor guibg=#FF4500
-" au InsertEnter * hi Cursor guibg=green
-
 set nocompatible                " be iMproved, required
 filetype off                    " required - Vundle
 
@@ -187,19 +165,19 @@ Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
-Plugin 'editorconfig/editorconfig-vim'
 Plugin 'JuliaEditorSupport/julia-vim'
-Plugin 'vim-pandoc/vim-criticmarkup'
-Plugin 'jimhester/lintr'
-Plugin 'Yggdroot/indentLine'         " 2017-05-10
-Plugin 'ntpeters/vim-better-whitespace' " 2017-05-31
+" Plugin 'vim-pandoc/vim-criticmarkup'
+" Plugin 'jimhester/lintr'
+Plugin 'ntpeters/vim-better-whitespace'         " 2017-05-31
+Plugin 'neomake/neomake'                        " 2017-06-11
+Plugin 'christoomey/vim-tmux-navigator'         " 2017-06-12
 " colorschemes
 Plugin 'blerins/flattown'
 Plugin 'sjl/badwolf'
 Plugin 'reedes/vim-colors-pencil'
 Plugin 'scwood/vim-hybrid'
 Plugin 'Haron-Prime/Antares'
-Plugin 'jscappini/material.vim'
+" Plugin 'jscappini/material.vim'
 " javascript
 Plugin 'jelera/vim-javascript-syntax'           " general javscript syntax improvements
 Plugin 'ternjs/tern_for_vim'                    " Tern-based JavaScript editing support.
@@ -207,8 +185,7 @@ Plugin 'ternjs/tern_for_vim'                    " Tern-based JavaScript editing 
 Plugin 'mattn/emmet-vim'
 " R
 Plugin 'jalvesaq/Nvim-R'
-
-au BufRead,BufNewFile *.md set filetype=markdown    " this is to make markdown syn-hi work for .md
+Plugin 'hkupty/iron.nvim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -231,59 +208,50 @@ syntax on            		    " syntax highlighting
 " change the mapleader from \ to ,
 let mapleader=","
 
-if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
-endi
+nmap <leader>= :Tabularize /=<CR>
+vmap <leader>= :Tabularize /=<CR>
+nmap <leader>: :Tabularize /:\zs<CR>
+vmap <leader>: :Tabularize /:\zs<CR>
+nmap <leader>< :Tabularize /<-<CR>
+vmap <leader>< :Tabularize /<-<CR>
 
-"##############################################################################
-" Easier split navigation
-"##############################################################################
+" create new splits below and to the right, like god intended
+set splitbelow
+set splitright
 
-" Use ctrl-[hjkl] to select the active split!
-nmap <silent> <c-k> :wincmd k<CR>
-nmap <silent> <c-j> :wincmd j<CR>
-nmap <silent> <c-h> :wincmd h<CR>
-nmap <silent> <c-l> :wincmd l<CR>
-
-" " Copy to clipboard
+" Copy to clipboard
 " from: https://www.reddit.com/r/neovim/comments/3fricd/easiest_way_to_copy_from_neovim_to_system/
-vnoremap  <leader>y  "+y
-nnoremap  <leader>Y  "+yg_
-nnoremap  <leader>y  "+y
-nnoremap  <leader>yy  "+yy
+vnoremap <leader>y  "+y
+nnoremap <leader>Y  "+yg_
+nnoremap <leader>y  "+y
+nnoremap <leader>yy  "+yy
 
-" " Paste from clipboard
+" Paste from clipboard
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
-" colorscheme flattown
 colorscheme antares
 
-filetype indent on              " OPTIONAL This enables automatic indentation as you type.
-set autoread                    " read changes to file that happen on disk
-set gcr=a:blinkon0              " disable cursor blink
+filetype indent on                      " OPTIONAL This enables automatic indentation as you type.
+set autoread                            " read changes to file that happen on disk
+set gcr=a:blinkon0                      " disable cursor blink
 
-set hidden                      " Makes vim not complain when there are hidden buffers
+set hidden                              " Makes vim not complain when there are hidden buffers
 
 " search
-set ignorecase		            " Ignore case in search
-set incsearch                   " search as characters are entered
-set hlsearch                    " Highlights all search matches at the same time
+set ignorecase		                    " Ignore case in search
+set incsearch                           " search as characters are entered
+set hlsearch                            " Highlights all search matches at the same time
 
 set linebreak
-" set list
-set listchars=tab:▸\ ,eol:¬,space:.     " this and the one above it show invisible chars
 
 " folding settings
-set foldenable                  " sets folding
-set foldlevelstart=10           " open most folds by default
-set foldmethod=indent           " fold based on indent
-set foldnestmax=10              " deepest fold is 10 levels
+" set foldenable                  " sets folding
+" set foldlevelstart=10           " open most folds by default
+" set foldmethod=indent           " fold based on indent
+" set foldnestmax=10              " deepest fold is 10 levels
 " nnoremap <space> za
 " space open/closes folds
 
@@ -291,8 +259,8 @@ set foldnestmax=10              " deepest fold is 10 levels
 set relativenumber              " Show relative line numbers
 set number      		        " Show line numbers
 
-set cursorline                  " highlight current line
-set ruler
+" set cursorline                  " highlight current line
+" set ruler
 set scrolloff=8	    	        " Maintain 8 lines while scrolling
 set nosmartindent		        " Automatically indent with curly bracket
 set nospell                     " Spell check is off by default
@@ -305,15 +273,13 @@ set expandtab                   " Convert tabs into spaces
 set tabstop=4	            	" Specifies the number of spaces in a tab
 set softtabstop=4               " when editing
 set smarttab
-"
-"  for R/SQL files, 2 spaces
+
+" for R/SQL files, 2 spaces
 autocmd Filetype sql setlocal ts=2 sw=2 expandtab
-autocmd Filetype R setlocal ts=2 sw=2 expandtab
+autocmd Filetype r setlocal ts=2 sw=2 expandtab
 
-"  for Python files, 4 spaces
-autocmd Filetype Python setlocal ts=4 sw=4 expandtab
+autocmd BufRead,BufNewFile *.md set filetype=markdown    " this is to make markdown syn-hi work for .md
 
-set visualbell	        	    " Errors are visual
 set undofile                    " create a file that contains undo information
 set wrap                        " The following two lines wrap lines without breaking the word
 set wildmenu                    " file autocomplete will show up in menu
@@ -344,24 +310,6 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 map <C-c> :NERDTreeToggle<CR>
 
-if &term=="xterm" || &term=="xterm-color"
-    :imap <Esc>Oq 1
-    :imap <Esc>Or 2
-    :imap <Esc>Os 3
-    :imap <Esc>Ot 4
-    :imap <Esc>Ou 5
-    :imap <Esc>Ov 6
-    :imap <Esc>Ow 7
-    :imap <Esc>Ox 8
-    :imap <Esc>Oy 9
-    :imap <Esc>Op 0
-    :imap <Esc>On .
-    :imap <Esc>OQ /
-    :imap <Esc>OR *
-    :imap <Esc>Ol +
-    :imap <Esc>OS -
-endif
-
 " statusline
 " cf the default statusline: %<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 " format markers:
@@ -389,7 +337,7 @@ endif
 "hi StatusLine term=reverse ctermfg=11 ctermbg=232 gui=bold,reverse
 
 " 2013/12/2
-" the following should allow me to use Ctrl-I to inspect
+" the following should allow me to use Ctrl-J to inspect
 " an element to find out which group it belongs to
 " for coloring purposes
 nmap <C-J> :call <SID>SynStack()<CR>
@@ -400,32 +348,39 @@ function! <SID>SynStack()
     echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
-set guifont=Iosevka:h15
-
-" FIX: PluginUpdate => git pull: git-sh-setup: No such file or directory in MacVim (OK in non-GUI version of Vim)
-if has("gui_macvim")
-    set shell=/bin/bash\ -l
-endif
-
-" this reloads .vimrc whenever it is saved
-" I think...
-augroup reload_vimrc
-    autocmd!
-    autocmd bufwritepost $MYVIMRC nested source $MYVIMRC
-augroup END
-
 " nvim-R -> remapping tab to C-x C-o
 " placed here to happen after Youcompleteme loads because it rewrites tab
 " remapping
 autocmd FileType r inoremap <buffer> <tab> <C-x><C-o>
 
-" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-" match OverLength /\%81v.\+/
-
 " set coneal chars with black bg and red fg
 " this has to happen at the end, since something in the middle
 " probably a colorscheme overrides it
 highlight ColorColumn ctermbg=23 guibg=14
-autocmd FileType Python set colorcolumn=80
+autocmd FileType python set colorcolumn=80
 
 highlight conceal ctermbg=black ctermfg=9
+
+autocmd! BufWritePost,BufEnter * Neomake
+
+:tnoremap <Esc> <C-\><C-n>
+
+:tnoremap <A-h> <C-\><C-N><C-w>h
+:tnoremap <A-j> <C-\><C-N><C-w>j
+:tnoremap <A-k> <C-\><C-N><C-w>k
+:tnoremap <A-l> <C-\><C-N><C-w>l
+:inoremap <A-h> <C-\><C-N><C-w>h
+:inoremap <A-j> <C-\><C-N><C-w>j
+:inoremap <A-k> <C-\><C-N><C-w>k
+:inoremap <A-l> <C-\><C-N><C-w>l
+:nnoremap <A-h> <C-w>h
+:nnoremap <A-j> <C-w>j
+:nnoremap <A-k> <C-w>k
+:nnoremap <A-l> <C-w>l
+
+augroup ironmapping
+    autocmd!
+    autocmd Filetype python nmap <buffer> <leader>t <Plug>(iron-send-motion)<CR>
+    autocmd Filetype python vmap <buffer> <leader>t <Plug>(iron-send-motion)
+    autocmd Filetype python nmap <buffer> <leader>p <Plug>(iron-repeat-cmd)
+augroup END
