@@ -1,8 +1,8 @@
 {
 	"dividers": {
 		"left": {
-			"hard": " ",
-			"soft": "/ "
+			"hard": "",
+			"soft": ""
 		},
 		"right": {
 			"hard": " ",
