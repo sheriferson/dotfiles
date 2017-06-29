@@ -5,9 +5,6 @@ powerline-setup
 # disable fish greeting
 set fish_greeting ""
 
-# colors
-export LSCOLORS=xeGxBxCxxxEgEdxBxBxexe
-
 # reference: https://gist.github.com/netmute/6761892
 # make Vim the default editor
 set --export EDITOR "nvim -f"

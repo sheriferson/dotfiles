@@ -3,7 +3,7 @@ function! s:goyo_enter()
 endfunction
 
 function! s:goyo_leave()
-    colorscheme antares
+    colorscheme minimalist
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
@@ -71,7 +71,7 @@ set completeopt-=preview
 let g:table_mode_corner="|"
 
 let g:lightline = {
-    \ 'colorscheme': 'seoul256',
+    \ 'colorscheme': 'wombat',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'fugitive', 'filename' ] ],
@@ -177,6 +177,9 @@ Plugin 'sjl/badwolf'
 Plugin 'reedes/vim-colors-pencil'
 Plugin 'scwood/vim-hybrid'
 Plugin 'Haron-Prime/Antares'
+Plugin 'kudabux/vim-srcery-drk'
+Plugin 'dikiaap/minimalist'
+Plugin 'fneu/breezy'
 " Plugin 'jscappini/material.vim'
 " javascript
 Plugin 'jelera/vim-javascript-syntax'           " general javscript syntax improvements
@@ -232,7 +235,8 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
-colorscheme antares
+colorscheme minimalist
+set background=light
 
 filetype indent on                      " OPTIONAL This enables automatic indentation as you type.
 set autoread                            " read changes to file that happen on disk
