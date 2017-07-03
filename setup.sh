@@ -65,11 +65,8 @@ ln -s "$dotfiles_path/config.fish" /Users/$USER/.config/fish/
 #
 # jupyter
 printf "\n"
-echo "Creating ~/.jupyter/ and ~/.jupyter/custom/ directories if they don't already exist..."
-mkdir -p /Users/$USER/.jupyter
-mkdir -p /Users/$USER/.jupyter/custom
-echo "Linking custom jupyter css file..."
-ln -s "$dotfiles_path/jupyter/custom/custom.css" /Users/$USER/.jupyter/custom/
+echo "Linking .jupyter/ directory..."
+ln -s "$dotfiles_path/jupyter/" /Users/$USER/.jupyter
 
 #                                      oooo   o8o
 #                                      `888   `"'
