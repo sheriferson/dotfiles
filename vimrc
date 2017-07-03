@@ -384,7 +384,7 @@ autocmd! BufWritePost,BufEnter * Neomake
 
 augroup ironmapping
     autocmd!
-    autocmd Filetype python nmap <buffer> <leader>t <Plug>(iron-send-motion)<CR>
+    autocmd Filetype python nmap <buffer> <Space> <Plug>(iron-send-motion)
     autocmd Filetype python vmap <buffer> <leader>t <Plug>(iron-send-motion)
     autocmd Filetype python nmap <buffer> <leader>p <Plug>(iron-repeat-cmd)
 augroup END

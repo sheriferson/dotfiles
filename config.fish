@@ -84,7 +84,9 @@ function todos -v _
     # For doing a check over dates in t tasks
     python ~/t/t.py --list ~/mytasks/tasks.txt > /dev/null ^&1
     export tnum=(cat ~/mytasks/tasks.txt | grep "@today" | wc -l | sed -e's/ *//')
-    export tDoneCount=(cat ~/mytasks/.tasks.txt.done | wc -l | sed -e's/ *//')
+    if [ "$tnum" = 0 ]
+        export tnum=''
+    end
 end
 
 #             o8o      .
@@ -107,7 +109,7 @@ function parse_git -v _
     set submodule_syntax "--ignore-submodules=dirty"
     set git_dirty (command git status -s $submodule_syntax  2> /dev/null)
     set git_stashed (command git rev-parse --verify --quiet refs/stash 2>/dev/null)
-    set git_commit_count (command git rev-list --all --count 2> /dev/null)
+    # set git_commit_count (command git rev-list --all --count 2> /dev/null)
 
     #  reference: https://github.com/oh-my-fish/theme-bobthefish/blob/master/fish_prompt.fish
     # I don't like the solution below. Ideally I would use multiple
@@ -127,16 +129,6 @@ function parse_git -v _
         else
             set -e branchStatus
         end
-    end
-
-    if [ -n "$git_commit_count" ]
-        if [ -n "$branchStatus" ]
-            export branchStatus="($git_commit_count) ""$branchStatus"
-        else
-            export branchStatus="($git_commit_count)"
-        end
-    else
-        set -e branchStatus
     end
 end
 
