@@ -104,7 +104,7 @@ mkdir -p /Users/$USER/.gnupg
 printf "\n"
 echo "Linking gpg.conf and gpg-agent.conf..."
 ln -s "$dotfiles_path/gnupg/gpg.conf" /Users/$USER/.gnupg/
-ln -s "$dotfiles_path/gnupg/gpg-agent-conf" /Users/$USER/.gnupg/
+ln -s "$dotfiles_path/gnupg/gpg-agent.conf" /Users/$USER/.gnupg/
 
 #     .                               o8o               .o88o.
 #   .o8                               `"'               888 `"

@@ -1,5 +1,6 @@
-getthese <- c(# 'caret',
+getthese <- c('caret',
               'devtools',
+              'doParallel',
               'dplyr',
               'httr',
               'jsonlite',
