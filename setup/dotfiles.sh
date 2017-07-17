@@ -65,6 +65,7 @@ ln -s "$dotfiles_path/config.fish" /Users/$USER/.config/fish/
 #
 # jupyter
 printf "\n"
+mkdir -p /Users/$USER/.jupyter
 echo "Linking .jupyter/ directory..."
 ln -s "$dotfiles_path/jupyter/" /Users/$USER/.jupyter
 
