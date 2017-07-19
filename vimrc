@@ -28,6 +28,7 @@ nmap <Space> <Plug>RDSendLine
 " Neomake
 let g:neomake_open_list = 2
 
+" for pylint: disable invalid name and len(sequence) warning usage
 let g:neomake_python_pylint_maker = {
     \ 'args': [
     \ '-d', 'C0103,C1801',
@@ -237,6 +238,9 @@ vnoremap <leader>P "+P
 
 colorscheme minimalist
 set background=light
+" some overrides
+" highlight Normal ctermbg=16
+" highlight LineNr ctermbg=16
 
 filetype indent on                      " OPTIONAL This enables automatic indentation as you type.
 set autoread                            " read changes to file that happen on disk
@@ -357,13 +361,17 @@ endfunc
 " remapping
 autocmd FileType r inoremap <buffer> <tab> <C-x><C-o>
 
-" set coneal chars with black bg and red fg
-" this has to happen at the end, since something in the middle
-" probably a colorscheme overrides it
+" set a colorcolumn for python
 highlight ColorColumn ctermbg=23 guibg=14
 autocmd FileType python set colorcolumn=80
 
+" set coneal chars with black bg and red fg
+" this has to happen at the end, since something in the middle
+" probably a colorscheme overrides it
 highlight conceal ctermbg=black ctermfg=9
+
+" change the highlight colors for YouCompleteMe autocompletion overlay
+highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
 
 autocmd! BufWritePost,BufEnter * Neomake
 
