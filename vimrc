@@ -237,6 +237,9 @@ vnoremap <leader>P "+P
 
 colorscheme minimalist
 set background=light
+" some overrides
+" highlight Normal ctermbg=16
+" highlight LineNr ctermbg=16
 
 filetype indent on                      " OPTIONAL This enables automatic indentation as you type.
 set autoread                            " read changes to file that happen on disk

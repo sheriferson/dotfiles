@@ -100,9 +100,9 @@ end
 # "Y88888P'
 
 # put dirty branch indicator in prompt
-set -g __fish_git_prompt_char_dirty '±'
-set -g __fish_git_prompt_char_stashed '✈︎'
-set -g __fish_git_prompt_char_dirty_and_stashed '± ✈︎'
+set -g __fish_git_prompt_char_dirty ±
+set -g __fish_git_prompt_char_stashed \u2708
+set -g __fish_git_prompt_char_dirty_and_stashed ± \u2708
 
 function parse_git -v _
     set -l submodule_syntax
@@ -143,5 +143,3 @@ set gpgstart "gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info"
 if [ -z (pgrep gpg-agent) ]
     eval $gpgstart
 end > /dev/null
-
-set -gx PATH $BRAZIL_CLI_BIN $PATH
