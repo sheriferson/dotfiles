@@ -368,7 +368,7 @@ autocmd FileType python set colorcolumn=80
 " set coneal chars with black bg and red fg
 " this has to happen at the end, since something in the middle
 " probably a colorscheme overrides it
-highlight conceal ctermbg=black ctermfg=9
+highlight conceal ctermbg=234 ctermfg=166
 
 " change the highlight colors for YouCompleteMe autocompletion overlay
 highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
