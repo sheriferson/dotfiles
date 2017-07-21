@@ -36,11 +36,23 @@ array=(
     r
     reattach-to-user-namespace
     tmux
+    youtube-dl
 )
 
 for ii in "${array[@]}"
 do
     brew install $ii
+done
+
+sprint "Installing Homebrew cask recipes"
+
+array=(
+    julia
+)
+
+for ii in "${array[@]}"
+do
+    brew cask install $ii
 done
 
 # R specific
