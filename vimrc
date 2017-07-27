@@ -1,5 +1,6 @@
 function! s:goyo_enter()
     colorscheme pencil
+    set background=dark
 endfunction
 
 function! s:goyo_leave()
@@ -17,11 +18,22 @@ let g:pandoc#spell#enabled = 0
 let g:user_emmet_leader_key='<C-Z>'
 
 " nvim-R
+" press -- to have Nvim-R insert the assignment operator: <-
 let R_assign_map = "--"
+
+" set a minimum source editor width
 let R_min_editor_width = 80
-let R_rconsole_width = 1000 " force the console to show up at the bottom
+
+" make sure the console is at the bottom by making it really wide
+let R_rconsole_width = 1000
+
+" show arguments for functions during omnicompletion
 let R_show_args = 1
-" Press the space bar to send lines and selection to R:
+
+" Don't expand a dataframe to show columns by default
+let R_objbr_opendf = 0
+
+" Press the space bar to send lines and selection to R console
 vmap <Space> <Plug>RDSendSelection
 nmap <Space> <Plug>RDSendLine
 
@@ -161,7 +173,6 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'junegunn/goyo.vim'
-Plugin 'junegunn/limelight.vim'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
@@ -181,7 +192,6 @@ Plugin 'Haron-Prime/Antares'
 Plugin 'kudabux/vim-srcery-drk'
 Plugin 'dikiaap/minimalist'
 Plugin 'fneu/breezy'
-" Plugin 'jscappini/material.vim'
 " javascript
 Plugin 'jelera/vim-javascript-syntax'           " general javscript syntax improvements
 Plugin 'ternjs/tern_for_vim'                    " Tern-based JavaScript editing support.
