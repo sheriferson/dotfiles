@@ -22,6 +22,7 @@ mkdir -p /Users/sherif/projects
 
 projectarray=(
     caplog
+    jsimplestats
     KSComCheck
     punread
     sherifsoliman.com

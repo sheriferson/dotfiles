@@ -7,22 +7,26 @@ function sprint () {
     echo -e "\n${lightblue}$1${nc}\n"
 }
 
-# homebrew
+# link dotfiles
+sprint "Running dotfile linking script..."
+bash $(dirname $0)/dotfiles.sh
 
+# homebrew
 sprint "Installing homebrew and homebrew packages..."
 bash $(dirname $0)/homebrew.sh
 
 # pip
-
 sprint "Installing pip packages (for Python3)"
 bash $(dirname $0)/pip.sh
 
 # personal projects
-
 sprint "Checking for and cloning personal projects..."
 bash $(dirname $0)/projects.sh
 
 # R packages
-
 sprint "Installing R packages"
 Rscript $(dirname $0)/rpackages.R
+
+# hidden preferences
+sprint "Setting some hidden preferences..."
+bash $(dirname $0)/hiddenprefs.sh
