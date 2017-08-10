@@ -11,11 +11,16 @@ autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " settings for vim-pandoc
+let g:pandoc#modules#disabled = ["folding"]
 let g:pandoc#folding#fdc = 0
 let g:pandoc#spell#enabled = 0
 
 " emmet
 let g:user_emmet_leader_key='<C-Z>'
+
+" markdown preview
+let vim_markdown_preview_pandoc=1
+let vim_markdown_preview_hotkey='<C-M>'
 
 " nvim-R
 " press -- to have Nvim-R insert the assignment operator: <-
@@ -178,11 +183,12 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
 Plugin 'JuliaEditorSupport/julia-vim'
-" Plugin 'vim-pandoc/vim-criticmarkup'
+Plugin 'vim-pandoc/vim-criticmarkup'
 " Plugin 'jimhester/lintr'
 Plugin 'ntpeters/vim-better-whitespace'         " 2017-05-31
 Plugin 'neomake/neomake'                        " 2017-06-11
 Plugin 'christoomey/vim-tmux-navigator'         " 2017-06-12
+Plugin 'JamshedVesuna/vim-markdown-preview'     " 2017-08-09
 " colorschemes
 Plugin 'blerins/flattown'
 Plugin 'sjl/badwolf'
@@ -322,6 +328,10 @@ nnoremap k gk
 " not have to press shift before colon to type commands
 nnoremap ; :
 
+" use space for folds
+autocmd FileType md nnoremap <space> za
+autocmd FileType md vnoremap <space> zf
+
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
@@ -378,10 +388,13 @@ autocmd FileType python set colorcolumn=80
 " set coneal chars with black bg and red fg
 " this has to happen at the end, since something in the middle
 " probably a colorscheme overrides it
-highlight conceal ctermbg=234 ctermfg=166
+highlight conceal ctermbg=234 ctermfg=32
 
 " change the highlight colors for YouCompleteMe autocompletion overlay
 highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
+
+" change the highlight of the current line number to orange foreground
+highlight CursorLineNR ctermfg=172
 
 autocmd! BufWritePost,BufEnter * Neomake
 
@@ -402,7 +415,7 @@ autocmd! BufWritePost,BufEnter * Neomake
 
 augroup ironmapping
     autocmd!
-    autocmd Filetype python nmap <buffer> <Space> <Plug>(iron-send-motion)
+    autocmd Filetype python nmap <buffer> <Space> 0ctr$
     autocmd Filetype python vmap <buffer> <leader>t <Plug>(iron-send-motion)
     autocmd Filetype python nmap <buffer> <leader>p <Plug>(iron-repeat-cmd)
 augroup END
