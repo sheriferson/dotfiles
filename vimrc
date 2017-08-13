@@ -93,13 +93,14 @@ let g:lightline = {
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'fugitive', 'filename' ] ],
-    \   'right': [ ['lineinfo'] ]
+    \   'right': [['wordcount'], ['lineinfo'] ]
     \ },
     \ 'component_function': {
     \   'fugitive': 'MyFugitive',
     \   'readonly': 'MyReadonly',
     \   'filename': 'MyFilename',
     \   'modified': 'MyModified',
+    \   'wordcount': 'MyWordCount'
     \ }
     \ }
 
@@ -151,6 +152,15 @@ function! MyFilename()
        \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
+function! MyWordCount()
+    let _ = ['pandoc', 'text', 'md', 'markdown']
+    if index(_, &filetype) == -1
+        return ""
+    else
+        return wordCount#WordCount()
+    endif
+endfunction
+
 set nocompatible                " be iMproved, required
 filetype off                    " required - Vundle
 
@@ -183,7 +193,8 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
 Plugin 'JuliaEditorSupport/julia-vim'
-Plugin 'vim-pandoc/vim-criticmarkup'
+Plugin 'sheriferson/vim-criticmarkup'
+Plugin 'ChesleyTan/wordCount.vim'
 " Plugin 'jimhester/lintr'
 Plugin 'ntpeters/vim-better-whitespace'         " 2017-05-31
 Plugin 'neomake/neomake'                        " 2017-06-11
@@ -365,10 +376,10 @@ endif
 "hi StatusLine term=reverse ctermfg=11 ctermbg=232 gui=bold,reverse
 
 " 2013/12/2
-" the following should allow me to use Ctrl-J to inspect
+" the following should allow me to use Ctrl-i to inspect
 " an element to find out which group it belongs to
 " for coloring purposes
-nmap <C-J> :call <SID>SynStack()<CR>
+nmap <C-i> :call <SID>SynStack()<CR>
 function! <SID>SynStack()
     if !exists("*synstack")
         return
