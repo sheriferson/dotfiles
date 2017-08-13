@@ -23,6 +23,10 @@ bash $(dirname $0)/pip.sh
 sprint "Checking for and cloning personal projects..."
 bash $(dirname $0)/projects.sh
 
+# Github reops
+sprint "Cloning Github repos..."
+bash $(dirname $0)/github-repos.sh
+
 # R packages
 sprint "Installing R packages"
 Rscript $(dirname $0)/rpackages.R
