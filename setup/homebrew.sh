@@ -21,7 +21,7 @@ sprint "Installing Homebrew recipes"
 
 brew tap homebrew/science
 
-array=(
+brewarray=(
     cmake
     figlet
     fish
@@ -39,18 +39,30 @@ array=(
     youtube-dl
 )
 
-for ii in "${array[@]}"
+for ii in "${brewarray[@]}"
 do
     brew install $ii
 done
 
 sprint "Installing Homebrew cask recipes"
 
-array=(
+caskarray=(
+    1password
+    bitbar
+    firefox
+    google-chrome
+    itsycal
     julia
+    keyboard-maestro
+    launchbar
+    launchcontrol
+    musicbrainz-picard
+    numi
+    vlc
+    xld
 )
 
-for ii in "${array[@]}"
+for ii in "${caskarray[@]}"
 do
     brew cask install $ii
 done

@@ -9,6 +9,7 @@ getthese <- c('caret',
               'magrittr',
               'purrr',
               'RColorBrewer',
+              'rmarkdown',
               'readr',
               'scales',
               'svglite'
