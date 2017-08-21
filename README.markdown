@@ -1,5 +1,7 @@
 # sheriferson's dotfiles
 
+![](screenshot.png)
+
 - `.tmux.conf` for [tmux](https://tmux.github.io/ "tmux").
 - `.vimrc` for vim.
 - `config.fish` for [fish](http://fishshell.com/ "fish shell") (**f**riendly **i**nteractive **sh**ell).
@@ -16,6 +18,14 @@
 $ ./setup.sh
 ```
 
-## to do
+`setup.sh` runs a few other bash scripts that set up packages and settings in various categories:
 
-- [x] shell script to create necessary directories and symlink files on a new system.
+| file              | job                                                       |
+|-------------------|-----------------------------------------------------------|
+| `dotfiles.sh`     | Links all dotfiles to their proper locations.             |
+| `github-repos.sh` | Clones Github repos that I want on my system.             |
+| `hiddenprefs.sh`  | Sets hidden preferences for MacOS and a few applications. |
+| `homebrew.sh`     | Installs Homebrew recipes.                                |
+| `pip.sh`          | Installs Python packages.                                 |
+| `projects.sh`     | Clones a few of my personal projects from Github.         |
+| `rpackages.R`     | Installs R packages.                                      |
