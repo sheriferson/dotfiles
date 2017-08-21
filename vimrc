@@ -45,10 +45,13 @@ nmap <Space> <Plug>RDSendLine
 " Neomake
 let g:neomake_open_list = 2
 
-" for pylint: disable invalid name and len(sequence) warning usage
+" for pylint: disable:
+" - invalid name
+" - len(sequence) warning usage
+" - unnecessary parentheses after return keyword
 let g:neomake_python_pylint_maker = {
     \ 'args': [
-    \ '-d', 'C0103,C1801',
+    \ '-d', 'C0103,C1801,C0325',
     \ '-f', 'text',
     \ '--msg-template="{path}:{line}:{column}:{C}: [{symbol}] {msg}"',
     \ '-r', 'n'
