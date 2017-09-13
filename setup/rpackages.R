@@ -1,7 +1,10 @@
 getthese <- c('caret',
+              'data.table',
               'devtools',
               'doParallel',
               'dplyr',
+              'ggrepel',
+              'gridExtra',
               'httr',
               'jsonlite',
               'knitr',
@@ -12,7 +15,8 @@ getthese <- c('caret',
               'rmarkdown',
               'readr',
               'scales',
-              'svglite'
+              'svglite',
+              'zoo'
               )
 
 for (package in getthese) {
