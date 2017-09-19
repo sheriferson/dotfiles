@@ -58,6 +58,7 @@ caskarray=(
     launchcontrol
     musicbrainz-picard
     numi
+    ubersicht
     vlc
     xld
 )
