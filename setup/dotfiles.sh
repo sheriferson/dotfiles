@@ -65,25 +65,6 @@ printf "\n"
 echo "Linking .jupyter/ directory..."
 ln -s "$dotfiles_path/jupyter" /Users/$USER/.jupyter
 
-#                                      oooo   o8o
-#                                      `888   `"'
-# oo.ooooo.  oooo oooo    ooo oooo d8b  888  oooo  ooo. .oo.    .ooooo.
-#  888' `88b  `88. `88.  .8'  `888""8P  888  `888  `888P"Y88b  d88' `88b
-#  888   888   `88..]88..8'    888      888   888   888   888  888ooo888
-#  888   888    `888'`888'     888      888   888   888   888  888    .o
-#  888bod8P'     `8'  `8'     d888b    o888o o888o o888o o888o `Y8bod8P'
-#  888
-# o888o
-#
-# powerline
-printf "\n"
-echo "Creating ~/.config/powerline/ directory if it doesn't already exist..."
-mkdir -p /Users/$USER/.config/powerline
-printf "\n"
-echo "Linking themes/ and colorschemes/ directories..."
-ln -s "$dotfiles_path/powerline/themes" /Users/$USER/.config/powerline/
-ln -s "$dotfiles_path/powerline/colorschemes" /Users/$USER/.config/powerline/
-
 #
 #
 #  .oooooooo ooo. .oo.   oooo  oooo  oo.ooooo.   .oooooooo

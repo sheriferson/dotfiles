@@ -76,18 +76,6 @@ alias figlet="figlet -f roman"
 alias vim="nvim"
 alias mvim="reattach-to-user-namespace mvim"
 
-# export some to do counts that I use in shell prompt
-# code from: https://github.com/oh-my-fish/theme-agnoster/blob/master/fish_prompt.fish
-# with tiny modifications to export the clean/dirty indicator for powerline segment
-function todos -v _
-    # For doing a check over dates in t tasks
-    python ~/t/t.py --list ~/mytasks/tasks.txt > /dev/null ^&1
-    export tnum=(cat ~/mytasks/tasks.txt | grep "@today" | wc -l | sed -e's/ *//')
-    if [ "$tnum" = 0 ]
-        export tnum=''
-    end
-end
-
 # In order for gpg to find gpg-agent, gpg-agent must be running,
 # and there must be an env variable pointing GPG to the gpg-agent socket.
 # This little script, which must be sourced

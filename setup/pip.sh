@@ -9,7 +9,6 @@ piparray=(
     neovim
     notebook
     numpy
-    powerline-status
     scikit-learn
     scipy
     seaborn
