@@ -46,11 +46,8 @@ ln -s "$dotfiles_path/vimrc" /Users/$USER/.config/nvim/init.vim
 #
 # link fish configuration file (config.fish)
 printf "\n"
-echo "Creating ~/.config/fish/ directory if it doesn't already exist..."
-mkdir -p /Users/$USER/.config/fish
-printf "\n"
-echo "Linking fish config file (config.fish)..."
-ln -s "$dotfiles_path/config.fish" /Users/$USER/.config/fish/
+echo "Linking fish config directory..."
+ln -s "$dotfiles_path/fish" /Users/$USER/.config/fish
 
 #     o8o                                        .
 #     `"'                                      .o8

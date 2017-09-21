@@ -1,7 +1,3 @@
-# use powerline (pip install powerline-status)
-set fish_function_path $fish_function_path "/usr/local/lib/python3.6/site-packages/powerline/bindings/fish"
-powerline-setup
-
 # disable fish greeting
 set fish_greeting ""
 
@@ -89,49 +85,6 @@ function todos -v _
     export tnum=(cat ~/mytasks/tasks.txt | grep "@today" | wc -l | sed -e's/ *//')
     if [ "$tnum" = 0 ]
         export tnum=''
-    end
-end
-
-#             o8o      .
-#             `"'    .o8
-#  .oooooooo oooo  .o888oo
-# 888' `88b  `888    888
-# 888   888   888    888
-# `88bod8P'   888    888 .
-# `8oooooo.  o888o   "888"
-# d"     YD
-# "Y88888P'
-
-# put dirty branch indicator in prompt
-set -g __fish_git_prompt_char_dirty ±
-set -g __fish_git_prompt_char_stashed \u2708
-set -g __fish_git_prompt_char_dirty_and_stashed ± \u2708
-
-function parse_git -v _
-    set -l submodule_syntax
-    set submodule_syntax "--ignore-submodules=dirty"
-    set git_dirty (command git status -s $submodule_syntax  2> /dev/null)
-    set git_stashed (command git rev-parse --verify --quiet refs/stash 2>/dev/null)
-    # set git_commit_count (command git rev-list --all --count 2> /dev/null)
-
-    #  reference: https://github.com/oh-my-fish/theme-bobthefish/blob/master/fish_prompt.fish
-    # I don't like the solution below. Ideally I would use multiple
-    # conditionals in the if statement, but apparently that is either
-    # impossible or really hard to do in fish. I spent a long time looking.
-    # and I don't want to waste any more time.
-    set -e branchStatus
-    if [ -n "$git_dirty" ]
-        if [ "$git_stashed" ]
-            export branchStatus="$__fish_git_prompt_char_dirty_and_stashed"
-        else
-            export branchStatus="$__fish_git_prompt_char_dirty"
-        end
-    else
-        if [ "$git_stashed" ]
-            export branchStatus="$__fish_git_prompt_char_stashed"
-        else
-            set -e branchStatus
-        end
     end
 end
 
