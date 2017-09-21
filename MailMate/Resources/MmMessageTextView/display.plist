@@ -1,0 +1,6 @@
+{
+	// Black, blue, green, olive
+	foregroundColors = ( '#000000', '#0000FF', '#008000', '#5C0A0A' );
+	// White, grey
+	backgroundColors = ( '#FFFFFF'/*, '#EEEEEE'*/ );
+}

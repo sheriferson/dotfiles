@@ -1,0 +1,28 @@
+{
+    "j" = "selectNextMessageRow:";
+    "k" = "selectPreviousMessageRow:";
+
+    "T" = "showThread:";
+    "U" = ( "toggleFilterKey:", "unread" );
+    "/" = "mailboxSearch:";
+
+    "m" = "moveToMailbox:";
+    "M" = ( "selectWithFilter:", "#thread-id = ${#thread-id}", "moveToMailbox:");
+    "i" = ( "goToMailbox:", "INBOX", "makeFirstResponder:", "mainOutline" );
+    "p" = ( "moveToMailbox:", "imap://sherif%40fastmail.fm@imap.fastmail.com/Personal" );
+    "W" = ( "moveToMailbox:", "imap://sherif%40fastmail.fm@imap.fastmail.com/University/MacLeod lab" );
+    "s" = ( "goToMailbox:", "ALL_MESSAGES", "mailboxSearch:" );
+    "f" = "toggleFlag:";
+    "u" = "toggleReadState:";
+
+    "a" = "archive:";
+    "n" = "newMessage:";
+    "r" = "reply:";
+    "L" = "loadImagesOnce:";
+
+    "l" = "copyAsLink:";
+    "0" = ("makeFirstResponder:", "mainOutline"); // move focus to message list
+    "9" = ("makeFirstResponder:", "messageView"); // move focus to message view (for scrolling with arrows)
+    "d" = "saveAttachmentsInDownloads:";
+}
+

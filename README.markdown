@@ -11,6 +11,9 @@
 - `tmux-workspaces/` containing script(s) for setting up various tmux workspaces.
 - `terminfo/` containing `*.terminfo` files to enable italics in terminal and tmux.
 - [Übersicht](http://tracesof.net/uebersicht/) widgets.
+- [MailMate] keybindings, stylesheets, layouts.
+
+[MailMate]: https://freron.com "MailMate IMAP email client"
 
 # setup
 
