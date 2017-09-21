@@ -16,13 +16,18 @@ let g:pandoc#folding#fdc = 0
 let g:pandoc#spell#enabled = 0
 
 " emmet
-let g:user_emmet_leader_key='<C-Z>'
+let g:user_emmet_leader_key = '<C-Z>'
 
 " markdown preview
-let vim_markdown_preview_pandoc=1
-let vim_markdown_preview_hotkey='<C-M>'
+let vim_markdown_preview_pandoc = 1
+let vim_markdown_preview_hotkey = '<C-M>'
 
 " nvim-R
+" use rice
+let g:R_app = 'rice'
+let g:R_cmd = 'R'
+let g:R_hl_term = 0
+
 " press -- to have Nvim-R insert the assignment operator: <-
 let R_assign_map = "--"
 
@@ -44,6 +49,7 @@ nmap <Space> <Plug>RDSendLine
 
 " Neomake
 let g:neomake_open_list = 2
+let g:neomake_python_python_exe = 'python3'
 
 " for pylint: disable:
 " - invalid name
@@ -92,7 +98,7 @@ set completeopt-=preview
 let g:table_mode_corner="|"
 
 let g:lightline = {
-    \ 'colorscheme': 'wombat',
+    \ 'colorscheme': 'Dracula',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'fugitive', 'filename' ] ],
@@ -212,6 +218,8 @@ Plugin 'Haron-Prime/Antares'
 Plugin 'kudabux/vim-srcery-drk'
 Plugin 'dikiaap/minimalist'
 Plugin 'fneu/breezy'
+Plugin 'fugalh/desert.vim'
+Plugin 'dracula/vim'
 " javascript
 Plugin 'jelera/vim-javascript-syntax'           " general javscript syntax improvements
 Plugin 'ternjs/tern_for_vim'                    " Tern-based JavaScript editing support.
@@ -266,8 +274,8 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
-colorscheme minimalist
-set background=light
+colorscheme dracula
+
 " some overrides
 " highlight Normal ctermbg=16
 " highlight LineNr ctermbg=16
@@ -321,13 +329,14 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown    " this is to make markd
 set undofile                    " create a file that contains undo information
 set wrap                        " The following two lines wrap lines without breaking the word
 set wildmenu                    " file autocomplete will show up in menu
+set wildmode=list:longest       " show list of all options and autocomplete to longest common string
 
 " keep vim's backup, swap, and undo files in those directories.
 set backupdir=~/.config/nvim/backup//
 set directory=~/.config/nvim/swap//
 set undodir=~/.config/nvim/undo//
 
-let g:tex_flavor='latex'
+let g:tex_flavor = 'latex'
 let g:Tex_ViewRule_pdf = 'Preview'
 
 " leader + f will erase whitespace at end of line
@@ -399,18 +408,19 @@ autocmd FileType r inoremap <buffer> <tab> <C-x><C-o>
 highlight ColorColumn ctermbg=23 guibg=14
 autocmd FileType python set colorcolumn=80
 
-" set coneal chars with black bg and red fg
+" set coneal highlights
 " this has to happen at the end, since something in the middle
 " probably a colorscheme overrides it
-highlight conceal ctermbg=234 ctermfg=32
+highlight conceal ctermbg=None ctermfg=141
 
 " change the highlight colors for YouCompleteMe autocompletion overlay
-highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
+highlight Pmenu ctermfg=15 ctermbg=30 guifg=#ffffff guibg=#000000
 
 " change the highlight of the current line number to orange foreground
-highlight CursorLineNR ctermfg=172
+highlight CursorLineNR ctermfg=172 ctermbg=None
 
-autocmd! BufWritePost,BufEnter * Neomake
+autocmd! BufWritePost,BufEnter python Neomake
+autocmd! BufWritePost,BufEnter r Neomake
 
 :tnoremap <Esc> <C-\><C-n>
 
@@ -432,4 +442,12 @@ augroup ironmapping
     autocmd Filetype python nmap <buffer> <Space> 0ctr$
     autocmd Filetype python vmap <buffer> <leader>t <Plug>(iron-send-motion)
     autocmd Filetype python nmap <buffer> <leader>p <Plug>(iron-repeat-cmd)
+augroup END
+
+" turn relativenumber off when in insert mode, back on when in normal mode
+" ref: https://jeffkreeftmeijer.com/vim-number/#hybrid-line-numbers
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
