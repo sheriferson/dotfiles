@@ -18,7 +18,7 @@ mkdir -p /Users/$USER/.config
 # link tmux.conf
 printf "\n"
 echo "Linking tmux config file (.tmux.conf)..."
-ln -s "$dotfiles_path/tmux.conf" /Users/$USER/.tmux.conf
+ln -ns "$dotfiles_path/tmux.conf" /Users/$USER/.tmux.conf
 
 #                                              o8o
 #                                              `"'
@@ -34,7 +34,7 @@ echo "Creating ~/.config/nvim/ directory if it doesn't already exist..."
 mkdir -p /Users/$USER/.config/nvim
 printf "\n"
 echo "Linking neovim config file (init.vim)..."
-ln -s "$dotfiles_path/vimrc" /Users/$USER/.config/nvim/init.vim
+ln -ns "$dotfiles_path/vimrc" /Users/$USER/.config/nvim/init.vim
 
 #  .o88o.  o8o           oooo
 #  888 `"  `"'           `888
@@ -47,7 +47,7 @@ ln -s "$dotfiles_path/vimrc" /Users/$USER/.config/nvim/init.vim
 # link fish configuration file (config.fish)
 printf "\n"
 echo "Linking fish config directory..."
-ln -s "$dotfiles_path/fish" /Users/$USER/.config/fish
+ln -ns "$dotfiles_path/fish/" /Users/$USER/.config/fish
 
 #     o8o                                        .
 #     `"'                                      .o8
@@ -63,7 +63,7 @@ ln -s "$dotfiles_path/fish" /Users/$USER/.config/fish
 # jupyter
 printf "\n"
 echo "Linking .jupyter/ directory..."
-ln -s "$dotfiles_path/jupyter" /Users/$USER/.jupyter
+ln -ns "$dotfiles_path/jupyter/" /Users/$USER/.jupyter
 
 #
 #
@@ -81,8 +81,8 @@ echo "Creating ~/.gnupg/ directory if it doesn't already exist..."
 mkdir -p /Users/$USER/.gnupg
 printf "\n"
 echo "Linking gpg.conf and gpg-agent.conf..."
-ln -s "$dotfiles_path/gnupg/gpg.conf" /Users/$USER/.gnupg/
-ln -s "$dotfiles_path/gnupg/gpg-agent.conf" /Users/$USER/.gnupg/
+ln -ns "$dotfiles_path/gnupg/gpg.conf" /Users/$USER/.gnupg/
+ln -ns "$dotfiles_path/gnupg/gpg-agent.conf" /Users/$USER/.gnupg/
 
 #     .                               o8o               .o88o.
 #   .o8                               `"'               888 `"
