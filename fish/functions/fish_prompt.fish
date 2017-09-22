@@ -27,6 +27,8 @@ function fish_prompt
         else
             if [ "$git_stashed" ]
                 set git_full "$git_status $__fish_git_prompt_char_stashed"
+            else
+                set git_full "$git_status"
             end
         end
 
