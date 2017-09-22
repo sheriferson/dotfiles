@@ -109,6 +109,20 @@ printf "\n"
 echo "Installing xterm-256color.terminfo"
 tic -o /Users/$USER/.terminfo "$dotfiles_path/terminfo/xterm-256color.terminfo"
 
+# ooooooooo.                                  .o88o.
+# `888   `Y88.                                888 `"
+#  888   .d88' oo.ooooo.  oooo d8b  .ooooo.  o888oo
+#  888ooo88P'   888' `88b `888""8P d88' `88b  888
+#  888`88b.     888   888  888     888   888  888
+#  888  `88b.   888   888  888     888   888  888
+# o888o  o888o  888bod8P' d888b    `Y8bod8P' o888o
+#               888
+#              o888o
+
+printf "\n"
+echo "Linking .Rprofile..."
+ln -ns "$dotfiles_path/Rprofile" "/Users/$USER/.Rprofile"
+
 printf "\n"
 printf "Done."
 printf "\n"

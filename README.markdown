@@ -4,6 +4,7 @@
 
 - `.tmux.conf` for [tmux](https://tmux.github.io/ "tmux").
 - `.vimrc` for vim.
+- `.Rprofile`
 - `config.fish` for [fish](http://fishshell.com/ "fish shell") (**f**riendly **i**nteractive **sh**ell).
 - `jupyter/custom/custom.css` Dark mode styling for jupyter notebooks.
 - `ipython/profile_default/ipython_kernel_config.py` for some python notebook configuration.
@@ -29,6 +30,7 @@ $ ./setup.sh
 | `github-repos.sh` | Clones Github repos that I want on my system.             |
 | `hiddenprefs.sh`  | Sets hidden preferences for MacOS and a few applications. |
 | `homebrew.sh`     | Installs Homebrew recipes.                                |
+| `other.sh`        | Links MailMate Resources directory.                       |
 | `pip.sh`          | Installs Python packages.                                 |
 | `projects.sh`     | Clones a few of my personal projects from Github.         |
 | `rpackages.R`     | Installs R packages.                                      |
