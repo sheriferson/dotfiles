@@ -98,7 +98,7 @@ set completeopt-=preview
 let g:table_mode_corner="|"
 
 let g:lightline = {
-    \ 'colorscheme': 'Dracula',
+    \ 'colorscheme': 'seoul256',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'fugitive', 'filename' ] ],
@@ -418,6 +418,11 @@ highlight Pmenu ctermfg=15 ctermbg=30 guifg=#ffffff guibg=#000000
 
 " change the highlight of the current line number to orange foreground
 highlight CursorLineNR ctermfg=172 ctermbg=None
+
+" change color of tilde from white to something darker, and remove pipe
+" separator
+set fillchars+=vert:\ 
+highlight NonText ctermfg=60 ctermbg=None
 
 autocmd! BufWritePost,BufEnter python Neomake
 autocmd! BufWritePost,BufEnter r Neomake
