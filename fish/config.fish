@@ -25,6 +25,7 @@ alias ls='ls -lGFah'
 alias t='python ~/t/t.py --task-dir ~/mytasks --list tasks.txt'
 alias music='t -g @music'
 alias today='t -g @today'
+alias now='t -g @now'
 
 # b for bug/task tracking
 alias b='python ~/t/t.py --task-dir . --list _todo.txt'
