@@ -10,6 +10,13 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
+" GitGutter styling to use • instead of +/-
+" https://github.com/statico/dotfiles/blob/master/.vim/vimrc
+let g:gitgutter_sign_added = '•'
+let g:gitgutter_sign_modified = '•'
+let g:gitgutter_sign_removed = '•'
+let g:gitgutter_sign_modified_removed = '•'
+
 " settings for vim-pandoc
 let g:pandoc#modules#disabled = ["folding"]
 let g:pandoc#folding#fdc = 0
@@ -18,13 +25,16 @@ let g:pandoc#spell#enabled = 0
 " emmet
 let g:user_emmet_leader_key = '<C-Z>'
 
+" Quickly fix spelling errors choosing the first result
+nmap <Leader>z z=1<CR><CR>
+
 " markdown preview
 let vim_markdown_preview_pandoc = 1
 let vim_markdown_preview_hotkey = '<C-M>'
 
 " nvim-R
 " use rice
-let g:R_app = 'rice'
+" let g:R_app = 'rice'
 let g:R_cmd = 'R'
 let g:R_hl_term = 0
 
@@ -94,11 +104,14 @@ let g:ycm_filetype_specific_completion_to_disable = {
 
 " disable preview window by YouCompleteMe
 set completeopt-=preview
+" Remove tab from list of keys that cycle through options
+" to allow using tab to generate autocomplete list
+let g:ycm_key_list_select_completion = ['<Down>']
 
 let g:table_mode_corner="|"
 
 let g:lightline = {
-    \ 'colorscheme': 'seoul256',
+    \ 'colorscheme': 'OldHope',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'fugitive', 'filename' ] ],
@@ -399,10 +412,10 @@ function! <SID>SynStack()
     echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
-" nvim-R -> remapping tab to C-x C-o
+" remap tab to C-x C-o for autocompletion
 " placed here to happen after Youcompleteme loads because it rewrites tab
 " remapping
-autocmd FileType r inoremap <buffer> <tab> <C-x><C-o>
+inoremap <tab> <C-x><C-o>
 
 " set a colorcolumn for python
 highlight ColorColumn ctermbg=23 guibg=14
@@ -424,8 +437,7 @@ highlight CursorLineNR ctermfg=172 ctermbg=None
 set fillchars+=vert:\ 
 highlight NonText ctermfg=60 ctermbg=None
 
-autocmd! BufWritePost,BufEnter python Neomake
-autocmd! BufWritePost,BufEnter r Neomake
+autocmd! BufWritePost,BufEnter * Neomake
 
 :tnoremap <Esc> <C-\><C-n>
 
