@@ -1,9 +1,11 @@
 getthese <- c('caret',
+              'classInt',
               'data.table',
               'devtools',
               'doParallel',
               'dplyr',
               'forecast',
+              'ggmap',
               'ggrepel',
               'gridExtra',
               'httr',
@@ -13,10 +15,11 @@ getthese <- c('caret',
               'magrittr',
               'purrr',
               'RColorBrewer',
-              'rmarkdown',
               'readr',
+              'rmarkdown',
               'scales',
               'svglite',
+              'viridis',
               'zoo'
               )
 
@@ -27,3 +30,7 @@ for (package in getthese) {
     install.packages(package, repos = 'https://cloud.r-project.org')
   }
 }
+
+# install IRKernel package
+devtools::install_github('IRkernel/IRkernel')
+IRkernel::installspec()
