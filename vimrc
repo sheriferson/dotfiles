@@ -60,6 +60,7 @@ nmap <Space> <Plug>RDSendLine
 " Neomake
 let g:neomake_open_list = 2
 let g:neomake_python_python_exe = 'python3'
+let g:neomake_python_makers = ['python', 'pylint']
 
 " for pylint: disable:
 " - invalid name
@@ -67,7 +68,7 @@ let g:neomake_python_python_exe = 'python3'
 " - unnecessary parentheses after return keyword
 let g:neomake_python_pylint_maker = {
     \ 'args': [
-    \ '-d', 'C0103,C1801,C0325',
+    \ '-d', 'invalid-name, len-as-condition, superfluous-parens, unidiomatic-typecheck',
     \ '-f', 'text',
     \ '--msg-template="{path}:{line}:{column}:{C}: [{symbol}] {msg}"',
     \ '-r', 'n'
