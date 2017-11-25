@@ -33,7 +33,6 @@ brewarray=(
     neovim
     pinentry-mac
     python3
-    r
     reattach-to-user-namespace
     tmux
     youtube-dl
