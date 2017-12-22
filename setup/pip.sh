@@ -9,6 +9,7 @@ piparray=(
     neovim
     notebook
     numpy
+    rice
     scikit-learn
     scipy
     seaborn
