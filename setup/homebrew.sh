@@ -30,6 +30,7 @@ brewarray=(
     gnupg
     gpg-agent
     icdiff
+    inetutils
     neovim
     pinentry-mac
     python3
@@ -64,7 +65,7 @@ caskarray=(
 
 for ii in "${caskarray[@]}"
 do
-    brew cask install $ii
+    brew cask install -f $ii
 done
 
 # R specific
