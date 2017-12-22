@@ -23,7 +23,7 @@ alias ls='ls -lGFah'
 
 # task related aliases
 alias t='python ~/t/t.py --task-dir ~/mytasks --list tasks.txt'
-alias music='t -g @music'
+alias music='python ~/t/t.py --task-dir ~/mytasks --list music.txt'
 alias today='t -g @today'
 alias now='t -g @now'
 
@@ -32,8 +32,8 @@ alias b='python ~/t/t.py --task-dir . --list _todo.txt'
 alias bdone='echo $bdcount'
 
 alias caplog='python3 ~/projects/caplog/caplog.py'
-
 alias desktop='bash ~/scripts/desktop.sh'
+alias mylint='pylint -d \'invalid-name, len-as-condition, superfluous-parens, unidiomatic-typecheck\' *.py'
 
 #julia
 alias julia='/Applications/Julia-0.6.app/Contents/Resources/julia/bin/julia'
