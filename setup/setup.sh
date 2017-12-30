@@ -8,7 +8,7 @@ function sprint () {
 }
 
 # link dotfiles
-sprint "Running dotfile linking script..."
+sprint "Running dotfile and configuration linking script..."
 bash $(dirname $0)/dotfiles.sh
 
 # homebrew

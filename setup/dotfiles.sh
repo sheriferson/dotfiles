@@ -49,6 +49,22 @@ printf "\n"
 echo "Linking fish config directory..."
 ln -ns "$dotfiles_path/fish/" /Users/$USER/.config/fish
 
+# oooo         o8o      .       .
+# `888         `"'    .o8     .o8
+#  888  oooo  oooo  .o888oo .o888oo oooo    ooo
+#  888 .8P'   `888    888     888    `88.  .8'
+#  888888.     888    888     888     `88..8'
+#  888 `88b.   888    888 .   888 .    `888'
+# o888o o888o o888o   "888"   "888"     .8'
+#                                   .o..P'
+#                                   `Y8P'
+#
+# link kitty configuration file (kitty.conf)
+
+printf "\n"
+echo "Linking kitty config directory..."
+ln -ns "$dotfiles_path/kitty" /Users/$USER/Library/Preferences/
+
 #     o8o                                        .
 #     `"'                                      .o8
 #    oooo oooo  oooo  oo.ooooo.  oooo    ooo .o888oo  .ooooo.  oooo d8b
