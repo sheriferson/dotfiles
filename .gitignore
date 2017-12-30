@@ -3,4 +3,5 @@ fishd.*
 jupyter/migrated
 ipython/profile_default/history.sqlite
 ipython/profile_default/startup/
-
+Ubersicht/repos
+kitty/cached.json
