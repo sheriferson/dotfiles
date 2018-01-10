@@ -24,6 +24,7 @@ alias ls='ls -lGFah'
 # task related aliases
 alias t='python ~/t/t.py --task-dir ~/mytasks --list tasks.txt'
 alias music='python ~/t/t.py --task-dir ~/mytasks --list music.txt'
+alias goals='python ~/t/t.py --task-dir ~/mytasks --list goals.txt'
 alias today='t -g @today'
 alias now='t -g @now'
 
@@ -35,8 +36,11 @@ alias caplog='python3 ~/projects/caplog/caplog.py'
 alias desktop='bash ~/scripts/desktop.sh'
 alias mylint='pylint -d \'invalid-name, len-as-condition, superfluous-parens, unidiomatic-typecheck\' *.py'
 
-#julia
+# julia
 alias julia='/Applications/Julia-0.6.app/Contents/Resources/julia/bin/julia'
+
+# haskell
+alias haskell='ghci'
 
 #     .
 #   .o8
