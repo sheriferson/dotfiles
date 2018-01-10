@@ -1,10 +1,32 @@
 function! s:goyo_enter()
-    colorscheme pencil
+    autocmd! numbertoggle
+    set norelativenumber
+    set nonumber
+
+    colorscheme zellner
     set background=dark
+    highlight conceal ctermbg=None ctermfg=141
 endfunction
 
 function! s:goyo_leave()
-    colorscheme minimalist
+    colorscheme dracula
+    set relativenumber
+    set number
+
+    " need to get things back to normal as much as possible
+    " maybe one day I will find a way to re-enable these
+    " settings in a nice seamless way without rewriting code
+    " if you're reading this and have a better way, please tell me!
+    " hi@sherifsoliman.com
+    augroup numbertoggle
+      autocmd!
+      autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+      autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    augroup END
+
+    highlight conceal ctermbg=None ctermfg=141
+    highlight Pmenu ctermfg=15 ctermbg=30 guifg=#ffffff guibg=#000000
+    highlight CursorLineNR ctermfg=172 ctermbg=None
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
@@ -34,7 +56,7 @@ let vim_markdown_preview_hotkey = '<C-M>'
 
 " nvim-R
 " use rice
-" let g:R_app = 'rice'
+let g:R_app = 'rice'
 let g:R_cmd = 'R'
 let g:R_hl_term = 0
 
@@ -42,7 +64,7 @@ let g:R_hl_term = 0
 let R_assign_map = "--"
 
 " set a minimum source editor width
-let R_min_editor_width = 80
+let R_min_editor_width = 100
 
 " make sure the console is at the bottom by making it really wide
 let R_rconsole_width = 1000
@@ -218,6 +240,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'JuliaEditorSupport/julia-vim'
 Plugin 'sheriferson/vim-criticmarkup'
 Plugin 'ChesleyTan/wordCount.vim'
+Plugin 'maverickg/stan.vim'
 " Plugin 'jimhester/lintr'
 Plugin 'ntpeters/vim-better-whitespace'         " 2017-05-31
 Plugin 'neomake/neomake'                        " 2017-06-11
@@ -420,7 +443,7 @@ inoremap <tab> <C-x><C-o>
 
 " set a colorcolumn for python
 highlight ColorColumn ctermbg=23 guibg=14
-autocmd FileType python set colorcolumn=80
+autocmd FileType python set colorcolumn=100
 
 " set coneal highlights
 " this has to happen at the end, since something in the middle
