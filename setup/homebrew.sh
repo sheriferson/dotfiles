@@ -32,6 +32,7 @@ brewarray=(
     icdiff
     inetutils
     neovim
+    pandoc
     pinentry-mac
     python3
     reattach-to-user-namespace
