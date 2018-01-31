@@ -69,7 +69,7 @@ caskarray=(
 
 for ii in "${caskarray[@]}"
 do
-    brew cask install -f $ii
+    brew cask install $ii
 done
 
 # R specific
