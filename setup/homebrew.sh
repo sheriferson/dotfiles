@@ -32,6 +32,7 @@ brewarray=(
     icdiff
     inetutils
     neovim
+    pandoc
     pinentry-mac
     python3
     reattach-to-user-namespace
@@ -68,7 +69,7 @@ caskarray=(
 
 for ii in "${caskarray[@]}"
 do
-    brew cask install -f $ii
+    brew cask install $ii
 done
 
 # R specific
