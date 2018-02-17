@@ -245,7 +245,8 @@ Plugin 'maverickg/stan.vim'
 Plugin 'ntpeters/vim-better-whitespace'         " 2017-05-31
 Plugin 'neomake/neomake'                        " 2017-06-11
 Plugin 'christoomey/vim-tmux-navigator'         " 2017-06-12
-Plugin 'JamshedVesuna/vim-markdown-preview'     " 2017-08-09
+Plugin 'iamcco/mathjax-support-for-mkdp'        " 2018-01-26
+Plugin 'iamcco/markdown-preview.vim'            " 2018-01-26
 " colorschemes
 Plugin 'blerins/flattown'
 Plugin 'sjl/badwolf'
