@@ -62,6 +62,7 @@ caskarray=(
     numi
     rest
     shortcat
+    spectacle
     ubersicht
     vlc
     xld
@@ -71,6 +72,11 @@ for ii in "${caskarray[@]}"
 do
     brew cask install $ii
 done
+
+sprint "Tapping caskroom/fonts"
+
+brew tap caskroom/fonts
+brew cask install font-fira-code
 
 # R specific
 R CMD javareconf JAVA_CPPFLAGS=-I/System/Library/Frameworks/JavaVM.framework/Headers
