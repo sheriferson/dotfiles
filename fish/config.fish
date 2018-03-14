@@ -22,14 +22,15 @@ source ~/Github/z-fish/z.fish
 alias ls='ls -lGFah'
 
 # task related aliases
-alias t='python ~/t/t.py --task-dir ~/mytasks --list tasks.txt'
-alias music='python ~/t/t.py --task-dir ~/mytasks --list music.txt'
-alias goals='python ~/t/t.py --task-dir ~/mytasks --list goals.txt'
+alias t='python3 ~/t/t.py --task-dir ~/mytasks --list tasks.txt'
+alias music='python3 ~/t/t.py --task-dir ~/mytasks --list music.txt'
+alias goals='python3 ~/t/t.py --task-dir ~/mytasks --list goals.txt'
+
 alias today='t -g @today'
 alias now='t -g @now'
 
 # b for bug/task tracking
-alias b='python ~/t/t.py --task-dir . --list _todo.txt'
+alias b='python3 ~/t/t.py --task-dir . --list _todo.txt'
 alias bdone='echo $bdcount'
 
 alias caplog='python3 ~/projects/caplog/caplog.py'
