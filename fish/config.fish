@@ -34,6 +34,7 @@ alias b='python3 ~/t/t.py --task-dir . --list _todo.txt'
 alias bdone='echo $bdcount'
 
 alias caplog='python3 ~/projects/caplog/caplog.py'
+alias capnow='caplog -p (date +%Y-%m-%d\ %H:%M)'
 alias desktop='bash ~/scripts/desktop.sh'
 alias mylint='pylint -d \'invalid-name, len-as-condition, superfluous-parens, unidiomatic-typecheck\' *.py'
 
