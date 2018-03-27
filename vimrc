@@ -263,9 +263,9 @@ Plugin 'jelera/vim-javascript-syntax'           " general javscript syntax impro
 Plugin 'ternjs/tern_for_vim'                    " Tern-based JavaScript editing support.
 " html
 Plugin 'mattn/emmet-vim'
-" R
+" R and Python
 Plugin 'jalvesaq/Nvim-R'
-Plugin 'hkupty/iron.nvim'
+Plugin 'jalvesaq/vimcmdline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
