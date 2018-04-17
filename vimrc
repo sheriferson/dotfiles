@@ -40,7 +40,6 @@ let g:gitgutter_sign_removed = '•'
 let g:gitgutter_sign_modified_removed = '•'
 
 " settings for vim-pandoc
-let g:pandoc#modules#disabled = ["folding"]
 let g:pandoc#folding#fdc = 0
 let g:pandoc#spell#enabled = 0
 
@@ -102,6 +101,18 @@ let g:neomake_python_pylint_maker = {
     \ '%-Z%p^%.%#,' .
     \ '%-G%.%#',
     \ }
+
+let g:neomake_r_lintr_maker = {
+    \ 'exe': 'Rscript',
+    \ 'args': ['-e', 'lintr::lint("%:p", linters = lintr::with_defaults(single_quotes_linter = NULL, object_name_linter = NULL))'],
+    \ 'errorformat':
+        \ '%W%f:%l:%c: style: %m,' .
+        \ '%W%f:%l:%c: warning: %m,' .
+        \ '%E%f:%l:%c: error: %m,'
+    \ }
+
+let g:neomake_r_enabled_makers = ['lintr']
+let g:neomake_remove_invalid_entries = 1
 
 let g:ycm_filetype_blacklist = {
     \ 'tagbar' : 1,
@@ -332,18 +343,17 @@ set hlsearch                            " Highlights all search matches at the s
 set linebreak
 
 " folding settings
-" set foldenable                  " sets folding
-" set foldlevelstart=10           " open most folds by default
-" set foldmethod=indent           " fold based on indent
-" set foldnestmax=10              " deepest fold is 10 levels
-" nnoremap <space> za
+set foldenable                          " sets folding
+set foldlevelstart=2                    " open most folds by default
+set foldmethod=syntax                   " fold based on indent
 " space open/closes folds
+autocmd FileType markdown nnoremap <space> za
 
 " the next two in that order turn on hybrid line number;
 set relativenumber              " Show relative line numbers
 set number      		        " Show line numbers
 
-" set cursorline                  " highlight current line
+" set cursorline                " highlight current line
 " set ruler
 set scrolloff=8	    	        " Maintain 8 lines while scrolling
 set nosmartindent		        " Automatically indent with curly bracket
@@ -493,3 +503,5 @@ augroup numbertoggle
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
+
+highlight Normal ctermbg=None
