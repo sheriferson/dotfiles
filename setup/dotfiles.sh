@@ -63,7 +63,7 @@ ln -ns "$dotfiles_path/fish/" /Users/$USER/.config/fish
 
 printf "\n"
 echo "Linking kitty config directory..."
-ln -ns "$dotfiles_path/kitty" /Users/$USER/Library/Preferences/
+ln -ns "$dotfiles_path/kitty" /Users/$USER/.config/kitty
 
 #     o8o                                        .
 #     `"'                                      .o8
