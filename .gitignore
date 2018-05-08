@@ -5,3 +5,8 @@ ipython/profile_default/history.sqlite
 ipython/profile_default/startup/
 Ubersicht/repos
 kitty/cached.json
+
+# control which widgets are tracked
+artwor.widget
+daysto.widget
+itunes-now.widget
