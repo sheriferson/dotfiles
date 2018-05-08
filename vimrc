@@ -252,6 +252,7 @@ Plugin 'JuliaEditorSupport/julia-vim'
 Plugin 'sheriferson/vim-criticmarkup'
 Plugin 'ChesleyTan/wordCount.vim'
 Plugin 'maverickg/stan.vim'
+Plugin 'dearrrfish/vim-applescript'
 " Plugin 'jimhester/lintr'
 Plugin 'ntpeters/vim-better-whitespace'         " 2017-05-31
 Plugin 'neomake/neomake'                        " 2017-06-11
