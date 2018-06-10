@@ -27,6 +27,7 @@ function! s:goyo_leave()
     highlight conceal ctermbg=None ctermfg=141
     highlight Pmenu ctermfg=15 ctermbg=30 guifg=#ffffff guibg=#000000
     highlight CursorLineNR ctermfg=172 ctermbg=None
+    highlight Normal ctermbg=None
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
@@ -253,6 +254,8 @@ Plugin 'sheriferson/vim-criticmarkup'
 Plugin 'ChesleyTan/wordCount.vim'
 Plugin 'maverickg/stan.vim'
 Plugin 'dearrrfish/vim-applescript'
+Plugin 'tpope/vim-dadbod'
+Plugin 'tpope/vim-dotenv'
 " Plugin 'jimhester/lintr'
 Plugin 'ntpeters/vim-better-whitespace'         " 2017-05-31
 Plugin 'neomake/neomake'                        " 2017-06-11
@@ -451,7 +454,7 @@ endfunc
 " remap tab to C-x C-o for autocompletion
 " placed here to happen after Youcompleteme loads because it rewrites tab
 " remapping
-inoremap <tab> <C-x><C-o>
+autocmd FileType python,r inoremap <tab> <C-x><C-o>
 
 " set a colorcolumn for python
 highlight ColorColumn ctermbg=23 guibg=14
