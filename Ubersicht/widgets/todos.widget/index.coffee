@@ -4,19 +4,19 @@ refreshFrequency: '1m'
 
 style: """
   font-family: -apple-system
-  bottom: 70px
-  right: 10px
-  width: 400px
-  padding: 0
+  background: rgba(0, 0, 0, .8)
+  border-radius: 5px
+  bottom: 40px
+  right: 30px
+  padding: 20px
 
   .prefix
     font-family: Fira Code
     font-size: 12px
-    opacity: .5
     color: grey
     text-align: right
     float: left
-    width: 40px
+    width: 20px
     padding-right: 10px
     margin-top: 4px
 
@@ -25,6 +25,7 @@ style: """
     font-weight: 100
     line-height: 1.5
     color: #E0FFFF
+    padding-left: 30px
 
 """
 

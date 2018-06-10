@@ -4,6 +4,8 @@
 
 If you're interested, you should check out Übersicht's [thriving gallery of widgets](http://tracesof.net/uebersicht-widgets/ "Übersicht widget gallery").
 
+These widgets contain hardcoded paths and dependencies that mean they might not work for you without some modification. Feel free to repurpose them as you please.
+
 Here's a list of the widgets I use:
 
 - **`ical.widget`** shows me a list of event names, times, and locations in the bottom left. If I have no events, it wisely suggests I read something. I should listen more often.
