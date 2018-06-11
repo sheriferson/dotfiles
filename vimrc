@@ -55,10 +55,11 @@ let vim_markdown_preview_pandoc = 1
 let vim_markdown_preview_hotkey = '<C-M>'
 
 " nvim-R
-" use rice
-let g:R_app = 'rice'
+" use rtichoke
+let g:R_app = 'rtichoke'
 let g:R_cmd = 'R'
 let g:R_hl_term = 0
+let R_bracketed_paste = 1
 
 " press -- to have Nvim-R insert the assignment operator: <-
 let R_assign_map = "--"
@@ -74,6 +75,9 @@ let R_show_args = 1
 
 " Don't expand a dataframe to show columns by default
 let R_objbr_opendf = 0
+
+" Scroll to end of output in console
+let R_auto_scroll = 1
 
 " Press the space bar to send lines and selection to R console
 vmap <Space> <Plug>RDSendSelection
