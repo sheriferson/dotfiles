@@ -1,15 +1,15 @@
 function! s:goyo_enter()
+    silent !tmux set status off
     autocmd! numbertoggle
     set norelativenumber
     set nonumber
 
-    colorscheme zellner
-    set background=dark
     highlight conceal ctermbg=None ctermfg=141
+    highlight EndOfBuffer ctermbg=None ctermfg=235
 endfunction
 
 function! s:goyo_leave()
-    colorscheme dracula
+    silent !tmux set status on
     set relativenumber
     set number
 
@@ -28,6 +28,7 @@ function! s:goyo_leave()
     highlight Pmenu ctermfg=15 ctermbg=30 guifg=#ffffff guibg=#000000
     highlight CursorLineNR ctermfg=172 ctermbg=None
     highlight Normal ctermbg=None
+    highlight Folded ctermbg=None
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
@@ -513,3 +514,4 @@ augroup numbertoggle
 augroup END
 
 highlight Normal ctermbg=None
+highlight Folded ctermbg=None
