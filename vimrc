@@ -87,7 +87,12 @@ nmap <Space> <Plug>RDSendLine
 " Neomake
 let g:neomake_open_list = 2
 let g:neomake_python_python_exe = 'python3'
-let g:neomake_python_makers = ['python', 'pylint']
+let g:neomake_python_makers = ['python3', 'pylint']
+
+" vimcmdline
+let cmdline_app = {}
+let cmdline_app['python'] = 'bpython'
+let cmdline_term_height = 20 " Initial height of interpreter window or pane
 
 " for pylint: disable:
 " - invalid name
