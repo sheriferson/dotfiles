@@ -272,6 +272,8 @@ Plugin 'neomake/neomake'                        " 2017-06-11
 Plugin 'christoomey/vim-tmux-navigator'         " 2017-06-12
 Plugin 'iamcco/mathjax-support-for-mkdp'        " 2018-01-26
 Plugin 'iamcco/markdown-preview.vim'            " 2018-01-26
+Plugin 'ekalinin/Dockerfile.vim'                " 2018-07-19
+Plugin 'dag/vim-fish'                           " 2018-08-09
 " colorschemes
 Plugin 'blerins/flattown'
 Plugin 'sjl/badwolf'
