@@ -466,7 +466,7 @@ endfunc
 " remap tab to C-x C-o for autocompletion
 " placed here to happen after Youcompleteme loads because it rewrites tab
 " remapping
-autocmd FileType python,r inoremap <tab> <C-x><C-o>
+autocmd FileType python,r,rmd inoremap <tab> <C-x><C-o>
 
 " set a colorcolumn for python
 highlight ColorColumn ctermbg=23 guibg=14
