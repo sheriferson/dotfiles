@@ -36,6 +36,13 @@ function fish_prompt
         set git_status ""
     end
 
+    # should I be focusing on something I'm doing now?
+    set what_now (command cat ~/mytasks/tasks.txt | grep '@now' | wc -l | sed -e's/ *//')
+
     # Main
-    echo -n (set_color grey)(prompt_pwd)(set_color green)"$git_full" (set_color red)'❯'(set_color yellow)'❯'(set_color green)'❯ '
+    echo -n (set_color grey)(prompt_pwd)(set_color green)"$git_full "
+    if test $what_now -gt 0
+       echo -n (set_color -b ff5555)(set_color 64222c)(set_color -i)" now "(set_color normal)' '
+    end
+    echo -n (set_color red)'❯'(set_color yellow)'❯'(set_color green)'❯ '
 end

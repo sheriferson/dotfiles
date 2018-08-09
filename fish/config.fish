@@ -44,6 +44,9 @@ alias julia='/Applications/Julia-0.6.app/Contents/Resources/julia/bin/julia'
 # haskell
 alias haskell='ghci'
 
+# kitty
+alias kittydiff='kitty +kitten diff'
+
 #     .
 #   .o8
 # .o888oo ooo. .oo.  .oo.   oooo  oooo  oooo    ooo
@@ -82,6 +85,9 @@ alias figlet="figlet -f roman"
 # vim should be = nvim
 alias vim="nvim"
 alias mvim="reattach-to-user-namespace mvim"
+
+# source local overrides
+source ~/.localoverrides
 
 # In order for gpg to find gpg-agent, gpg-agent must be running,
 # and there must be an env variable pointing GPG to the gpg-agent socket.
