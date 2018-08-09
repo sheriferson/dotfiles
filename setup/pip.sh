@@ -5,10 +5,12 @@ piparray=(
     dateparser
     jupyter
     jupyter_contrib_nbextensions
+    jupyterlab
     matplotlib
     neovim
     notebook
     numpy
+    pandas
     rtichoke
     scikit-learn
     scipy
@@ -24,3 +26,6 @@ done
 
 # enable jupyter notebook nbextensions
 jupyter contrib nbextension install --user
+
+# install jupyter lab contents extension
+jupyter labextension install jupyterlab-toc
