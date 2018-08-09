@@ -89,7 +89,7 @@ alias mvim="reattach-to-user-namespace mvim"
 # in your shell's init script (ie, .bash_profile, .zshrc, whatever),
 # will either start gpg-agent or set up the
 # GPG_AGENT_INFO variable if it's already running.
-set gpgstart "gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info"
+set gpgstart "gpg-agent --daemon"
 
 if [ -z (pgrep gpg-agent) ]
     eval $gpgstart
