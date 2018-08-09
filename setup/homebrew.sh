@@ -50,6 +50,7 @@ sprint "Installing Homebrew cask recipes"
 caskarray=(
     1password
     bitbar
+    brave
     firefox
     google-chrome
     itsycal
