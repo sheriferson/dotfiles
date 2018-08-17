@@ -35,7 +35,6 @@ brewarray=(
     pandoc
     pinentry-mac
     python3
-    reattach-to-user-namespace
     tmux
     youtube-dl
 )
