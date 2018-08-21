@@ -10,6 +10,9 @@ set --export GIT_EDITOR "nvim -f"
 # have z
 source ~/Github/z-fish/z.fish
 
+# make directories look better
+export LSCOLORS="gxcxfxdxbxegedabagacad"
+
 #           oooo   o8o
 #           `888   `"'
 #  .oooo.    888  oooo   .oooo.    .oooo.o  .ooooo.   .oooo.o
