@@ -1,6 +1,6 @@
 function fish_prompt
 	test $SSH_TTY
-    and printf (set_color red)$USER(set_color brwhite)'@'(set_color yellow)(prompt_hostname)' '
+    and printf (set_color ff6961)'['$USER(set_color fdfd96)'@'(prompt_hostname)'] '
     test $USER = 'root'
     and echo (set_color red)"#"
 
@@ -12,17 +12,17 @@ function fish_prompt
     set git_dirty (command git status -s $submodule_syntax  2> /dev/null)
 
     # put dirty branch indicator in prompt
-    set -g __fish_git_prompt_char_dirty ±
-    set -g __fish_git_prompt_char_stashed \u2708
-    set -g __fish_git_prompt_char_dirty_and_stashed ± \u2708
+    set -g __fish_git_prompt_char_dirty ＊
+    set -g __fish_git_prompt_char_stashed ℎ
+    set -g __fish_git_prompt_char_dirty_and_stashed ＊ ℎ
 
     if [ -n "$git_branch" ]
         set git_status "  $git_branch"
         if [ -n "$git_dirty" ]
             if [ "$git_stashed" ]
-                set git_full "$git_status $__fish_git_prompt_char_dirty_and_stashed"
+                set git_full "$git_status$__fish_git_prompt_char_dirty_and_stashed"
             else
-                set git_full "$git_status $__fish_git_prompt_char_dirty"
+                set git_full "$git_status$__fish_git_prompt_char_dirty"
             end
         else
             if [ "$git_stashed" ]
@@ -36,13 +36,19 @@ function fish_prompt
         set git_status ""
     end
 
+    # what's on deck today?
+    set n_today (command python3 ~/t/t.py --task-dir ~/mytasks --list tasks.txt -g @today | wc -l | sed -e's/ *//')
+
     # should I be focusing on something I'm doing now?
     set what_now (command cat ~/mytasks/tasks.txt | grep '@now' | wc -l | sed -e's/ *//')
 
     # Main
-    echo -n (set_color grey)(prompt_pwd)(set_color green)"$git_full "
+    echo -n (set_color grey)(prompt_pwd)(set_color ffb347)"$git_full "
     if test $what_now -gt 0
        echo -n (set_color -b ff5555)(set_color 64222c)(set_color -i)" now "(set_color normal)' '
     end
-    echo -n (set_color red)'❯'(set_color yellow)'❯'(set_color green)'❯ '
+    if test $n_today -gt 0
+        echo -n (set_color 77c4ff)"($n_today)"' '(set_color normal)
+    end
+    echo -n (set_color 77c4ff)'●'(set_color b19cd9)'●'(set_color ff77c4)'● '
 end
