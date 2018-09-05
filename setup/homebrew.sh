@@ -62,6 +62,7 @@ caskarray=(
     numi
     rest
     shortcat
+    soulver
     spectacle
     ubersicht
     vlc
