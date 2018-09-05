@@ -8,8 +8,6 @@ These widgets contain hardcoded paths and dependencies that mean they might not 
 
 Here's a list of the widgets I use:
 
-- **`ical.widget`** shows me a list of event names, times, and locations in the bottom left. If I have no events, it wisely suggests I read something. I should listen more often.
-
 - **`kindle-clippings.widget`** helps with an annoyance that has always nagged at me: how do I remind myself of all the good things I've read in books? How do I revisit important or meaningful parts? `kindle-clippings` parses the `My Clippings.txt` file you find on your Kindle and which holds all your highlights and notes, and displays a random chunk in the top right of my desktop. I won't pretend I always read it, but sometimes I do, and that's better than nothing.
 
     Here's the current clipping for posterity:
@@ -18,3 +16,5 @@ Here's a list of the widgets I use:
     > — to reach the House of Commons MPs had to pass through a line of pickets carrying signs bearing the single name CHURCHILL in a blue circle.
 
 - **`spotify-art.widget`** I love album art. For some reason, Spotify puts a limit on how big the album art can be, and that won't do. This widget downloads the album art of the current track to `~/albumArtSpotify`.
+
+- **`todos.widget`** Show me my tasks for today. Relies on [`t`](https://github.com/sheriferson/t).
