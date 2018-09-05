@@ -94,6 +94,9 @@ let cmdline_app = {}
 let cmdline_app['python'] = 'bpython'
 let cmdline_term_height = 20 " Initial height of interpreter window or pane
 
+" VimToDo
+let g:VimTodoListsMoveItems = 0
+
 " for pylint: disable:
 " - invalid name
 " - len(sequence) warning usage
@@ -260,7 +263,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
 Plugin 'JuliaEditorSupport/julia-vim'
-Plugin 'sheriferson/vim-criticmarkup'
+Plugin 'vim-pandoc/vim-criticmarkup'
 Plugin 'ChesleyTan/wordCount.vim'
 Plugin 'maverickg/stan.vim'
 Plugin 'dearrrfish/vim-applescript'
@@ -274,6 +277,7 @@ Plugin 'iamcco/mathjax-support-for-mkdp'        " 2018-01-26
 Plugin 'iamcco/markdown-preview.vim'            " 2018-01-26
 Plugin 'ekalinin/Dockerfile.vim'                " 2018-07-19
 Plugin 'dag/vim-fish'                           " 2018-08-09
+Plugin 'aserebryakov/vim-todo-lists'            " 2018-08-28
 " colorschemes
 Plugin 'blerins/flattown'
 Plugin 'sjl/badwolf'
