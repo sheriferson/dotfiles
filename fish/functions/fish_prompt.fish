@@ -5,7 +5,7 @@ function fish_prompt
     and echo (set_color red)"#"
 
     set git_branch (command git rev-parse --abbrev-ref HEAD 2> /dev/null)
-    set git_stashed (command git rev-parse --verify --quiet refs/stash 2>/dev/null)
+    set git_stashed (command git rev-parse --verify --quiet refs/stash 2> /dev/null)
 
     set -l submodule_syntax
     set submodule_syntax "--ignore-submodules=dirty"
@@ -17,6 +17,9 @@ function fish_prompt
     set -g __fish_git_prompt_char_dirty_and_stashed ＊ ℎ
 
     if [ -n "$git_branch" ]
+        set git_behind (command git rev-list "$git_branch"..origin --count 2> /dev/null)
+        set git_ahead (command git rev-list origin.."$git_branch" --count 2> /dev/null)
+
         set git_status "  $git_branch"
         if [ -n "$git_dirty" ]
             if [ "$git_stashed" ]
@@ -32,8 +35,12 @@ function fish_prompt
             end
         end
 
-    else
-        set git_status ""
+        if test $git_behind -gt 0
+            set git_full "$git_full ⇣ $git_behind "
+        end
+        if test $git_ahead -gt 0
+            set git_full "$git_full ⇡ $git_ahead "
+        end
     end
 
     # what's on deck today?
