@@ -41,6 +41,9 @@ let g:gitgutter_sign_modified = '•'
 let g:gitgutter_sign_removed = '•'
 let g:gitgutter_sign_modified_removed = '•'
 
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
 " settings for vim-pandoc
 let g:pandoc#folding#fdc = 0
 let g:pandoc#spell#enabled = 0
@@ -86,15 +89,24 @@ nmap <Space> <Plug>RDSendLine
 
 " Neomake
 let g:neomake_open_list = 2
-let g:neomake_python_python_exe = 'python3'
-let g:neomake_python_makers = ['python3', 'pylint']
+let g:neomake_python_python_exe = 'python2'
+let g:neomake_python_makers = ['python2', 'pylint']
 
 " vimcmdline
 let cmdline_app = {}
 let cmdline_app['python'] = 'bpython'
 let cmdline_term_height = 20 " Initial height of interpreter window or pane
 
-" VimToDo
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-n>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/UltiSnips']
+
+" deoplete
+autocmd FileType markdown,txt,vim,pandoc call deoplete#custom#buffer_option('auto_complete', v:false)
+
+" todos
 let g:VimTodoListsMoveItems = 0
 
 " for pylint: disable:
@@ -149,12 +161,6 @@ let g:ycm_filetype_specific_completion_to_disable = {
     \ 'mkd.markdown' : 1,
     \ 'tex' : 1
     \}
-
-" disable preview window by YouCompleteMe
-set completeopt-=preview
-" Remove tab from list of keys that cycle through options
-" to allow using tab to generate autocomplete list
-let g:ycm_key_list_select_completion = ['<Down>']
 
 let g:table_mode_corner="|"
 
@@ -254,7 +260,6 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
 Plugin 'itchyny/lightline.vim'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'junegunn/goyo.vim'
@@ -262,7 +267,6 @@ Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
-Plugin 'JuliaEditorSupport/julia-vim'
 Plugin 'vim-pandoc/vim-criticmarkup'
 Plugin 'ChesleyTan/wordCount.vim'
 Plugin 'maverickg/stan.vim'
@@ -277,7 +281,10 @@ Plugin 'iamcco/mathjax-support-for-mkdp'        " 2018-01-26
 Plugin 'iamcco/markdown-preview.vim'            " 2018-01-26
 Plugin 'ekalinin/Dockerfile.vim'                " 2018-07-19
 Plugin 'dag/vim-fish'                           " 2018-08-09
-Plugin 'aserebryakov/vim-todo-lists'            " 2018-08-28
+Plugin 'sirver/UltiSnips'
+Plugin 'honza/vim-snippets'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'aserebryakov/vim-todo-lists'
 " colorschemes
 Plugin 'blerins/flattown'
 Plugin 'sjl/badwolf'
@@ -389,8 +396,8 @@ set softtabstop=4               " when editing
 set smarttab
 
 " for R/SQL files, 2 spaces
-autocmd Filetype sql setlocal ts=2 sw=2 expandtab
-autocmd Filetype r setlocal ts=2 sw=2 expandtab
+autocmd Filetype sql setlocal tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+autocmd Filetype r setlocal tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 autocmd BufRead,BufNewFile *.md set filetype=markdown    " this is to make markdown syn-hi work for .md
 
@@ -467,11 +474,6 @@ function! <SID>SynStack()
     echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
-" remap tab to C-x C-o for autocompletion
-" placed here to happen after Youcompleteme loads because it rewrites tab
-" remapping
-autocmd FileType python,r,rmd inoremap <tab> <C-x><C-o>
-
 " set a colorcolumn for python
 highlight ColorColumn ctermbg=23 guibg=14
 autocmd FileType python set colorcolumn=100
@@ -480,9 +482,6 @@ autocmd FileType python set colorcolumn=100
 " this has to happen at the end, since something in the middle
 " probably a colorscheme overrides it
 highlight conceal ctermbg=None ctermfg=141
-
-" change the highlight colors for YouCompleteMe autocompletion overlay
-highlight Pmenu ctermfg=15 ctermbg=30 guifg=#ffffff guibg=#000000
 
 " change the highlight of the current line number to orange foreground
 highlight CursorLineNR ctermfg=172 ctermbg=None
