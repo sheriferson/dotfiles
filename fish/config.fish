@@ -11,7 +11,7 @@ set --export GIT_EDITOR "nvim -f"
 source ~/Github/z-fish/z.fish
 
 # make directories look better
-export LSCOLORS="gxcxfxdxbxegedabagacad"
+set --export LSCOLORS "gxcxfxdxbxegedabagacad"
 
 #           oooo   o8o
 #           `888   `"'
@@ -47,8 +47,8 @@ alias julia='/Applications/Julia-0.6.app/Contents/Resources/julia/bin/julia'
 # haskell
 alias haskell='ghci'
 
-# kitty
-alias kittydiff='kitty +kitten diff'
+# use kitty diff tool
+alias d='kitty +kitten diff'
 
 #     .
 #   .o8
