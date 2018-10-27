@@ -3,7 +3,7 @@
 ![](screenshot.png)
 
 - `.tmux.conf` for [tmux](https://tmux.github.io/ "tmux").
-- `.vimrc` for vim.
+- `init.vim` for Neovim.
 - `.Rprofile`
 - `config.fish` for [fish](http://fishshell.com/ "fish shell") (**f**riendly **i**nteractive **sh**ell).
 - `kitty/kitty.conf` for [kitty terminal emulator](https://github.com/kovidgoyal/kitty/ "kitty terminal emulator").

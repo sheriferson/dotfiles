@@ -397,7 +397,7 @@ set smarttab
 
 " for R/SQL files, 2 spaces
 autocmd Filetype sql setlocal tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
-autocmd Filetype r setlocal tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+autocmd Filetype r,rmd setlocal tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 autocmd BufRead,BufNewFile *.md set filetype=markdown    " this is to make markdown syn-hi work for .md
 

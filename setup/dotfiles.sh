@@ -34,7 +34,7 @@ echo "Creating ~/.config/nvim/ directory if it doesn't already exist..."
 mkdir -p /Users/$USER/.config/nvim
 printf "\n"
 echo "Linking neovim config file (init.vim)..."
-ln -ns "$dotfiles_path/vimrc" /Users/$USER/.config/nvim/init.vim
+ln -ns "$dotfiles_path/nvim/init.vim" /Users/$USER/.config/nvim/init.vim
 
 #  .o88o.  o8o           oooo
 #  888 `"  `"'           `888
