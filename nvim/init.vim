@@ -1,3 +1,74 @@
+"######### Vundle start #########
+
+set nocompatible                " be iMproved, required
+filetype off                    " required - Vundle
+
+" set the runtime path to include Vundle and initialize
+set shell=bash
+set rtp+=~/.config/nvim/bundle/Vundle.vim
+call vundle#begin('~/.config/nvim/bundle/')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+"#########  Vundle plugins #########
+Plugin 'godlygeek/tabular'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdtree'
+Plugin 'itchyny/lightline.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'junegunn/goyo.vim'
+Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'Raimondi/delimitMate'
+Plugin 'vim-pandoc/vim-criticmarkup'
+Plugin 'ChesleyTan/wordCount.vim'
+Plugin 'maverickg/stan.vim'
+Plugin 'dearrrfish/vim-applescript'
+Plugin 'tpope/vim-dadbod'
+Plugin 'tpope/vim-dotenv'
+Plugin 'ntpeters/vim-better-whitespace'         " 2017-05-31
+Plugin 'neomake/neomake'                        " 2017-06-11
+Plugin 'iamcco/mathjax-support-for-mkdp'        " 2018-01-26
+Plugin 'iamcco/markdown-preview.vim'            " 2018-01-26
+Plugin 'ekalinin/Dockerfile.vim'                " 2018-07-19
+Plugin 'dag/vim-fish'                           " 2018-08-09
+Plugin 'sirver/UltiSnips'
+Plugin 'honza/vim-snippets'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'aserebryakov/vim-todo-lists'
+" colorschemes
+Plugin 'blerins/flattown'
+Plugin 'sjl/badwolf'
+Plugin 'reedes/vim-colors-pencil'
+Plugin 'scwood/vim-hybrid'
+Plugin 'Haron-Prime/Antares'
+Plugin 'kudabux/vim-srcery-drk'
+Plugin 'dikiaap/minimalist'
+Plugin 'fneu/breezy'
+Plugin 'fugalh/desert.vim'
+Plugin 'dracula/vim'
+" javascript
+Plugin 'jelera/vim-javascript-syntax'           " general javscript syntax improvements
+Plugin 'ternjs/tern_for_vim'                    " Tern-based JavaScript editing support.
+" R and Python
+Plugin 'jalvesaq/Nvim-R'
+Plugin 'jalvesaq/vimcmdline'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+"######### Vundle end #########
+
+"######### Goyo functions #########
+
 function! s:goyo_enter()
     silent !tmux set status off
     autocmd! numbertoggle
@@ -34,85 +105,47 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
-" GitGutter styling to use • instead of +/-
+"######### Various plugin settings #########
+
+" ## gitgutter
+" use • instead of +/-
 " https://github.com/statico/dotfiles/blob/master/.vim/vimrc
 let g:gitgutter_sign_added = '•'
 let g:gitgutter_sign_modified = '•'
 let g:gitgutter_sign_removed = '•'
 let g:gitgutter_sign_modified_removed = '•'
 
-" Use deoplete.
+" ## deoplete
 let g:deoplete#enable_at_startup = 1
+autocmd FileType markdown,txt,vim,pandoc call deoplete#custom#buffer_option('auto_complete', v:false)
 
-" settings for vim-pandoc
+" ## vim-pandoc
 let g:pandoc#folding#fdc = 0
 let g:pandoc#spell#enabled = 0
 
-" emmet
-let g:user_emmet_leader_key = '<C-Z>'
-
-" Quickly fix spelling errors choosing the first result
-nmap <Leader>z z=1<CR><CR>
-
-" markdown preview
+" ## markdown preview
 let vim_markdown_preview_pandoc = 1
 let vim_markdown_preview_hotkey = '<C-M>'
 
-" nvim-R
-" use rtichoke
+" ## nvim-R
 let g:R_app = 'rtichoke'
 let g:R_cmd = 'R'
 let g:R_hl_term = 0
 let R_bracketed_paste = 1
-
-" press -- to have Nvim-R insert the assignment operator: <-
-let R_assign_map = "--"
-
-" set a minimum source editor width
+let R_assign_map = "--"                  " -- to insert <-
 let R_min_editor_width = 100
-
-" make sure the console is at the bottom by making it really wide
-let R_rconsole_width = 1000
-
-" show arguments for functions during omnicompletion
-let R_show_args = 1
-
-" Don't expand a dataframe to show columns by default
-let R_objbr_opendf = 0
-
-" Scroll to end of output in console
-let R_auto_scroll = 1
-
-" Press the space bar to send lines and selection to R console
+let R_rconsole_width = 1000              " make sure the console is at the bottom by making it really wide
+let R_show_args = 1                      " show arguments for functions during omnicompletion
+let R_objbr_opendf = 0                   " Don't expand a dataframe to show columns by default
+let R_auto_scroll = 1                    " Scroll to end of output in console
+" press space bar to send lines to cnosole
 vmap <Space> <Plug>RDSendSelection
 nmap <Space> <Plug>RDSendLine
 
-" Neomake
+" ## Neomake
 let g:neomake_open_list = 2
 let g:neomake_python_python_exe = 'python2'
 let g:neomake_python_makers = ['python2', 'pylint']
-
-" vimcmdline
-let cmdline_app = {}
-let cmdline_app['python'] = 'bpython'
-let cmdline_term_height = 20 " Initial height of interpreter window or pane
-
-" Ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-n>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/UltiSnips']
-
-" deoplete
-autocmd FileType markdown,txt,vim,pandoc call deoplete#custom#buffer_option('auto_complete', v:false)
-
-" todos
-let g:VimTodoListsMoveItems = 0
-
-" for pylint: disable:
-" - invalid name
-" - len(sequence) warning usage
-" - unnecessary parentheses after return keyword
 let g:neomake_python_pylint_maker = {
     \ 'args': [
     \ '-d', 'invalid-name, len-as-condition, superfluous-parens, unidiomatic-typecheck',
@@ -128,42 +161,26 @@ let g:neomake_python_pylint_maker = {
     \ '%-G%.%#',
     \ }
 
-let g:neomake_r_lintr_maker = {
-    \ 'exe': 'Rscript',
-    \ 'args': ['-e', 'lintr::lint("%:p", linters = lintr::with_defaults(single_quotes_linter = NULL, object_name_linter = NULL))'],
-    \ 'errorformat':
-        \ '%W%f:%l:%c: style: %m,' .
-        \ '%W%f:%l:%c: warning: %m,' .
-        \ '%E%f:%l:%c: error: %m,'
-    \ }
-
-let g:neomake_r_enabled_makers = ['lintr']
 let g:neomake_remove_invalid_entries = 1
 
-let g:ycm_filetype_blacklist = {
-    \ 'tagbar' : 1,
-    \ 'qf' : 1,
-    \ 'notes' : 1,
-    \ 'markdown' : 1,
-    \ 'unite' : 1,
-    \ 'text' : 1,
-    \ 'vimwiki' : 1,
-    \ 'pandoc' : 1,
-    \ 'infolog' : 1,
-    \ 'mail' : 1,
-    \ 'mkd.markdown' : 1,
-    \ 'tex' : 1
-    \}
+" ## vimcmdline
+let cmdline_app = {}
+let cmdline_app['python'] = 'bpython'
+let cmdline_term_height = 20 " Initial height of interpreter window or pane
 
-let g:ycm_filetype_specific_completion_to_disable = {
-    \ 'gitcommit': 1,
-    \ 'markdown': 1,
-    \ 'mkd.markdown' : 1,
-    \ 'tex' : 1
-    \}
+" ## Ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-n>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/UltiSnips']
 
+" ## vim-todo
+let g:VimTodoListsMoveItems = 0
+
+" ## vim-table-mode
 let g:table_mode_corner="|"
 
+" ## lightline
 let g:lightline = {
     \ 'colorscheme': 'OldHope',
     \ 'active': {
@@ -237,89 +254,8 @@ function! MyWordCount()
     endif
 endfunction
 
-set nocompatible                " be iMproved, required
-filetype off                    " required - Vundle
 
-" set the runtime path to include Vundle and initialize
-set shell=bash
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin('~/.config/nvim/bundle/')
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-"#########  Vundle plugins #########
-Plugin 'godlygeek/tabular'
-Plugin 'tpope/vim-fugitive'
-Plugin 'vim-pandoc/vim-pandoc'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/nerdtree'
-Plugin 'itchyny/lightline.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'junegunn/goyo.vim'
-Plugin 'dhruvasagar/vim-table-mode'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'Raimondi/delimitMate'
-Plugin 'vim-pandoc/vim-criticmarkup'
-Plugin 'ChesleyTan/wordCount.vim'
-Plugin 'maverickg/stan.vim'
-Plugin 'dearrrfish/vim-applescript'
-Plugin 'tpope/vim-dadbod'
-Plugin 'tpope/vim-dotenv'
-" Plugin 'jimhester/lintr'
-Plugin 'ntpeters/vim-better-whitespace'         " 2017-05-31
-Plugin 'neomake/neomake'                        " 2017-06-11
-Plugin 'christoomey/vim-tmux-navigator'         " 2017-06-12
-Plugin 'iamcco/mathjax-support-for-mkdp'        " 2018-01-26
-Plugin 'iamcco/markdown-preview.vim'            " 2018-01-26
-Plugin 'ekalinin/Dockerfile.vim'                " 2018-07-19
-Plugin 'dag/vim-fish'                           " 2018-08-09
-Plugin 'sirver/UltiSnips'
-Plugin 'honza/vim-snippets'
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'aserebryakov/vim-todo-lists'
-" colorschemes
-Plugin 'blerins/flattown'
-Plugin 'sjl/badwolf'
-Plugin 'reedes/vim-colors-pencil'
-Plugin 'scwood/vim-hybrid'
-Plugin 'Haron-Prime/Antares'
-Plugin 'kudabux/vim-srcery-drk'
-Plugin 'dikiaap/minimalist'
-Plugin 'fneu/breezy'
-Plugin 'fugalh/desert.vim'
-Plugin 'dracula/vim'
-" javascript
-Plugin 'jelera/vim-javascript-syntax'           " general javscript syntax improvements
-Plugin 'ternjs/tern_for_vim'                    " Tern-based JavaScript editing support.
-" html
-Plugin 'mattn/emmet-vim'
-" R and Python
-Plugin 'jalvesaq/Nvim-R'
-Plugin 'jalvesaq/vimcmdline'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"######### end #########
+"######### Various vim settings #########
 
 syntax on            		    " syntax highlighting
 
@@ -352,14 +288,8 @@ vnoremap <leader>P "+P
 
 colorscheme dracula
 
-" some overrides
-" highlight Normal ctermbg=16
-" highlight LineNr ctermbg=16
-
 filetype indent on                      " OPTIONAL This enables automatic indentation as you type.
 set autoread                            " read changes to file that happen on disk
-set gcr=a:blinkon0                      " disable cursor blink
-
 set hidden                              " Makes vim not complain when there are hidden buffers
 
 " search
@@ -373,31 +303,28 @@ set linebreak
 set foldenable                          " sets folding
 set foldlevelstart=2                    " open most folds by default
 set foldmethod=syntax                   " fold based on indent
-" space open/closes folds
-autocmd FileType markdown nnoremap <space> za
+autocmd FileType markdown,rmd nnoremap <space> za
 
 " the next two in that order turn on hybrid line number;
 set relativenumber              " Show relative line numbers
 set number      		        " Show line numbers
 
-" set cursorline                " highlight current line
-" set ruler
 set scrolloff=8	    	        " Maintain 8 lines while scrolling
 set nosmartindent		        " Automatically indent with curly bracket
 set nospell                     " Spell check is off by default
 set spelllang=en_us             " American dictionary
-set shiftwidth=4
 set showmatch                   " set show matching parentheses
 
 " tabs
 set expandtab                   " Convert tabs into spaces
 set tabstop=4	            	" Specifies the number of spaces in a tab
 set softtabstop=4               " when editing
+set shiftwidth=4
 set smarttab
 
 " for R/SQL files, 2 spaces
-autocmd Filetype sql setlocal tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
-autocmd Filetype r,rmd setlocal tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+autocmd Filetype sql setlocal tabstop=2 softtabstop=0 shiftwidth=2
+autocmd Filetype r,rmd setlocal tabstop=2 softtabstop=0 shiftwidth=2
 
 autocmd BufRead,BufNewFile *.md set filetype=markdown    " this is to make markdown syn-hi work for .md
 
@@ -430,37 +357,7 @@ nnoremap ; :
 autocmd FileType md nnoremap <space> za
 autocmd FileType md vnoremap <space> zf
 
-" Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
-
 map <C-c> :NERDTreeToggle<CR>
-
-" statusline
-" cf the default statusline: %<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-" format markers:
-"   %< truncation point
-"   %n buffer number
-"   %f relative path to file
-"   %m modified flag [+] (modified), [-] (unmodifiable) or nothing
-"   %r readonly flag [RO]
-"   %y filetype [ruby]
-"   %= split point for left and right justification
-"   %-35. width specification
-"   %l current line number
-"   %L number of lines in buffer
-"   %c current column number
-"   %V current virtual column number (-n), if different from %c
-"   %P percentage through buffer
-"   %) end of width specification
-set laststatus=2
-" the if statement below seems to fix lightline breaking
-" after sourcing .vimrc with an open file
-" https://github.com/itchyny/lightline.vim/issues/8#issuecomment-23322423
-if &statusline ==# ''
-    set statusline=%<\ %n:%f\ %r%y%m%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
-endif
-"hi StatusLine term=reverse ctermfg=11 ctermbg=232 gui=bold,reverse
 
 " 2013/12/2
 " the following should allow me to use Ctrl-i to inspect
@@ -475,7 +372,7 @@ function! <SID>SynStack()
 endfunc
 
 " set a colorcolumn for python
-highlight ColorColumn ctermbg=23 guibg=14
+highlight ColorColumn ctermbg=172 guibg=14
 autocmd FileType python set colorcolumn=100
 
 " set coneal highlights
@@ -493,6 +390,7 @@ highlight NonText ctermfg=60 ctermbg=None
 
 autocmd! BufWritePost,BufEnter * Neomake
 
+" Be able to escape to Normal mode in Terminal
 :tnoremap <Esc> <C-\><C-n>
 
 :tnoremap <A-h> <C-\><C-N><C-w>h
@@ -523,5 +421,11 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
+" These are necessary to make backgrounds seamless
 highlight Normal ctermbg=None
 highlight Folded ctermbg=None
+
+" from jvns
+" https://github.com/jvns/vimconfig/blob/master/vimrc
+" Return to last edit position when opening files<Paste>
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
