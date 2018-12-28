@@ -128,7 +128,7 @@ let vim_markdown_preview_pandoc = 1
 let vim_markdown_preview_hotkey = '<C-M>'
 
 " ## nvim-R
-let g:R_app = 'rtichoke'
+let g:R_app = 'radian'
 let g:R_cmd = 'R'
 let g:R_hl_term = 0
 let R_bracketed_paste = 1

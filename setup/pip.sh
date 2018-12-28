@@ -11,7 +11,7 @@ piparray=(
     notebook
     numpy
     pandas
-    rtichoke
+    radian
     scikit-learn
     scipy
     seaborn
