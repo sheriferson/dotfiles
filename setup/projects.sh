@@ -25,7 +25,8 @@ projectarray=(
     jsimplestats
     KSComCheck
     punread
-    sherifsoliman.com
+    sherif.io
+    sherif.in
     simplestatistics
     t
     Visualize.mmBundle
