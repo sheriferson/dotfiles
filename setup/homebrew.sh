@@ -48,8 +48,8 @@ sprint "Installing Homebrew cask recipes"
 
 caskarray=(
     1password
+    bbedit
     bitbar
-    brave
     firefox
     google-chrome
     itsycal
@@ -63,7 +63,6 @@ caskarray=(
     rest
     shortcat
     soulver
-    spectacle
     ubersicht
     vlc
     xld
