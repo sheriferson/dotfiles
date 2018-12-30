@@ -64,6 +64,7 @@ caskarray=(
     shortcat
     soulver
     ubersicht
+    vanilla
     vlc
     xld
 )
