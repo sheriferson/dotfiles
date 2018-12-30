@@ -7,6 +7,8 @@ Ubersicht/repos
 kitty/cached.json
 
 # control which widgets are tracked
-artwor.widget
+artwork.widget
 daysto.widget
 itunes-now.widget
+ical.widget
+kindle-clippings.widget
