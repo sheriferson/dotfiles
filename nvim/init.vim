@@ -26,7 +26,6 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'Raimondi/delimitMate'
 Plugin 'vim-pandoc/vim-criticmarkup'
 Plugin 'ChesleyTan/wordCount.vim'
 Plugin 'maverickg/stan.vim'
@@ -388,7 +387,7 @@ highlight CursorLineNR ctermfg=172 ctermbg=None
 set fillchars+=vert:\ 
 highlight NonText ctermfg=60 ctermbg=None
 
-autocmd! BufWritePost,BufEnter * Neomake
+autocmd! BufWritePost,BufEnter *.py Neomake
 
 " Be able to escape to Normal mode in Terminal
 :tnoremap <Esc> <C-\><C-n>
