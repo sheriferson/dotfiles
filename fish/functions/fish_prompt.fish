@@ -58,5 +58,5 @@ function fish_prompt
     if test $n_today -gt 0
         echo -n (set_color 77c4ff)"($n_today)"' '(set_color normal)
     end
-    echo -n (set_color 77c4ff)'●'(set_color b19cd9)'●'(set_color ff77c4)'● '
+    echo 🌳' '
 end
