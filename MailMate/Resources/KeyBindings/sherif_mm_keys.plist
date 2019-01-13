@@ -24,5 +24,7 @@
     "0" = ("makeFirstResponder:", "mainOutline"); // move focus to message list
     "9" = ("makeFirstResponder:", "messageView"); // move focus to message view (for scrolling with arrows)
     "d" = "saveAttachmentsInDownloads:";
+
+    "x" = ( "toggleFilterKey:", "unread", "makeFirstResponder:", "mainOutline", "selectFirstMessageRow:");
 }
 
