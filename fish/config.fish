@@ -11,7 +11,7 @@ set --export GIT_EDITOR "nvim -f"
 source ~/Github/z-fish/z.fish
 
 # make directories look better
-set --export LSCOLORS "gxcxfxdxbxegedabagacad"
+set --export LSCOLORS "excxfxdxbxegedabagacad"
 
 #           oooo   o8o
 #           `888   `"'

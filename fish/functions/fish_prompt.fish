@@ -1,5 +1,5 @@
 function fish_prompt
-	test $SSH_TTY
+    test $SSH_TTY
     and printf (set_color ff6961)'['$USER(set_color fdfd96)'@'(prompt_hostname)'] '
     test $USER = 'root'
     and echo (set_color red)"#"
@@ -51,12 +51,13 @@ function fish_prompt
     set what_now (command cat ~/mytasks/tasks.txt | grep '@now' | wc -l | sed -e's/ *//')
 
     # Main
-    echo -n (set_color grey)(prompt_pwd)(set_color ffb347)"$git_full "
-    if test $what_now -gt 0
-       echo -n (set_color -b ff5555)(set_color 64222c)(set_color -i)" now "(set_color normal)' '
-    end
+    echo -n (prompt_pwd)(set_color 008E00)"$git_full "
     if test $n_today -gt 0
-        echo -n (set_color 77c4ff)"($n_today)"' '(set_color normal)
+        echo -n (set_color e71a1a)"$n_today✔"' '(set_color normal)
     end
-    echo 🌳' '
+    if test $what_now -gt 0
+        echo -n (set_color FF0800)'!->> '
+    else
+        echo 🌳' '
+    end
 end

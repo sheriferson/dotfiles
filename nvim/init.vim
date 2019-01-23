@@ -42,6 +42,7 @@ Plugin 'sirver/UltiSnips'
 Plugin 'honza/vim-snippets'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'aserebryakov/vim-todo-lists'
+Plugin 'mattn/emmet-vim'
 " colorschemes
 Plugin 'blerins/flattown'
 Plugin 'sjl/badwolf'
@@ -53,6 +54,7 @@ Plugin 'dikiaap/minimalist'
 Plugin 'fneu/breezy'
 Plugin 'fugalh/desert.vim'
 Plugin 'dracula/vim'
+Plugin 'NLKNguyen/papercolor-theme'
 " javascript
 Plugin 'jelera/vim-javascript-syntax'           " general javscript syntax improvements
 Plugin 'ternjs/tern_for_vim'                    " Tern-based JavaScript editing support.
@@ -109,10 +111,10 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " ## gitgutter
 " use • instead of +/-
 " https://github.com/statico/dotfiles/blob/master/.vim/vimrc
-let g:gitgutter_sign_added = '•'
-let g:gitgutter_sign_modified = '•'
-let g:gitgutter_sign_removed = '•'
-let g:gitgutter_sign_modified_removed = '•'
+let g:gitgutter_sign_added = '●'
+let g:gitgutter_sign_modified = '●'
+let g:gitgutter_sign_removed = '●'
+let g:gitgutter_sign_modified_removed = '●'
 
 " ## deoplete
 let g:deoplete#enable_at_startup = 1
@@ -181,7 +183,7 @@ let g:table_mode_corner="|"
 
 " ## lightline
 let g:lightline = {
-    \ 'colorscheme': 'OldHope',
+    \ 'colorscheme': 'PaperColor',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'fugitive', 'filename' ] ],
@@ -284,8 +286,6 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
-
-colorscheme dracula
 
 filetype indent on                      " OPTIONAL This enables automatic indentation as you type.
 set autoread                            " read changes to file that happen on disk
@@ -428,3 +428,6 @@ highlight Folded ctermbg=None
 " https://github.com/jvns/vimconfig/blob/master/vimrc
 " Return to last edit position when opening files<Paste>
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+set background=light
+colorscheme PaperColor
