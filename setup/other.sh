@@ -14,3 +14,4 @@ dotfiles_path="/Users/$USER/dotfiles"
 printf "\n"
 echo "Linking MailMate Resources directory..."
 ln -ns "$dotfiles_path/MailMate/Resources/" /Users/sherif/Library/Application\ Support/MailMate/
+ln -ns "$dotfiles_path/MailMate/Styles.plist" /Users/sherif/Library/Application\ Support/MailMate/Styles.plist

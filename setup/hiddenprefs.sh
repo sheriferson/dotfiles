@@ -13,6 +13,7 @@ killall Finder
 defaults write com.freron.MailMate MmOpenURLsInBackground -bool YES
 defaults write com.freron.MailMate MmAutomaticUnwrapEnabled -bool YES
 defaults write com.freron.MailMate MmAttachmentButtonsOnLeft -bool YES
+defaults write com.freron.MailMate MmMessageColorsEnabled -bool YES
 
 # Terminal
 defaults write com.apple.Terminal AppleShowScrollBars -string WhenScrolling

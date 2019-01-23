@@ -1,0 +1,14 @@
+{   styles = (
+	{   type = keyword;
+        keyword = '\\Flagged';
+        color = "#F25A62";
+        fontStyle = "bold";
+    },
+    {
+        type = keyword;
+        keyword = 'stratechery';
+        color = '#F99C2E';
+        fontStyle = "italic";
+    }
+	);
+}
