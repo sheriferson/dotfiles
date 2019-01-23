@@ -1,7 +1,7 @@
 options(
     # color scheme see [here](https://help.farbox.com/pygments.html)
     # for a list of supported color schemes, default is `"native"`
-    radian.color_scheme = "native",
+    radian.color_scheme = "colorful",
 
     # either  `"emacs"` (default) or `"vi"`.
     radian.editing_mode = "vi",
