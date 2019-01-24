@@ -60,6 +60,7 @@ caskarray=(
     launchcontrol
     musicbrainz-picard
     numi
+    pkg-config
     rest
     shortcat
     soulver
