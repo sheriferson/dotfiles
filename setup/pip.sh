@@ -7,10 +7,10 @@ piparray=(
     jupyter_contrib_nbextensions
     jupyterlab
     matplotlib
-    neovim
     notebook
     numpy
     pandas
+    pynvim
     radian
     scikit-learn
     scipy
