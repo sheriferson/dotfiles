@@ -10,7 +10,10 @@ piparray=(
     notebook
     numpy
     pandas
+    pycodestyle
+    pyflakes
     pynvim
+    python-language-server
     radian
     scikit-learn
     scipy
