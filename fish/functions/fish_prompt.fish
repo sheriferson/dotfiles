@@ -58,6 +58,6 @@ function fish_prompt
     if test $what_now -gt 0
         echo -n (set_color FF0800)'!->> '
     else
-        echo 🌳' '
+        echo -n 🌳'️ '
     end
 end
