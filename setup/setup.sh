@@ -7,6 +7,10 @@ function sprint () {
     echo -e "\n${lightblue}$1${nc}\n"
 }
 
+# Xcode command line tools
+sprint "Installing Xcode Command Line Tools..."
+xcode-select --install
+
 # link dotfiles
 sprint "Running dotfile and configuration linking script..."
 bash $(dirname $0)/dotfiles.sh
