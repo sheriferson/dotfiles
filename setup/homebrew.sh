@@ -19,8 +19,6 @@ fi
 
 sprint "Installing Homebrew recipes"
 
-brew tap homebrew/science
-
 brewarray=(
     cmake
     figlet
