@@ -1,5 +1,4 @@
 "######### Vundle start #########
-
 set nocompatible                " be iMproved, required
 filetype off                    " required - Vundle
 
@@ -33,16 +32,16 @@ Plugin 'dearrrfish/vim-applescript'
 Plugin 'tpope/vim-dadbod'
 Plugin 'tpope/vim-dotenv'
 Plugin 'ntpeters/vim-better-whitespace'         " 2017-05-31
-Plugin 'neomake/neomake'                        " 2017-06-11
 Plugin 'iamcco/mathjax-support-for-mkdp'        " 2018-01-26
 Plugin 'iamcco/markdown-preview.vim'            " 2018-01-26
 Plugin 'ekalinin/Dockerfile.vim'                " 2018-07-19
 Plugin 'dag/vim-fish'                           " 2018-08-09
 Plugin 'sirver/UltiSnips'
 Plugin 'honza/vim-snippets'
-Plugin 'Shougo/deoplete.nvim'
 Plugin 'aserebryakov/vim-todo-lists'
 Plugin 'mattn/emmet-vim'
+Plugin 'neoclide/coc.nvim'                      " 2019-02-03
+Plugin 'c0r73x/neotags.nvim'                    " 2019-02-03
 " colorschemes
 Plugin 'blerins/flattown'
 Plugin 'sjl/badwolf'
@@ -55,6 +54,7 @@ Plugin 'fneu/breezy'
 Plugin 'fugalh/desert.vim'
 Plugin 'dracula/vim'
 Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'mengelbrecht/lightline-bufferline'
 " javascript
 Plugin 'jelera/vim-javascript-syntax'           " general javscript syntax improvements
 Plugin 'ternjs/tern_for_vim'                    " Tern-based JavaScript editing support.
@@ -116,10 +116,6 @@ let g:gitgutter_sign_modified = '●'
 let g:gitgutter_sign_removed = '●'
 let g:gitgutter_sign_modified_removed = '●'
 
-" ## deoplete
-let g:deoplete#enable_at_startup = 1
-autocmd FileType markdown,txt,vim,pandoc call deoplete#custom#buffer_option('auto_complete', v:false)
-
 " ## vim-pandoc
 let g:pandoc#folding#fdc = 0
 let g:pandoc#spell#enabled = 0
@@ -143,34 +139,13 @@ let R_auto_scroll = 1                    " Scroll to end of output in console
 vmap <Space> <Plug>RDSendSelection
 nmap <Space> <Plug>RDSendLine
 
-" ## Neomake
-let g:neomake_open_list = 2
-let g:neomake_python_python_exe = 'python2'
-let g:neomake_python_makers = ['python2', 'pylint']
-let g:neomake_python_pylint_maker = {
-    \ 'args': [
-    \ '-d', 'invalid-name, len-as-condition, superfluous-parens, unidiomatic-typecheck',
-    \ '-f', 'text',
-    \ '--msg-template="{path}:{line}:{column}:{C}: [{symbol}] {msg}"',
-    \ '-r', 'n'
-    \ ],
-    \ 'errorformat':
-    \ '%A%f:%l:%c:%t: %m,' .
-    \ '%A%f:%l: %m,' .
-    \ '%A%f:(%l): %m,' .
-    \ '%-Z%p^%.%#,' .
-    \ '%-G%.%#',
-    \ }
-
-let g:neomake_remove_invalid_entries = 1
-
 " ## vimcmdline
 let cmdline_app = {}
 let cmdline_app['python'] = 'bpython'
 let cmdline_term_height = 20 " Initial height of interpreter window or pane
 
 " ## Ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-a>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/UltiSnips']
@@ -181,15 +156,17 @@ let g:VimTodoListsMoveItems = 0
 " ## vim-table-mode
 let g:table_mode_corner="|"
 
-" ## lightline
+" ## lightline and lightline-bufferline
 let g:lightline = {
     \ 'colorscheme': 'PaperColor',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'fugitive', 'filename' ] ],
+    \             [ 'fugitive' ],
+    \             [ 'cocstatus' ] ],
     \   'right': [['wordcount'], ['lineinfo'] ]
     \ },
     \ 'component_function': {
+    \   'cocstatus': 'coc#status',
     \   'fugitive': 'MyFugitive',
     \   'readonly': 'MyReadonly',
     \   'filename': 'MyFilename',
@@ -197,6 +174,30 @@ let g:lightline = {
     \   'wordcount': 'MyWordCount'
     \ }
     \ }
+
+" lightline-bufferline setup
+let g:lightline#bufferline#show_number  = 2
+let g:lightline#bufferline#shorten_path = 0
+let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
+let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type   = {'buffers': 'tabsel'}
+
+let g:lightline#bufferline#number_map = {
+\ 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴',
+\ 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹'}
+
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+
+set showtabline=2
 
 let g:lightline.mode_map = {
     \ 'n' : 'N',
@@ -387,8 +388,6 @@ highlight CursorLineNR ctermfg=172 ctermbg=None
 set fillchars+=vert:\ 
 highlight NonText ctermfg=60 ctermbg=None
 
-autocmd! BufWritePost,BufEnter *.py Neomake
-
 " Be able to escape to Normal mode in Terminal
 :tnoremap <Esc> <C-\><C-n>
 
@@ -431,3 +430,37 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 set background=light
 colorscheme PaperColor
+
+" coc
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+nnoremap <silent> <space>a  :<C-u>CocList --number-selec diagnostics<cr>
+
+autocmd BufNew,BufEnter *.py,*.vim, execute "silent! CocEnable"
+autocmd BufLeave *.md,*.markdown,*.txt execute "silent! CocDisable"
+
+" we need to set gitgutter's colors
+" and it needs to be towards the end
+highlight GitGutterAdd    guifg=#009900 guibg=#EEEEEE ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 guibg=#EEEEEE ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 guibg=#EEEEEE ctermfg=1

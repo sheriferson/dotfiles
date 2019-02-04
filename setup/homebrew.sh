@@ -80,5 +80,9 @@ sprint "Tapping caskroom/fonts"
 brew tap caskroom/fonts
 brew cask install font-fira-code
 
+sprint "Tapping universal-tags"
+brew tap universal-ctags/universal-ctags
+brew install --HEAD universal-ctags
+
 # R specific
 R CMD javareconf JAVA_CPPFLAGS=-I/System/Library/Frameworks/JavaVM.framework/Headers
