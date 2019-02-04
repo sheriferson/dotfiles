@@ -34,6 +34,7 @@ brewarray=(
     pinentry-mac
     python3
     tmux
+    yarn
     youtube-dl
 )
 
