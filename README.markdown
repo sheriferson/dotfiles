@@ -9,6 +9,7 @@
 - `kitty/kitty.conf` for [kitty terminal emulator](https://github.com/kovidgoyal/kitty/ "kitty terminal emulator").
 - `jupyter/custom/custom.css` Dark mode styling for jupyter notebooks.
 - `ipython/profile_default/ipython_kernel_config.py` for some python notebook configuration.
+- `bpython` directory with configuration files for [bpython][].
 - `gnupg/gpg.config` and `gnupg/gpg-agent.config` for having `gpg-agent` running and ready to help sign my git commits.
 - `tmux-workspaces/` containing script(s) for setting up various tmux workspaces.
 - `terminfo/` containing `*.terminfo` files to enable italics in terminal and tmux.
@@ -16,6 +17,7 @@
 - [MailMate] keybindings, stylesheets, layouts.
 
 [MailMate]: https://freron.com "MailMate IMAP email client"
+[bpython]: https://bpython-interpreter.org "bpython interpreter"
 
 # setup
 

@@ -81,6 +81,20 @@ printf "\n"
 echo "Linking .jupyter/ directory..."
 ln -ns "$dotfiles_path/jupyter/" /Users/$USER/.jupyter
 
+#  .o8                                  .   oooo
+# "888                                .o8   `888
+#  888oooo.  oo.ooooo.  oooo    ooo .o888oo  888 .oo.    .ooooo.  ooo. .oo.
+#  d88' `88b  888' `88b  `88.  .8'    888    888P"Y88b  d88' `88b `888P"Y88b
+#  888   888  888   888   `88..8'     888    888   888  888   888  888   888
+#  888   888  888   888    `888'      888 .  888   888  888   888  888   888
+#  `Y8bod8P'  888bod8P'     .8'       "888" o888o o888o `Y8bod8P' o888o o888o
+#             888       .o..P'
+#            o888o      `Y8P'
+# bpython
+printf "\n"
+echo "Linking bpython directory..."
+ln -ns "$dotfiles_path/bpython/" /Users/$USER/.config/
+
 #
 #
 #  .oooooooo ooo. .oo.   oooo  oooo  oo.ooooo.   .oooooooo
