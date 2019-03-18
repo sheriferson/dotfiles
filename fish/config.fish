@@ -49,7 +49,15 @@ alias julia='/Applications/Julia-0.6.app/Contents/Resources/julia/bin/julia'
 alias haskell='ghci'
 
 # use kitty diff tool
-alias d='kitty +kitten diff'
+abbr -a -g d 'kitty +kitten diff'
+
+# abbreviation
+
+abbr -a -g ga 'git add'
+abbr -a -g gb 'git branch'
+abbr -a -g gc 'git checkout'
+abbr -a -g gd 'git difftool'
+abbr -a -g gs 'git status'
 
 #     .
 #   .o8
