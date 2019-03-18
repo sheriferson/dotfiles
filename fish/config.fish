@@ -31,6 +31,7 @@ alias goals='python3 ~/t/t.py --task-dir ~/mytasks --list goals.txt'
 
 alias today='t -g @today'
 alias now='t -g @now'
+alias done='python3 ~/t/done.py'
 
 # b for bug/task tracking
 alias b='python3 ~/t/t.py --task-dir . --list _todo.txt'
