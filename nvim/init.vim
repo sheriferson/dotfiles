@@ -48,7 +48,6 @@ Plugin 'sjl/badwolf'
 Plugin 'reedes/vim-colors-pencil'
 Plugin 'scwood/vim-hybrid'
 Plugin 'Haron-Prime/Antares'
-Plugin 'kudabux/vim-srcery-drk'
 Plugin 'dikiaap/minimalist'
 Plugin 'fneu/breezy'
 Plugin 'fugalh/desert.vim'
@@ -303,6 +302,7 @@ set nosmartindent		        " Automatically indent with curly bracket
 set nospell                     " Spell check is off by default
 set spelllang=en_us             " American dictionary
 set showmatch                   " set show matching parentheses
+set inccommand=nosplit
 
 " tabs
 set expandtab                   " Convert tabs into spaces
@@ -448,6 +448,9 @@ function! s:patch_papercolor()
     highlight GitGutterAdd    guifg=#009900 guibg=#EEEEEE ctermfg=2
     highlight GitGutterChange guifg=#bbbb00 guibg=#EEEEEE ctermfg=3
     highlight GitGutterDelete guifg=#ff2222 guibg=#EEEEEE ctermfg=1
+
+    " improve vimdiff colors
+    highlight DiffDelete ctermbg=210
 
     augroup numbertoggle
       autocmd!
