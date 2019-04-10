@@ -141,12 +141,15 @@ let g:VimTodoListsMoveItems = 0
 " ## vim-table-mode
 let g:table_mode_corner="|"
 
+" ## Ctrl-P
+let g:ctrlp_open_multiple_files = 'v'
+
 " ## lightline and lightline-bufferline
 let g:lightline = {
     \ 'colorscheme': 'PaperColor',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'fugitive' ],
+    \             [ 'fugitive', 'filename' ],
     \             [ 'cocstatus' ] ],
     \   'right': [['wordcount'], ['lineinfo'] ]
     \ },
@@ -161,9 +164,10 @@ let g:lightline = {
     \ }
 
 " lightline-bufferline setup
-let g:lightline#bufferline#show_number  = 2
+let g:lightline#bufferline#show_number = 2
+let g:lightline#bufferline#unicode_symbols = 1
 let g:lightline#bufferline#shorten_path = 0
-let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
+let g:lightline.tabline          = {'left': [['buffers']], 'right': [[]]}
 let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
 let g:lightline.component_type   = {'buffers': 'tabsel'}
 
@@ -427,7 +431,7 @@ endfunction
 nnoremap <silent> <space>a  :<C-u>CocList --number-selec diagnostics<cr>
 
 autocmd BufNew,BufEnter *.py,*.vim, execute "silent! CocEnable"
-autocmd BufLeave *.md,*.markdown,*.txt execute "silent! CocDisable"
+autocmd BufNew,BufEnter *.md,*.markdown,*.txt execute "silent! CocDisable"
 
 function! s:patch_papercolor()
     " These are necessary to make backgrounds seamless
