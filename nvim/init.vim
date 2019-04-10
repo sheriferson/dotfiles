@@ -41,7 +41,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'aserebryakov/vim-todo-lists'
 Plugin 'mattn/emmet-vim'
 Plugin 'neoclide/coc.nvim'                      " 2019-02-03
-Plugin 'c0r73x/neotags.nvim'                    " 2019-02-03
+Plugin 'thiagoalessio/rainbow_levels.vim'
 " colorschemes
 Plugin 'blerins/flattown'
 Plugin 'sjl/badwolf'
@@ -71,17 +71,12 @@ filetype plugin indent on    " required
 "######### Goyo functions #########
 
 function! s:goyo_enter()
-    silent !tmux set status off
     autocmd! numbertoggle
     set norelativenumber
     set nonumber
-
-    highlight conceal ctermbg=None ctermfg=141
-    highlight EndOfBuffer ctermbg=None ctermfg=235
 endfunction
 
 function! s:goyo_leave()
-    silent !tmux set status on
     set relativenumber
     set number
 
@@ -90,17 +85,7 @@ function! s:goyo_leave()
     " settings in a nice seamless way without rewriting code
     " if you're reading this and have a better way, please tell me!
     " hi@sherifsoliman.com
-    augroup numbertoggle
-      autocmd!
-      autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-      autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-    augroup END
-
-    highlight conceal ctermbg=None ctermfg=141
     highlight Pmenu ctermfg=15 ctermbg=30 guifg=#ffffff guibg=#000000
-    highlight CursorLineNR ctermfg=172 ctermbg=None
-    highlight Normal ctermbg=None
-    highlight Folded ctermbg=None
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
@@ -375,14 +360,6 @@ endfunc
 highlight ColorColumn ctermbg=172 guibg=14
 autocmd FileType python set colorcolumn=100
 
-" set coneal highlights
-" this has to happen at the end, since something in the middle
-" probably a colorscheme overrides it
-highlight conceal ctermbg=None ctermfg=141
-
-" change the highlight of the current line number to orange foreground
-highlight CursorLineNR ctermfg=172 ctermbg=None
-
 " change color of tilde from white to something darker, and remove pipe
 " separator
 set fillchars+=vert:\ 
@@ -419,17 +396,10 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
-" These are necessary to make backgrounds seamless
-highlight Normal ctermbg=None
-highlight Folded ctermbg=None
-
 " from jvns
 " https://github.com/jvns/vimconfig/blob/master/vimrc
 " Return to last edit position when opening files<Paste>
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-set background=light
-colorscheme PaperColor
 
 " coc
 " Smaller updatetime for CursorHold & CursorHoldI
@@ -459,8 +429,30 @@ nnoremap <silent> <space>a  :<C-u>CocList --number-selec diagnostics<cr>
 autocmd BufNew,BufEnter *.py,*.vim, execute "silent! CocEnable"
 autocmd BufLeave *.md,*.markdown,*.txt execute "silent! CocDisable"
 
-" we need to set gitgutter's colors
-" and it needs to be towards the end
-highlight GitGutterAdd    guifg=#009900 guibg=#EEEEEE ctermfg=2
-highlight GitGutterChange guifg=#bbbb00 guibg=#EEEEEE ctermfg=3
-highlight GitGutterDelete guifg=#ff2222 guibg=#EEEEEE ctermfg=1
+function! s:patch_papercolor()
+    " These are necessary to make backgrounds seamless
+    highlight Normal ctermbg=None
+    highlight Folded ctermbg=None
+
+    " set coneal highlights
+    highlight conceal ctermbg=None ctermfg=141
+
+    " change the highlight of the current line number to orange foreground
+    highlight CursorLineNR ctermfg=172 ctermbg=None
+
+    " we need to set gitgutter's colors
+    highlight GitGutterAdd    guifg=#009900 guibg=#EEEEEE ctermfg=2
+    highlight GitGutterChange guifg=#bbbb00 guibg=#EEEEEE ctermfg=3
+    highlight GitGutterDelete guifg=#ff2222 guibg=#EEEEEE ctermfg=1
+
+    augroup numbertoggle
+      autocmd!
+      autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+      autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    augroup END
+endfunction
+
+autocmd! ColorScheme PaperColor call s:patch_papercolor()
+
+set background=light
+colorscheme PaperColor
