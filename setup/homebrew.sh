@@ -49,6 +49,7 @@ caskarray=(
     1password
     bbedit
     bitbar
+    fastscripts
     firefox
     google-chrome
     itsycal
