@@ -367,7 +367,6 @@ autocmd FileType python set colorcolumn=100
 " change color of tilde from white to something darker, and remove pipe
 " separator
 set fillchars+=vert:\ 
-highlight NonText ctermfg=60 ctermbg=None
 
 " Be able to escape to Normal mode in Terminal
 :tnoremap <Esc> <C-\><C-n>
@@ -406,20 +405,22 @@ augroup END
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 function! s:patch_papercolor()
-    " These are necessary to make backgrounds seamless
+    " Make the background nicer
     highlight Normal ctermbg=None
     highlight Folded ctermbg=None
+    highlight NonText ctermfg=60 ctermbg=None
 
     " set coneal highlights
     highlight conceal ctermbg=None ctermfg=141
 
     " change the highlight of the current line number to orange foreground
     highlight CursorLineNR ctermfg=172 ctermbg=None
+    highlight LineNR ctermbg=None
 
     " we need to set gitgutter's colors
-    highlight GitGutterAdd    guifg=#009900 guibg=#EEEEEE ctermfg=2
-    highlight GitGutterChange guifg=#bbbb00 guibg=#EEEEEE ctermfg=3
-    highlight GitGutterDelete guifg=#ff2222 guibg=#EEEEEE ctermfg=1
+    highlight GitGutterAdd    guifg=#009900 guibg=None ctermfg=2
+    highlight GitGutterChange guifg=#bbbb00 guibg=None ctermfg=3
+    highlight GitGutterDelete guifg=#ff2222 guibg=None ctermfg=1
 
     " improve vimdiff colors
     highlight DiffDelete ctermbg=210
