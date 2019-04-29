@@ -405,34 +405,6 @@ augroup END
 " Return to last edit position when opening files<Paste>
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-" coc
-" Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
-
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-nnoremap <silent> <space>a  :<C-u>CocList --number-selec diagnostics<cr>
-
-autocmd BufNew,BufEnter *.py,*.vim, execute "silent! CocEnable"
-autocmd BufNew,BufEnter *.md,*.markdown,*.txt execute "silent! CocDisable"
-
 function! s:patch_papercolor()
     " These are necessary to make backgrounds seamless
     highlight Normal ctermbg=None
@@ -463,3 +435,30 @@ autocmd! ColorScheme PaperColor call s:patch_papercolor()
 
 set background=light
 colorscheme PaperColor
+
+" coc settings
+
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+autocmd BufNew,BufEnter *.py,*.vim, execute "silent! CocEnable"
+autocmd BufNew,BufEnter *.md,*.markdown,*.txt, execute "silent! CocDisable"
