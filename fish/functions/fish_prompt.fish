@@ -51,13 +51,13 @@ function fish_prompt
     set what_now (command cat ~/mytasks/tasks.txt | grep '@now' | wc -l | sed -e's/ *//')
 
     # Main
-    echo -n (prompt_pwd)(set_color 008E00)"$git_full "
+    echo -n (prompt_pwd)(set_color 008E00)"$git_full "(set_color normal)
     if test $n_today -gt 0
         echo -n (set_color e71a1a)"$n_today✔"' '(set_color normal)
     end
     if test $what_now -gt 0
-        echo -n (set_color FF0800)'!->> '
-    else
-        echo -n 🌳'️ '
+        echo -n (set_color FF0800)'-<< '(command python3 ~/t/t.py --task-dir ~/mytasks --list tasks.txt -g @now | sed -E 's/[[:space:]]+@today//;s/[[:space:]]+@now//;' )' >>- '(set_color normal)
+        echo -e \r
     end
+    echo -n '⁂ '
 end
