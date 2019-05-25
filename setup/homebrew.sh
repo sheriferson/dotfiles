@@ -27,9 +27,13 @@ brewarray=(
     git
     gnupg
     gpg-agent
+    harfbuzz
     icdiff
+    imagemagick
     inetutils
+    librsvg
     neovim
+    optipng
     pandoc
     pinentry-mac
     python3
