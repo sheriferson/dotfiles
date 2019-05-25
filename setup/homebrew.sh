@@ -33,6 +33,7 @@ brewarray=(
     pandoc
     pinentry-mac
     python3
+    r
     tmux
     yarn
     youtube-dl
