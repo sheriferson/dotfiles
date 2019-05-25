@@ -52,6 +52,7 @@ caskarray=(
     fastscripts
     firefox
     google-chrome
+    iina
     itsycal
     julia
     keyboard-maestro
@@ -66,7 +67,6 @@ caskarray=(
     soulver
     ubersicht
     vanilla
-    vlc
     xld
 )
 
