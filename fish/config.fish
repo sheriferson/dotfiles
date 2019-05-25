@@ -112,3 +112,5 @@ set gpgstart "gpg-agent --daemon"
 if [ -z (pgrep gpg-agent) ]
     eval $gpgstart
 end > /dev/null
+
+kitty + complete setup fish | source
