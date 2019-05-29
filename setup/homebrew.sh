@@ -40,7 +40,7 @@ brewarray=(
     r
     tmux
     yarn
-    youtube-dl
+    you-get
 )
 
 for ii in "${brewarray[@]}"
