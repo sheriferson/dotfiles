@@ -61,7 +61,6 @@ caskarray=(
     itsycal
     julia
     keyboard-maestro
-    kitty
     launchbar
     launchcontrol
     musicbrainz-picard
