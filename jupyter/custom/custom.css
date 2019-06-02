@@ -1,6 +1,0 @@
-/* Uncomment to use a custom font */
-div#notebook, div.CodeMirror, div.output_area pre, div.output_wrapper, div.prompt {
-  font-family: 'Fira Code', monospace !important;
-  font-weight: normal !important;
-}
-

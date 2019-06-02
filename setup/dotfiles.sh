@@ -65,22 +65,6 @@ printf "\n"
 echo "Linking kitty config directory..."
 ln -ns "$dotfiles_path/kitty" /Users/$USER/.config/kitty
 
-#     o8o                                        .
-#     `"'                                      .o8
-#    oooo oooo  oooo  oo.ooooo.  oooo    ooo .o888oo  .ooooo.  oooo d8b
-#    `888 `888  `888   888' `88b  `88.  .8'    888   d88' `88b `888""8P
-#     888  888   888   888   888   `88..8'     888   888ooo888  888
-#     888  888   888   888   888    `888'      888 . 888    .o  888
-#     888  `V88V"V8P'  888bod8P'     .8'       "888" `Y8bod8P' d888b
-#     888              888       .o..P'
-# .o. 88P             o888o      `Y8P'
-# `Y888P
-#
-# jupyter
-printf "\n"
-echo "Linking .jupyter/ directory..."
-ln -ns "$dotfiles_path/jupyter/" /Users/$USER/.jupyter
-
 #  .o8                                  .   oooo
 # "888                                .o8   `888
 #  888oooo.  oo.ooooo.  oooo    ooo .o888oo  888 .oo.    .ooooo.  ooo. .oo.
