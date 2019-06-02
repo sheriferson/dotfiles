@@ -38,3 +38,7 @@ Rscript $(dirname $0)/rpackages.R
 # hidden preferences
 sprint "Setting some hidden preferences..."
 bash $(dirname $0)/hiddenprefs.sh
+
+# Other (e.g., MailMate linking)
+sprint "Some final links..."
+bash $(dirname $0)/other.sh
