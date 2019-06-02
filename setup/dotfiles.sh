@@ -153,6 +153,18 @@ printf "\n"
 echo "Linking .Rprofile..."
 ln -ns "$dotfiles_path/Rprofile" "/Users/$USER/.Rprofile"
 
+# oooo                           oooo                  oooo  oooo
+# `888                           `888                  `888  `888
+#  888 .oo.    .oooo.    .oooo.o  888  oooo   .ooooo.   888   888
+#  888P"Y88b  `P  )88b  d88(  "8  888 .8P'   d88' `88b  888   888
+#  888   888   .oP"888  `"Y88b.   888888.    888ooo888  888   888
+#  888   888  d8(  888  o.  )88b  888 `88b.  888    .o  888   888
+# o888o o888o `Y888""8o 8""888P' o888o o888o `Y8bod8P' o888o o888o
+
+printf "\n"
+echo "Linking .ghci..."
+ln -ns "$dotfiles_path/ghci" "/Users/$USER/.ghci"
+
 printf "\n"
 printf "Done."
 printf "\n"

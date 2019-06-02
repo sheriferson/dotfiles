@@ -5,6 +5,7 @@
 - `.tmux.conf` for [tmux](https://tmux.github.io/ "tmux").
 - `init.vim` for Neovim.
 - `.Rprofile`
+- `.ghci`
 - `config.fish` for [fish](http://fishshell.com/ "fish shell") (**f**riendly **i**nteractive **sh**ell).
 - `kitty/kitty.conf` for [kitty terminal emulator](https://github.com/kovidgoyal/kitty/ "kitty terminal emulator").
 - `jupyter/custom/custom.css` Dark mode styling for jupyter notebooks.
