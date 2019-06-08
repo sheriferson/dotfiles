@@ -1,3 +1,12 @@
+# should I be focusing on something I'm doing now?
+set -g what_now (command cat ~/mytasks/tasks.txt | grep '@now' | wc -l | sed -e's/ *//')
+
+function fish_right_prompt
+    if test $what_now -gt 0
+        echo -n (set_color FF0800)'« '(command python3 ~/t/t.py --task-dir ~/mytasks --list tasks.txt -g @now | sed -E 's/[[:alnum:]]{1,}[[:space:]]{1,}-[[:space:]]//;s/[[:space:]]+@today//;s/[[:space:]]+@now//;' )' »'(set_color normal)
+    end
+end
+
 function fish_prompt
     test $SSH_TTY
     and printf (set_color ff6961)'['$USER(set_color fdfd96)'@'(prompt_hostname)'] '
@@ -47,17 +56,10 @@ function fish_prompt
     # what's on deck today?
     set n_today (command python3 ~/t/t.py --task-dir ~/mytasks --list tasks.txt -g @today | wc -l | sed -e's/ *//')
 
-    # should I be focusing on something I'm doing now?
-    set what_now (command cat ~/mytasks/tasks.txt | grep '@now' | wc -l | sed -e's/ *//')
-
     # Main
     echo -n (prompt_pwd)(set_color 008E00)"$git_full "(set_color normal)
     if test $n_today -gt 0
         echo -n (set_color e71a1a)"$n_today✔"' '(set_color normal)
-    end
-    if test $what_now -gt 0
-        echo -n (set_color FF0800)'-<< '(command python3 ~/t/t.py --task-dir ~/mytasks --list tasks.txt -g @now | sed -E 's/[[:space:]]+@today//;s/[[:space:]]+@now//;' )' >>- '(set_color normal)
-        echo -e \r
     end
     echo -n '⁂ '
 end
