@@ -20,7 +20,6 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
 Plugin 'itchyny/lightline.vim'
-Plugin 'majutsushi/tagbar'
 Plugin 'junegunn/goyo.vim'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -29,34 +28,27 @@ Plugin 'vim-pandoc/vim-criticmarkup'
 Plugin 'ChesleyTan/wordCount.vim'
 Plugin 'maverickg/stan.vim'
 Plugin 'dearrrfish/vim-applescript'
-Plugin 'tpope/vim-dadbod'
-Plugin 'tpope/vim-dotenv'
-Plugin 'ntpeters/vim-better-whitespace'         " 2017-05-31
-Plugin 'iamcco/mathjax-support-for-mkdp'        " 2018-01-26
-Plugin 'iamcco/markdown-preview.vim'            " 2018-01-26
-Plugin 'ekalinin/Dockerfile.vim'                " 2018-07-19
-Plugin 'dag/vim-fish'                           " 2018-08-09
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'iamcco/mathjax-support-for-mkdp'
+Plugin 'iamcco/markdown-preview.vim'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'dag/vim-fish'
 Plugin 'sirver/UltiSnips'
 Plugin 'honza/vim-snippets'
-Plugin 'aserebryakov/vim-todo-lists'
 Plugin 'mattn/emmet-vim'
-Plugin 'neoclide/coc.nvim'                      " 2019-02-03
+Plugin 'neoclide/coc.nvim'
 Plugin 'thiagoalessio/rainbow_levels.vim'
+Plugin 'mengelbrecht/lightline-bufferline'
 " colorschemes
 Plugin 'blerins/flattown'
 Plugin 'sjl/badwolf'
 Plugin 'reedes/vim-colors-pencil'
 Plugin 'scwood/vim-hybrid'
 Plugin 'Haron-Prime/Antares'
-Plugin 'dikiaap/minimalist'
-Plugin 'fneu/breezy'
-Plugin 'fugalh/desert.vim'
 Plugin 'dracula/vim'
 Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'mengelbrecht/lightline-bufferline'
 " javascript
 Plugin 'jelera/vim-javascript-syntax'           " general javscript syntax improvements
-Plugin 'ternjs/tern_for_vim'                    " Tern-based JavaScript editing support.
 " R and Python
 Plugin 'jalvesaq/Nvim-R'
 Plugin 'jalvesaq/vimcmdline'
@@ -133,9 +125,6 @@ let g:UltiSnipsExpandTrigger="<c-a>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/UltiSnips']
-
-" ## vim-todo
-let g:VimTodoListsMoveItems = 0
 
 " ## vim-table-mode
 let g:table_mode_corner="|"
@@ -252,13 +241,6 @@ syntax on            		    " syntax highlighting
 " change the mapleader from \ to ,
 let mapleader=","
 
-nmap <leader>= :Tabularize /=<CR>
-vmap <leader>= :Tabularize /=<CR>
-nmap <leader>: :Tabularize /:\zs<CR>
-vmap <leader>: :Tabularize /:\zs<CR>
-nmap <leader>< :Tabularize /<-<CR>
-vmap <leader>< :Tabularize /<-<CR>
-
 " create new splits below and to the right, like god intended
 set splitbelow
 set splitright
@@ -327,9 +309,6 @@ set backupdir=~/.config/nvim/backup//
 set directory=~/.config/nvim/swap//
 set undodir=~/.config/nvim/undo//
 
-let g:tex_flavor = 'latex'
-let g:Tex_ViewRule_pdf = 'Preview'
-
 " leader + f will erase whitespace at end of line
 map <leader>f :s/\s\+$//<CR>
 
@@ -384,20 +363,6 @@ set fillchars+=vert:\
 :nnoremap <A-k> <C-w>k
 :nnoremap <A-l> <C-w>l
 
-augroup ironmapping
-    autocmd!
-    autocmd Filetype python nmap <buffer> <Space> 0ctr$
-    autocmd Filetype python vmap <buffer> <leader>t <Plug>(iron-send-motion)
-    autocmd Filetype python nmap <buffer> <leader>p <Plug>(iron-repeat-cmd)
-augroup END
-
-" turn relativenumber off when in insert mode, back on when in normal mode
-" ref: https://jeffkreeftmeijer.com/vim-number/#hybrid-line-numbers
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
 
 " from jvns
 " https://github.com/jvns/vimconfig/blob/master/vimrc
@@ -406,38 +371,37 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 function! s:patch_papercolor()
     " Make the background nicer
-    highlight Normal ctermbg=None
-    highlight Folded ctermbg=None
-    highlight NonText ctermfg=60 ctermbg=None
-
-    " set coneal highlights
-    highlight conceal ctermbg=None ctermfg=141
+    highlight Normal guibg=None
+    highlight Folded guibg=None
 
     " change the highlight of the current line number to orange foreground
-    highlight CursorLineNR ctermfg=172 ctermbg=None
-    highlight LineNR ctermbg=None
+    highlight CursorLineNR guifg=#a500ff guibg=None
 
-    " we need to set gitgutter's colors
-    highlight GitGutterAdd    guifg=#009900 guibg=None ctermfg=2
-    highlight GitGutterChange guifg=#bbbb00 guibg=None ctermfg=3
-    highlight GitGutterDelete guifg=#ff2222 guibg=None ctermfg=1
+    " GitGutterChange isn't read from the colorscheme well
+    " for some reason
+    highlight GitGutterChange guifg=#ffa500 guibg=None
 
-    " improve vimdiff colors
-    highlight DiffDelete ctermbg=210
-
+    " turn relativenumber off when in insert mode, back on when in normal mode
+    " ref: https://jeffkreeftmeijer.com/vim-number/#hybrid-line-numbers
     augroup numbertoggle
       autocmd!
       autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
       autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
     augroup END
+
+    set fcs=eob:\ 
 endfunction
 
 autocmd! ColorScheme PaperColor call s:patch_papercolor()
 
+set termguicolors
+colorscheme papercolor
 set background=light
-colorscheme PaperColor
 
 " coc settings
+
+set nobackup
+set nowritebackup
 
 " Smaller updatetime for CursorHold & CursorHoldI
 set updatetime=300
@@ -460,6 +424,67 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 autocmd BufNew,BufEnter *.py,*.vim, execute "silent! CocEnable"
 autocmd BufNew,BufEnter *.md,*.markdown,*.txt, execute "silent! CocDisable"
