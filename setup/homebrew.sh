@@ -64,6 +64,7 @@ caskarray=(
     keyboard-maestro
     launchbar
     launchcontrol
+    mactex
     musicbrainz-picard
     numi
     pkg-config
