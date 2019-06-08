@@ -1,7 +1,14 @@
+# In an interactive session
+# use rdoc's formatting of help/man pages
+if (interactive()) {
+  library(utils)
+  rdoc::use_rdoc()
+}
+
 options(
     # color scheme see [here](https://help.farbox.com/pygments.html)
     # for a list of supported color schemes, default is `"native"`
-    radian.color_scheme = "colorful",
+    radian.color_scheme = "default",
 
     # either  `"emacs"` (default) or `"vi"`.
     radian.editing_mode = "vi",
