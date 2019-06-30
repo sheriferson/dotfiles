@@ -412,6 +412,15 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
 
+"  .ooooo.   .ooooo.   .ooooo.
+" d88' `"Y8 d88' `88b d88' `"Y8
+" 888       888   888 888
+" 888   .o8 888   888 888   .o8
+" `Y8bod8P' `Y8bod8P' `Y8bod8P'
+
+set pyxversion=3
+set signcolumn=auto:2 " so we can see the signs of messages in addition to git signs
+
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>

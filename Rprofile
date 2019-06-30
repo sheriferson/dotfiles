@@ -45,3 +45,14 @@ options(
     # enable reticulate prompt and trigger `~`
     radian.enable_reticulate_prompt = FALSE
 )
+
+# set up lintr options for use with coc-r-lsp
+setHook(
+    packageEvent("languageserver", "onLoad"),
+    function(...) {
+        options(languageserver.default_linters = lintr::with_defaults(
+            line_length_linter = lintr::line_length_linter(100),
+            single_quotes_linter = NULL
+        ))
+    }
+)
