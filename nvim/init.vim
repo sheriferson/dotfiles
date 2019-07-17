@@ -1,64 +1,51 @@
-"######### Vundle start #########
-set nocompatible                " be iMproved, required
-filetype off                    " required - Vundle
+" vim-plug
+call plug#begin('~/.config/nvim/bundle/')
 
-" set the runtime path to include Vundle and initialize
-set shell=bash
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin('~/.config/nvim/bundle/')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-"#########  Vundle plugins #########
-Plugin 'godlygeek/tabular'
-Plugin 'tpope/vim-fugitive'
-Plugin 'vim-pandoc/vim-pandoc'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/nerdtree'
-Plugin 'itchyny/lightline.vim'
-Plugin 'junegunn/goyo.vim'
-Plugin 'dhruvasagar/vim-table-mode'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'vim-pandoc/vim-criticmarkup'
-Plugin 'ChesleyTan/wordCount.vim'
-Plugin 'maverickg/stan.vim'
-Plugin 'dearrrfish/vim-applescript'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'iamcco/mathjax-support-for-mkdp'
-Plugin 'iamcco/markdown-preview.vim'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'dag/vim-fish'
-Plugin 'sirver/UltiSnips'
-Plugin 'honza/vim-snippets'
-Plugin 'mattn/emmet-vim'
-Plugin 'neoclide/coc.nvim'
-Plugin 'thiagoalessio/rainbow_levels.vim'
-Plugin 'mengelbrecht/lightline-bufferline'
-Plugin 'liuchengxu/vista.vim'
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-pandoc/vim-pandoc', { 'for': ['markdown', 'pandoc'] }
+Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': ['markdown', 'pandoc'] }
+Plug 'airblade/vim-gitgutter'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdtree'
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'vim-pandoc/vim-criticmarkup'
+Plug 'ChesleyTan/wordCount.vim'
+Plug 'maverickg/stan.vim'
+Plug 'dearrrfish/vim-applescript'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'iamcco/mathjax-support-for-mkdp', { 'for': ['markdown', 'pandoc'] }
+Plug 'iamcco/markdown-preview.vim', { 'for': ['markdown', 'pandoc'] }
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'dag/vim-fish', { 'for': 'fish' }
+Plug 'sirver/UltiSnips'
+Plug 'honza/vim-snippets'
+Plug 'mattn/emmet-vim', { 'for': ['html', 'javascript'] }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'thiagoalessio/rainbow_levels.vim'
+Plug 'mengelbrecht/lightline-bufferline'
+Plug 'liuchengxu/vista.vim'
 " colorschemes
-Plugin 'blerins/flattown'
-Plugin 'sjl/badwolf'
-Plugin 'reedes/vim-colors-pencil'
-Plugin 'scwood/vim-hybrid'
-Plugin 'Haron-Prime/Antares'
-Plugin 'dracula/vim'
-Plugin 'NLKNguyen/papercolor-theme'
+Plug 'blerins/flattown'
+Plug 'sjl/badwolf'
+Plug 'reedes/vim-colors-pencil'
+Plug 'scwood/vim-hybrid'
+Plug 'Haron-Prime/Antares'
+Plug 'dracula/vim'
+Plug 'NLKNguyen/papercolor-theme'
 " javascript
-Plugin 'jelera/vim-javascript-syntax'           " general javscript syntax improvements
+Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 " R and Python
-Plugin 'jalvesaq/Nvim-R'
-Plugin 'jalvesaq/vimcmdline'
+Plug 'jalvesaq/Nvim-R', { 'for': ['r', 'rmd'] }
+Plug 'jalvesaq/vimcmdline', { 'for': 'python' }
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
-"######### Vundle end #########
 
 "######### Goyo functions #########
 
