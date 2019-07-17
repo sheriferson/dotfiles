@@ -7,6 +7,7 @@ piparray=(
     jupyter_contrib_nbextensions
     jupyterlab
     matplotlib
+    mypy
     notebook
     numpy
     pandas
