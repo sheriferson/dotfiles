@@ -24,6 +24,7 @@ brewarray=(
     ffmpeg
     figlet
     fish
+    font-mplus-1mn-nerd-mono
     gcc
     git
     gnupg

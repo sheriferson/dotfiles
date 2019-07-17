@@ -39,6 +39,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'neoclide/coc.nvim'
 Plugin 'thiagoalessio/rainbow_levels.vim'
 Plugin 'mengelbrecht/lightline-bufferline'
+Plugin 'liuchengxu/vista.vim'
 " colorschemes
 Plugin 'blerins/flattown'
 Plugin 'sjl/badwolf'
@@ -162,6 +163,12 @@ let g:lightline.component_type   = {'buffers': 'tabsel'}
 let g:lightline#bufferline#number_map = {
 \ 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴',
 \ 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹'}
+
+" vista
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
 
 nmap <Leader>1 <Plug>lightline#bufferline#go(1)
 nmap <Leader>2 <Plug>lightline#bufferline#go(2)
@@ -497,3 +504,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 autocmd BufNew,BufEnter *.py,*.vim, execute "silent! CocEnable"
 autocmd BufNew,BufEnter *.md,*.markdown,*.txt, execute "silent! CocDisable"
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
