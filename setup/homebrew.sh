@@ -61,7 +61,6 @@ caskarray=(
     google-chrome
     iina
     itsycal
-    julia
     keyboard-maestro
     launchbar
     launchcontrol
