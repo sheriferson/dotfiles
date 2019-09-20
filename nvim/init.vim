@@ -28,8 +28,8 @@ Plug 'honza/vim-snippets'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'javascript'] }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'thiagoalessio/rainbow_levels.vim'
-Plug 'mengelbrecht/lightline-bufferline'
 Plug 'liuchengxu/vista.vim'
+Plug 'chrisbra/Colorizer'
 " colorschemes
 Plug 'blerins/flattown'
 Plug 'sjl/badwolf'
