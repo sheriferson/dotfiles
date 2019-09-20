@@ -57,9 +57,9 @@ function fish_prompt
     set n_today (command python3 ~/t/t.py --task-dir ~/mytasks --list tasks.txt -g @today | wc -l | sed -e's/ *//')
 
     # Main
-    echo -n (prompt_pwd)(set_color 008E00)"$git_full "(set_color normal)
+    echo -n (prompt_pwd)(set_color brgreen)"$git_full "(set_color normal)
     if test $n_today -gt 0
-        echo -n (set_color e71a1a)"$n_today✔"' '(set_color normal)
+        echo -n (set_color brred)"$n_today✔"' '(set_color normal)
     end
     echo -n '⁂ '
 end
