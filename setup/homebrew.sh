@@ -58,6 +58,7 @@ caskarray=(
     bitbar
     fastscripts
     firefox
+    font-inconsolata-nerd-font
     google-chrome
     iina
     itsycal
@@ -80,11 +81,6 @@ for ii in "${caskarray[@]}"
 do
     brew cask install $ii
 done
-
-sprint "Tapping caskroom/fonts"
-
-brew tap caskroom/fonts
-brew cask install font-fira-code
 
 sprint "Tapping universal-tags"
 brew tap universal-ctags/universal-ctags
