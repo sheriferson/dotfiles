@@ -344,7 +344,10 @@ function! s:patch_papercolor()
     highlight Folded guibg=None
 
     " change the highlight of the current line number to orange foreground
-    highlight CursorLineNR guifg=#a500ff guibg=None
+    highlight CursorLineNR guibg=None
+
+    " fix more of the line number area
+    highlight LineNR guibg=None
 
     " GitGutterChange isn't read from the colorscheme well
     " for some reason
@@ -365,7 +368,7 @@ autocmd! ColorScheme PaperColor call s:patch_papercolor()
 
 set termguicolors
 colorscheme papercolor
-set background=light
+set background=dark
 
 "  .ooooo.   .ooooo.   .ooooo.
 " d88' `"Y8 d88' `88b d88' `"Y8
