@@ -29,6 +29,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'thiagoalessio/rainbow_levels.vim'
 Plug 'liuchengxu/vista.vim'
 Plug 'chrisbra/Colorizer'
+Plug 'liuchengxu/vim-clap'
 " colorschemes
 Plug 'blerins/flattown'
 Plug 'sjl/badwolf'
