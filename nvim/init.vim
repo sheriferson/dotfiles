@@ -125,12 +125,12 @@ let g:lightline = {
     \   'right': [['wordcount'], ['lineinfo'] ]
     \ },
     \ 'component_function': {
-    \   'cocstatus': 'coc#status',
-    \   'fugitive': 'MyFugitive',
-    \   'readonly': 'MyReadonly',
-    \   'filename': 'MyFilename',
-    \   'modified': 'MyModified',
-    \   'wordcount': 'MyWordCount'
+    \   'cocstatus' : 'coc#status',
+    \   'fugitive'  : 'MyFugitive',
+    \   'readonly'  : 'MyReadonly',
+    \   'filename'  : 'MyFilename',
+    \   'modified'  : 'MyModified',
+    \   'wordcount' : 'MyWordCount'
     \ }
     \ }
 
@@ -296,7 +296,7 @@ map <C-c> :NERDTreeToggle<CR>
 " the following should allow me to use Ctrl-i to inspect
 " an element to find out which group it belongs to
 " for coloring purposes
-nmap <C-i> :call <SID>SynStack()<CR>
+nmap <C-x> :call <SID>SynStack()<CR>
 function! <SID>SynStack()
     if !exists("*synstack")
         return
@@ -335,6 +335,8 @@ set fillchars+=vert:\
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 function! s:patch_papercolor()
+    " Better split lines
+    highlight VertSplit gui=None guibg=None guifg=#5F8787
     " Make the background nicer
     highlight Normal guibg=None
     highlight Folded guibg=None
