@@ -103,6 +103,8 @@ nmap <Space> <Plug>RDSendLine
 let cmdline_app = {}
 let cmdline_app['python'] = 'ipython'
 let cmdline_term_height = 20 " Initial height of interpreter window or pane
+let cmdline_vsplit = 2
+let cmdline_term_width  = 70
 
 " ## Ultisnips
 let g:UltiSnipsExpandTrigger="<c-a>"
