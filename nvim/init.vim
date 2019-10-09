@@ -189,7 +189,7 @@ function! MyFilename()
 endfunction
 
 function! MyWordCount()
-    let _ = ['pandoc', 'text', 'md', 'markdown']
+    let _ = ['pandoc', 'text', 'md', 'markdown', 'markdown.pandoc']
     if index(_, &filetype) == -1
         return ""
     else
@@ -262,6 +262,7 @@ autocmd Filetype sql setlocal tabstop=2 softtabstop=0 shiftwidth=2
 autocmd Filetype r,rmd setlocal tabstop=2 softtabstop=0 shiftwidth=2
 
 autocmd BufRead,BufNewFile *.md set filetype=markdown    " this is to make markdown syn-hi work for .md
+autocmd BufRead,BufNewFile *.md CocDisable
 
 set undofile                    " create a file that contains undo information
 set wrap                        " The following two lines wrap lines without breaking the word
