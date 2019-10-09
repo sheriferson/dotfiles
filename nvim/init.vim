@@ -19,8 +19,7 @@ Plug 'ChesleyTan/wordCount.vim'
 Plug 'maverickg/stan.vim'
 Plug 'dearrrfish/vim-applescript'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'iamcco/mathjax-support-for-mkdp', { 'for': ['markdown', 'pandoc'] }
-Plug 'iamcco/markdown-preview.vim', { 'for': ['markdown', 'pandoc'] }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'sirver/UltiSnips'
@@ -83,10 +82,6 @@ let g:gitgutter_sign_modified_removed = '●'
 " ## vim-pandoc
 let g:pandoc#folding#fdc = 0
 let g:pandoc#spell#enabled = 0
-
-" ## markdown preview
-let vim_markdown_preview_pandoc = 1
-let vim_markdown_preview_hotkey = '<C-M>'
 
 " ## nvim-R
 let g:R_app = 'radian'
