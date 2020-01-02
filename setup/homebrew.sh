@@ -21,6 +21,7 @@ sprint "Installing Homebrew recipes"
 
 brewarray=(
     cmake
+    exa
     ffmpeg
     figlet
     fish
