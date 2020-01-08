@@ -21,6 +21,7 @@ piparray=(
     seaborn
     termcolor
     terminaltables
+    you-get
 )
 
 for ii in "${piparray[@]}"

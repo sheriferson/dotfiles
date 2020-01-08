@@ -43,7 +43,6 @@ brewarray=(
     r
     tmux
     yarn
-    you-get
 )
 
 for ii in "${brewarray[@]}"
