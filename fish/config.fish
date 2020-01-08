@@ -22,7 +22,11 @@ set --export LSCOLORS "excxfxdxbxegedabagacad"
 # `Y888""8o o888o o888o `Y888""8o 8""888P' `Y8bod8P' 8""888P'
 
 # better ls
-alias ls='ls -lGFah'
+if type -q exa
+    alias ls='exa -la'
+else
+    alias ls='ls -lGFah'
+end
 
 # task related aliases
 alias t='python3 ~/t/t.py --task-dir ~/mytasks --list tasks.txt'
@@ -42,17 +46,16 @@ alias capnow='caplog -p (date +%Y-%m-%d\ %H:%M)'
 alias desktop='bash ~/scripts/desktop.sh'
 alias mylint='pylint -d \'invalid-name, len-as-condition, superfluous-parens, unidiomatic-typecheck\' *.py'
 
-# julia
-alias julia='/Applications/Julia-0.6.app/Contents/Resources/julia/bin/julia'
-
 # haskell
 alias haskell='ghci'
 
 # use kitty diff tool
 abbr -a -g d 'kitty +kitten diff'
 
-# abbreviation
+# jekyll aliases
+alias serve='bundle exec jekyll serve'
 
+# abbreviations
 abbr -a -g ga 'git add'
 abbr -a -g gb 'git branch'
 abbr -a -g gc 'git checkout'
