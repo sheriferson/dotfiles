@@ -3,6 +3,7 @@
 piparray=(
     bpython
     dateparser
+    flake8
     jupyter
     jupyter_contrib_nbextensions
     jupyterlab
