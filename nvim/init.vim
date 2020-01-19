@@ -30,6 +30,8 @@ Plug 'thiagoalessio/rainbow_levels.vim'
 Plug 'liuchengxu/vista.vim'
 Plug 'chrisbra/Colorizer'
 Plug 'liuchengxu/vim-clap'
+Plug 'ryanoasis/vim-devicons'
+Plug 'goerz/jupytext.vim'
 " colorschemes
 Plug 'blerins/flattown'
 Plug 'sjl/badwolf'
