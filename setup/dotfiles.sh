@@ -36,6 +36,8 @@ mkdir -p /Users/$USER/.config/nvim/bundle
 printf "\n"
 echo "Linking neovim config file (init.vim)..."
 ln -ns "$dotfiles_path/nvim/init.vim" /Users/$USER/.config/nvim/init.vim
+echo "Linking coc-settings.json..."
+ln -ns "$dotfiles_path/nvim/coc-settings.json" /Users/$USER/.config/nvim/
 echo "Installing vim-plug..."
 mkdir -p /Users/$USER/.config/nvim/autoload
 curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > /Users/$USER/.config/nvim/autoload/plug.vim
