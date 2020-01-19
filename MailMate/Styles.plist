@@ -1,8 +1,7 @@
 {   styles = (
 	{   type = keyword;
         keyword = '\\Flagged';
-        color = "#F25A62";
-        fontStyle = "bold";
+        fontStyle = "boldAndItalic";
     },
     {
         type = keyword;

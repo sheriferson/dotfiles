@@ -3,7 +3,6 @@
     "k" = "selectPreviousMessageRow:";
 
     "T" = "showThread:";
-    "U" = ( "toggleFilterKey:", "unread" );
     "/" = "mailboxSearch:";
 
     "m" = "moveToMailbox:";
@@ -17,7 +16,8 @@
 
     "a" = "archive:";
     "n" = "newMessage:";
-    "r" = "reply:";
+    "r" = "replySender:";
+    "R" = "replyAll:";
     "L" = "loadImagesOnce:";
 
     "l" = "copyAsLink:";
@@ -25,6 +25,9 @@
     "9" = ("makeFirstResponder:", "messageView"); // move focus to message view (for scrolling with arrows)
     "d" = "saveAttachmentsInDownloads:";
 
-    "x" = ( "toggleFilterKey:", "unread", "makeFirstResponder:", "mainOutline", "selectFirstMessageRow:");
+    "U" = ("toggleFilterKey:", "unread", "makeFirstResponder:", "mainOutline", "selectFirstMessageRow:");
+
+    "z" = "expandThread:";
+    "Z" = "collapseThread:";
 }
 
