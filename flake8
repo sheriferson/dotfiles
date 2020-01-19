@@ -1,0 +1,7 @@
+[flake8]
+ignore =
+    E203,  # not pep8, black adds whitespace before ':'
+    W503,  # not pep8, black adds line break before binary operator
+    W504,  # line break after binary operator, that's okay in parens
+    E722   # bare except is okay
+max-line-length = 100

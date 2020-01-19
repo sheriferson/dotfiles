@@ -158,3 +158,15 @@ ln -ns "$dotfiles_path/ghci" "/Users/$USER/.ghci"
 printf "\n"
 printf "Done."
 printf "\n"
+
+#               .   oooo
+#             .o8   `888
+#  .ooooo.  .o888oo  888 .oo.    .ooooo.  oooo d8b
+# d88' `88b   888    888P"Y88b  d88' `88b `888""8P
+# 888   888   888    888   888  888ooo888  888
+# 888   888   888 .  888   888  888    .o  888
+# `Y8bod8P'   "888" o888o o888o `Y8bod8P' d888b
+
+printf "\n"
+printf "Linking flake8 conf file..."
+ln -ns "$dotfiles_path/flake8" /Users/$USER/.config/
