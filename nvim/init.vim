@@ -3,8 +3,8 @@ call plug#begin('~/.config/nvim/bundle/')
 
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-pandoc/vim-pandoc', { 'for': ['markdown', 'pandoc'] }
-Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': ['markdown', 'pandoc'] }
+Plug 'vim-pandoc/vim-pandoc',
+Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': ['md', 'markdown', 'pandoc'] }
 Plug 'airblade/vim-gitgutter'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
@@ -85,6 +85,8 @@ let g:gitgutter_sign_modified_removed = '●'
 " ## vim-pandoc
 let g:pandoc#folding#fdc = 0
 let g:pandoc#spell#enabled = 0
+let g:pandoc#syntax#codeblocks#embeds#langs = ['yaml', 'sh', 'html', 'sql', 'python', 'fish']
+let g:pandoc#syntax#conceal#urls = 1
 
 " ## nvim-R
 let g:R_app = 'radian'
@@ -143,6 +145,7 @@ let g:lightline = {
 let g:vista#renderer#icons = {
 \   "function": "\uf794",
 \   "variable": "\uf71b",
+\   "chapter" : "📖",
 \  }
 
 let g:lightline.mode_map = {
@@ -266,9 +269,6 @@ set smarttab
 autocmd Filetype sql setlocal tabstop=2 softtabstop=0 shiftwidth=2
 autocmd Filetype r,rmd setlocal tabstop=2 softtabstop=0 shiftwidth=2
 
-autocmd BufRead,BufNewFile *.md set filetype=markdown    " this is to make markdown syn-hi work for .md
-autocmd BufRead,BufNewFile *.md CocDisable
-
 set undofile                    " create a file that contains undo information
 set wrap                        " The following two lines wrap lines without breaking the word
 set wildmenu                    " file autocomplete will show up in menu
@@ -365,6 +365,11 @@ function! s:patch_papercolor()
     augroup END
 
     set fcs=eob:\ 
+
+    " Markdown/pandoc syntax highlighting improvements
+    highlight conceal guibg=None
+    highlight pandocAtxHeader guifg=#ff69b4
+    highlight Pmenu guibg=#426370
 endfunction
 
 autocmd! ColorScheme PaperColor call s:patch_papercolor()
@@ -497,3 +502,5 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+autocmd BufNew,BufEnter *.json,*.md execute "silent! CocDisable"
