@@ -107,8 +107,6 @@ nmap <Space> <Plug>RDSendLine
 let cmdline_app = {}
 let cmdline_app['python'] = 'ipython'
 let cmdline_term_height = 20 " Initial height of interpreter window or pane
-let cmdline_vsplit = 2
-let cmdline_term_width  = 70
 
 " ## Ultisnips
 let g:UltiSnipsExpandTrigger="<c-a>"
@@ -124,10 +122,10 @@ let g:ctrlp_open_multiple_files = 'v'
 
 " ## lightline and lightline-bufferline
 let g:lightline = {
-    \ 'colorscheme': 'PaperColor',
+    \ 'colorscheme': 'darcula',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'fugitive', 'filename' ],
+    \             [ 'fugitive', 'filename', 'filetype' ],
     \             [ 'cocstatus' ] ],
     \   'right': [['wordcount'], ['lineinfo'] ]
     \ },
@@ -136,6 +134,7 @@ let g:lightline = {
     \   'fugitive'  : 'MyFugitive',
     \   'readonly'  : 'MyReadonly',
     \   'filename'  : 'MyFilename',
+    \   'filetype'  : 'MyFiletype',
     \   'modified'  : 'MyModified',
     \   'wordcount' : 'MyWordCount'
     \ }
@@ -196,6 +195,10 @@ function! MyFilename()
   return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
        \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . WebDevIconsGetFileTypeSymbol() : 'no ft') . ' ' : ''
 endfunction
 
 function! MyWordCount()
@@ -282,7 +285,7 @@ set directory=~/.config/nvim/swap//
 set undodir=~/.config/nvim/undo//
 
 " leader + f will erase whitespace at end of line
-map <leader>f :s/\s\+$//<CR>
+map <leader>w :s/\s\+$//<CR>
 
 "This unsets the 'last search pattern' register by hitting return
 nnoremap <CR> :noh<CR><CR>
