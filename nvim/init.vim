@@ -29,7 +29,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'thiagoalessio/rainbow_levels.vim'
 Plug 'liuchengxu/vista.vim'
 Plug 'chrisbra/Colorizer'
-Plug 'liuchengxu/vim-clap', { 'do': function('clap#helper#build_all') }
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'goerz/jupytext.vim'
 " colorschemes
@@ -184,8 +184,8 @@ function! MyReadonly()
 endfunction
 
 function! MyFugitive()
-  if exists("*fugitive#head")
-    let _ = fugitive#head()
+  if exists("*FugitiveHead")
+    let _ = FugitiveHead()
     return strlen(_) ? ""." "._ : ''
   endif
   return ''
