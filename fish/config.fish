@@ -110,6 +110,9 @@ source ~/.localoverrides
 # in your shell's init script (ie, .bash_profile, .zshrc, whatever),
 # will either start gpg-agent or set up the
 # GPG_AGENT_INFO variable if it's already running.
+set -gx GPG_TTY (tty)
+set -g PINENTRY_USER_DATA "USE_CURSES=1"
+
 set gpgstart "gpg-agent --daemon"
 
 if [ -z (pgrep gpg-agent) ]
