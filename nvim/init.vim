@@ -123,7 +123,7 @@ let g:ctrlp_open_multiple_files = 'v'
 
 " ## lightline and lightline-bufferline
 let g:lightline = {
-    \ 'colorscheme': 'darcula',
+    \ 'colorscheme': 'PaperColor',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'fugitive', 'filename', 'filetype' ],
@@ -362,6 +362,9 @@ function! s:patch_papercolor()
     " for some reason
     highlight GitGutterChange guifg=#ffa500 guibg=None
 
+    " No background for NonText
+    highlight NonText guibg=None
+
     " turn relativenumber off when in insert mode, back on when in normal mode
     " ref: https://jeffkreeftmeijer.com/vim-number/#hybrid-line-numbers
     augroup numbertoggle
@@ -382,7 +385,7 @@ autocmd! ColorScheme PaperColor call s:patch_papercolor()
 
 set termguicolors
 colorscheme papercolor
-set background=dark
+set background=light
 
 "  .ooooo.   .ooooo.   .ooooo.
 " d88' `"Y8 d88' `88b d88' `"Y8
