@@ -78,16 +78,15 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " ## gitgutter
 " use • instead of +/-
 " https://github.com/statico/dotfiles/blob/master/.vim/vimrc
-let g:gitgutter_sign_added = '●'
-let g:gitgutter_sign_modified = '●'
-let g:gitgutter_sign_removed = '●'
-let g:gitgutter_sign_modified_removed = '●'
+let g:gitgutter_sign_added = '⭘'
+let g:gitgutter_sign_modified = '⭘'
+let g:gitgutter_sign_removed = '⭘'
+let g:gitgutter_sign_modified_removed = '⭘'
 
 " ## vim-pandoc
 let g:pandoc#folding#fdc = 0
 let g:pandoc#spell#enabled = 0
 let g:pandoc#syntax#codeblocks#embeds#langs = ['yaml', 'sh', 'html', 'sql', 'python', 'fish']
-let g:pandoc#syntax#conceal#urls = 1
 
 " ## nvim-R
 let g:R_app = 'radian'
@@ -147,6 +146,12 @@ let g:vista#renderer#icons = {
 \   "variable": "\uf71b",
 \   "chapter" : "📖",
 \  }
+
+let g:vista_executive_for = {
+      \ 'vimwiki': 'markdown',
+      \ 'pandoc': 'markdown',
+      \ 'markdown': 'toc',
+      \ }
 
 let g:vista_sidebar_width = 40
 
@@ -251,7 +256,7 @@ set linebreak
 set foldenable                          " sets folding
 set foldlevelstart=2                    " open most folds by default
 set foldmethod=syntax                   " fold based on indent
-autocmd FileType markdown nnoremap <space> za
+autocmd FileType markdown,pandoc nnoremap <space> za
 
 " the next two in that order turn on hybrid line number;
 set relativenumber              " Show relative line numbers
@@ -272,8 +277,7 @@ set shiftwidth=4
 set smarttab
 
 " for R/SQL files, 2 spaces
-autocmd Filetype sql setlocal tabstop=2 softtabstop=0 shiftwidth=2
-autocmd Filetype r,rmd setlocal tabstop=2 softtabstop=0 shiftwidth=2
+autocmd Filetype r,rmd,sql,html,pandoc setlocal tabstop=2 softtabstop=0 shiftwidth=2
 
 set undofile                    " create a file that contains undo information
 set wrap                        " The following two lines wrap lines without breaking the word
@@ -302,6 +306,7 @@ autocmd FileType md nnoremap <space> za
 autocmd FileType md vnoremap <space> zf
 
 map <C-c> :NERDTreeToggle<CR>
+map <M-o> :Clap files<CR>
 
 " 2013/12/2
 " the following should allow me to use Ctrl-i to inspect
@@ -322,6 +327,7 @@ autocmd FileType python set colorcolumn=100
 " change color of tilde from white to something darker, and remove pipe
 " separator
 set fillchars+=vert:\ 
+set listchars=tab:▸\ ,eol:¬,space:·
 
 " Be able to escape to Normal mode in Terminal
 :tnoremap <Esc> <C-\><C-n>
