@@ -32,6 +32,7 @@ Plug 'chrisbra/Colorizer'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'goerz/jupytext.vim'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 " colorschemes
 Plug 'blerins/flattown'
 Plug 'sjl/badwolf'
