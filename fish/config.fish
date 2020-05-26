@@ -33,7 +33,7 @@ alias t='python3 ~/t/t.py --task-dir ~/mytasks --list tasks.txt'
 alias music='python3 ~/t/t.py --task-dir ~/mytasks --list music.txt'
 alias goals='python3 ~/t/t.py --task-dir ~/mytasks --list goals.txt'
 
-alias today='t -g @today'
+alias today='fish ~/mytasks/doing.fish today'
 alias now='t -g @now'
 alias done='python3 ~/t/done.py'
 
@@ -45,6 +45,10 @@ alias caplog='python3 ~/projects/caplog/caplog.py'
 alias capnow='caplog -p (date +%Y-%m-%d\ %H:%M)'
 alias desktop='bash ~/scripts/desktop.sh'
 alias mylint='pylint -d \'invalid-name, len-as-condition, superfluous-parens, unidiomatic-typecheck\' *.py'
+alias icat='kitty +kitten icat'
+
+alias doing 'fish ~/mytasks/doing.fish tasks'
+alias projects 'fish ~/mytasks/doing.fish'
 
 # haskell
 alias haskell='ghci'
@@ -125,3 +129,4 @@ end > /dev/null
 # use Homebrew's ruby
 set -g fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
 set -g fish_user_paths "/Users/sherif/.gem/ruby/2.6.0/bin" $fish_user_paths
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
