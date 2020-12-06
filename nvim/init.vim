@@ -78,10 +78,10 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " ## gitgutter
 " use • instead of +/-
 " https://github.com/statico/dotfiles/blob/master/.vim/vimrc
-let g:gitgutter_sign_added = '⭘'
-let g:gitgutter_sign_modified = '⭘'
-let g:gitgutter_sign_removed = '⭘'
-let g:gitgutter_sign_modified_removed = '⭘'
+let g:gitgutter_sign_added = ''
+let g:gitgutter_sign_modified = ''
+let g:gitgutter_sign_removed = ''
+let g:gitgutter_sign_modified_removed = ''
 
 " ## vim-pandoc
 let g:pandoc#folding#fdc = 0
