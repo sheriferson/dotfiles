@@ -384,7 +384,7 @@ function! s:patch_papercolor()
     " Markdown/pandoc syntax highlighting improvements
     highlight conceal guibg=None
     highlight pandocAtxHeader guifg=#ff69b4
-    highlight Pmenu guibg=#426370
+    highlight Pmenu guifg=#426370 guibg=#dcffed
 endfunction
 
 autocmd! ColorScheme PaperColor call s:patch_papercolor()
