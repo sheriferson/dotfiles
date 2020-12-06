@@ -66,6 +66,7 @@ caskarray=(
     launchbar
     launchcontrol
     mactex
+    moom
     musicbrainz-picard
     numi
     pkg-config
