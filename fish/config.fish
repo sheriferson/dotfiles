@@ -60,9 +60,6 @@ abbr -a -g d 'kitty +kitten diff'
 alias serve='bundle exec jekyll serve'
 
 # abbreviations
-abbr -a -g ga 'git add'
-abbr -a -g gb 'git branch'
-abbr -a -g gc 'git checkout'
 abbr -a -g gd 'git difftool'
 abbr -a -g gs 'git status'
 
