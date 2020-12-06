@@ -119,6 +119,7 @@ let g:table_mode_corner="|"
 
 " ## Ctrl-P
 let g:ctrlp_open_multiple_files = 'v'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 " ## lightline and lightline-bufferline
 let g:lightline = {
@@ -344,7 +345,6 @@ set listchars=tab:▸\ ,eol:¬,space:·
 :nnoremap <A-j> <C-w>j
 :nnoremap <A-k> <C-w>k
 :nnoremap <A-l> <C-w>l
-
 
 " from jvns
 " https://github.com/jvns/vimconfig/blob/master/vimrc
