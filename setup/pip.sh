@@ -15,6 +15,7 @@ piparray=(
     pycodestyle
     pyflakes
     pynvim
+    python-dateutil
     python-language-server
     radian
     scikit-learn
