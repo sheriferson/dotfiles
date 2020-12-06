@@ -23,7 +23,7 @@ set --export LSCOLORS "excxfxdxbxegedabagacad"
 
 # better ls
 if type -q exa
-    alias ls='exa -la'
+    alias ls='exa --group-directories-first --icons -la --no-user --no-permissions'
 else
     alias ls='ls -lGFah'
 end
