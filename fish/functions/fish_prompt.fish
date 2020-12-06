@@ -1,24 +1,6 @@
 # The following guide by Brett Terpstra was very helpful
 # https://brettterpstra.com/2019/11/11/fish-further-exploration/
 
-function __ntoday
-    set n_today (command cat ~/mytasks/tasks.txt | grep '@today' | wc -l | sed -e's/ *//')
-    if test $n_today -gt 0
-        echo -n (set_color red)"✔$n_today"(set_color normal)
-    else
-        echo -n "☀️"
-    end
-end
-
-function __decoration_char
-    set n_what_now (command cat ~/mytasks/tasks.txt | grep '@now' | wc -l | sed -e's/ *//')
-    if test $n_what_now -gt 0
-        echo -n (set_color red -b d3d3d3)' ‼ '(set_color normal)' '
-    else
-        echo -n (set_color -b d3d3d3)' ᠅ '(set_color normal)' '
-    end
-end
-
 function __ssh_badge
 	if test -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY"
 		set_color -b d6aeec -o 2a0a8b
@@ -91,8 +73,7 @@ function fish_prompt
     and echo (set_color red)"#"
 
     # Main
-    __ntoday
+    __ssh_badge
     __current_path
     __git_status
-    __decoration_char
 end
