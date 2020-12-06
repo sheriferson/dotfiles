@@ -102,6 +102,9 @@ alias figlet="figlet -f roman"
 alias vim="nvim"
 alias mvim="reattach-to-user-namespace mvim"
 
+# iTunes commands
+alias albumshuffle="osascript ~/Library/iTunes/Scripts/Play\ Random\ Album.scptd"
+
 # source local overrides
 source ~/.localoverrides
 
@@ -127,3 +130,4 @@ end > /dev/null
 set -g fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
 set -g fish_user_paths "/Users/sherif/.gem/ruby/2.6.0/bin" $fish_user_paths
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+set -g fish_user_paths "/Users/sherif/.cargo/bin" $fish_user_paths
