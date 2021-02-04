@@ -72,6 +72,7 @@ function fish_prompt
     test $USER = 'root'
     and echo (set_color red)"#"
 
+    echo -e '\r'
     # Main
     __ssh_badge
     __current_path
