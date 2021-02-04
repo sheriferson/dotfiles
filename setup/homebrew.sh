@@ -31,14 +31,13 @@ brewarray=(
     gnupg
     gpg-agent
     harfbuzz
-    icdiff
     imagemagick
     inetutils
     librsvg
     neovim
     optipng
     pandoc
-    pinentry-mac
+    pinentry
     python3
     r
     tmux
@@ -57,9 +56,6 @@ caskarray=(
     bbedit
     bitbar
     fastscripts
-    firefox
-    font-inconsolata-nerd-font
-    google-chrome
     iina
     itsycal
     keyboard-maestro
@@ -68,9 +64,7 @@ caskarray=(
     mactex
     moom
     musicbrainz-picard
-    numi
     pkg-config
-    rest
     shortcat
     soulver
     ubersicht
