@@ -9,37 +9,29 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
-Plug 'itchyny/lightline.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-pandoc/vim-criticmarkup'
-Plug 'ChesleyTan/wordCount.vim'
-Plug 'maverickg/stan.vim'
 Plug 'dearrrfish/vim-applescript'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-Plug 'ekalinin/Dockerfile.vim'
 Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'sirver/UltiSnips'
 Plug 'honza/vim-snippets'
-Plug 'mattn/emmet-vim', { 'for': ['html', 'javascript'] }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'thiagoalessio/rainbow_levels.vim'
 Plug 'liuchengxu/vista.vim'
-Plug 'chrisbra/Colorizer'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'goerz/jupytext.vim'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'akinsho/nvim-bufferline.lua'
+Plug 'psliwka/vim-smoothie'
 " colorschemes
-Plug 'blerins/flattown'
-Plug 'sjl/badwolf'
 Plug 'reedes/vim-colors-pencil'
-Plug 'scwood/vim-hybrid'
-Plug 'Haron-Prime/Antares'
-Plug 'dracula/vim'
 Plug 'NLKNguyen/papercolor-theme'
 " javascript
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
@@ -66,7 +58,7 @@ function! s:goyo_leave()
     " maybe one day I will find a way to re-enable these
     " settings in a nice seamless way without rewriting code
     " if you're reading this and have a better way, please tell me!
-    " hi@sherifsoliman.com
+    " hi@sherif.io
     highlight Pmenu ctermfg=15 ctermbg=30 guifg=#ffffff guibg=#000000
 endfunction
 
@@ -121,26 +113,6 @@ let g:table_mode_corner="|"
 let g:ctrlp_open_multiple_files = 'v'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
-" ## lightline and lightline-bufferline
-let g:lightline = {
-    \ 'colorscheme': 'PaperColor',
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'fugitive', 'filename', 'filetype' ],
-    \             [ 'cocstatus' ] ],
-    \   'right': [['wordcount'], ['lineinfo'] ]
-    \ },
-    \ 'component_function': {
-    \   'cocstatus' : 'coc#status',
-    \   'fugitive'  : 'MyFugitive',
-    \   'readonly'  : 'MyReadonly',
-    \   'filename'  : 'MyFilename',
-    \   'filetype'  : 'MyFiletype',
-    \   'modified'  : 'MyModified',
-    \   'wordcount' : 'MyWordCount'
-    \ }
-    \ }
-
 " vista
 let g:vista#renderer#icons = {
 \   "function": "\uf794",
@@ -148,75 +120,11 @@ let g:vista#renderer#icons = {
 \   "chapter" : "📖",
 \  }
 
-let g:vista_executive_for = {
-      \ 'vimwiki': 'markdown',
-      \ 'pandoc': 'markdown',
-      \ 'markdown': 'toc',
-      \ }
+let g:vista_executive_for = { 'pandoc': 'markdown' }
+
+let g:pandoc#syntax#codeblocks#embeds#use = 0
 
 let g:vista_sidebar_width = 40
-
-let g:lightline.mode_map = {
-    \ 'n' : 'N',
-    \ 'i' : 'I',
-    \ 'R' : 'R',
-    \ 'v' : 'V',
-    \ 'V' : 'V',
-    \ "\<C-v>": 'V',
-    \ 's' : 'S',
-    \ 'S' : 'S',
-    \ "\<C-s>": 'S'
-    \ }
-
-function! MyModified()
-  if &filetype == "help"
-    return ""
-  elseif &modified
-    return "+"
-  elseif &modifiable
-    return ""
-  else
-    return ""
-  endif
-endfunction
-
-function! MyReadonly()
-  if &filetype == "help"
-    return ""
-  elseif &readonly
-    return ""
-  else
-    return ""
-  endif
-endfunction
-
-function! MyFugitive()
-  if exists("*FugitiveHead")
-    let _ = FugitiveHead()
-    return strlen(_) ? ""." "._ : ''
-  endif
-  return ''
-endfunction
-
-function! MyFilename()
-  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
-       \ ('' != MyModified() ? ' ' . MyModified() : '')
-endfunction
-
-function! MyFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . WebDevIconsGetFileTypeSymbol() : 'no ft') . ' ' : ''
-endfunction
-
-function! MyWordCount()
-    let _ = ['pandoc', 'text', 'md', 'markdown', 'markdown.pandoc']
-    if index(_, &filetype) == -1
-        return ""
-    else
-        return wordCount#WordCount()
-    endif
-endfunction
-
 
 "######### Various vim settings #########
 
@@ -269,6 +177,7 @@ set nospell                     " Spell check is off by default
 set spelllang=en_us             " American dictionary
 set showmatch                   " set show matching parentheses
 set inccommand=nosplit
+set laststatus=1
 
 " tabs
 set expandtab                   " Convert tabs into spaces
@@ -393,6 +302,21 @@ set termguicolors
 colorscheme papercolor
 set background=light
 
+lua << EOF
+require'bufferline'.setup {
+    options = {
+        show_buffer_close_icons = false,
+        max_name_length = 40
+    },
+    highlights = {
+        fill = {
+            guifg = 'black',
+            guibg = '#b2b2b2'
+        }
+    }
+}
+EOF
+
 "  .ooooo.   .ooooo.   .ooooo.
 " d88' `"Y8 d88' `88b d88' `"Y8
 " 888       888   888 888
@@ -496,9 +420,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Using CocList
 " Show all diagnostics
