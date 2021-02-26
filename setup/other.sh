@@ -33,5 +33,6 @@ ln -ns "$dotfiles_path/AppleScripts/Play Random Album.scptd" /Users/$USER/Librar
 
 echo "Linking user AppleScripts..."
 mkdir -p "/Users/$USER/Library/Scripts/"
-cp $dotfiles_path/AppleScripts/iTunes* "/Users/sherif/Library/Scripts/"
-cp ln -ns "$dotfiles_path/AppleScripts/Paste URL from Safari Tab.scpt" "/Users/sherif/Library/Scripts/"
+cp $dotfiles_path/AppleScripts/iTunes* "/Users/$USER/Library/Scripts/"
+cp ln -ns "$dotfiles_path/AppleScripts/Paste URL from Safari Tab.scpt" "/Users/$USER/Library/Scripts/"
+cp ln -ns "$dotfiles_path/AppleScripts/yougetclipboard.scpt" "/Users/$USER/Library/Scripts/"
