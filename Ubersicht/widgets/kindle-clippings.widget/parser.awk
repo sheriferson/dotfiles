@@ -7,7 +7,7 @@ BEGIN {
   if ($0 !~ /==========/) {
       clipping = clipping $0 "\n";
   } else {
-  clippings[i++] = clipping;
+  clippings[i++] = clipping "\n";
   clipping = "";
 }
 }
