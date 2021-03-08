@@ -100,8 +100,8 @@ end > /dev/null
 # Add completion for kitty commands to fish
 /Applications/kitty.app/Contents/MacOS/kitty + complete setup fish | source
 
-# use Homebrew's ruby
-set -g fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
-set -g fish_user_paths "/Users/sherif/.gem/ruby/2.6.0/bin" $fish_user_paths
-set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
-set -g fish_user_paths "/Users/sherif/.cargo/bin" $fish_user_paths
+fish_add_path "/usr/local/opt/ruby/bin"
+fish_add_path "/Users/sherif/.gem/ruby/2.6.0/bin"
+fish_add_path "/usr/local/sbin"
+fish_add_path "/Users/sherif/.cargo/bin"
+
