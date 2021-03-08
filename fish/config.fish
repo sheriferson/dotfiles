@@ -30,9 +30,6 @@ end
 
 # task related aliases
 alias t='python3 ~/t/t.py --task-dir ~/mytasks --list tasks.txt'
-alias music='python3 ~/t/t.py --task-dir ~/mytasks --list music.txt'
-alias goals='python3 ~/t/t.py --task-dir ~/mytasks --list goals.txt'
-
 alias today='fish ~/mytasks/doing.fish today'
 alias now='t -g @now'
 alias done='python3 ~/t/done.py'
@@ -44,7 +41,6 @@ alias bdone='echo $bdcount'
 alias caplog='python3 ~/projects/caplog/caplog.py'
 alias capnow='caplog -p (date +%Y-%m-%d\ %H:%M)'
 alias desktop='bash ~/scripts/desktop.sh'
-alias mylint='pylint -d \'invalid-name, len-as-condition, superfluous-parens, unidiomatic-typecheck\' *.py'
 alias icat='kitty +kitten icat'
 
 alias doing 'fish ~/mytasks/doing.fish tasks'
@@ -62,24 +58,6 @@ alias serve='bundle exec jekyll serve'
 # abbreviations
 abbr -a -g gd 'git difftool'
 abbr -a -g gs 'git status'
-
-#     .
-#   .o8
-# .o888oo ooo. .oo.  .oo.   oooo  oooo  oooo    ooo
-#   888   `888P"Y88bP"Y88b  `888  `888   `88b..8P'
-#   888    888   888   888   888   888     Y888'
-#   888 .  888   888   888   888   888   .o8"'88b
-#   "888" o888o o888o o888o  `V88V"V8P' o88'   888o
-
-alias tnew='tmux new -s'
-alias tgo='tmux a -t'
-alias tls='tmux ls'
-alias tkill='tmux kill-session -t'
-alias tkillall='tmux kill-server'
-
-# shotcuts to running tmux workspace scripts
-alias tmsimple='fish ~/dotfiles/tmux-workspaces/simplestatistics.sh'
-alias tmjsimple='fish ~/dotfiles/tmux-workspaces/jsimplestats.sh'
 
 #                    o8o
 #                    `"'
@@ -100,10 +78,6 @@ alias figlet="figlet -f roman"
 
 # vim should be = nvim
 alias vim="nvim"
-alias mvim="reattach-to-user-namespace mvim"
-
-# iTunes commands
-alias albumshuffle="osascript ~/Library/iTunes/Scripts/Play\ Random\ Album.scptd"
 
 # source local overrides
 source ~/.localoverrides
