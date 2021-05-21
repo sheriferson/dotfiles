@@ -10,9 +10,6 @@ set --export GIT_EDITOR "nvim -f"
 # have z
 source ~/Github/z-fish/z.fish
 
-# make directories look better
-set --export LSCOLORS "excxfxdxbxegedabagacad"
-
 #           oooo   o8o
 #           `888   `"'
 #  .oooo.    888  oooo   .oooo.    .oooo.o  .ooooo.   .oooo.o
@@ -34,10 +31,6 @@ alias today='fish ~/mytasks/doing.fish today'
 alias now='t -g @now'
 alias done='python3 ~/t/done.py'
 
-# b for bug/task tracking
-alias b='python3 ~/t/t.py --task-dir . --list _todo.txt'
-alias bdone='echo $bdcount'
-
 alias caplog='python3 ~/projects/caplog/caplog.py'
 alias capnow='caplog -p (date +%Y-%m-%d\ %H:%M)'
 alias desktop='bash ~/scripts/desktop.sh'
@@ -46,38 +39,20 @@ alias icat='kitty +kitten icat'
 alias doing 'fish ~/mytasks/doing.fish tasks'
 alias projects 'fish ~/mytasks/doing.fish'
 
-# haskell
 alias haskell='ghci'
+alias vim="nvim"
+alias figlet="figlet -f roman"
 
 # use kitty diff tool
 abbr -a -g d 'kitty +kitten diff'
 
-# jekyll aliases
-alias serve='bundle exec jekyll serve'
-
-# abbreviations
+# git abbreviations
 abbr -a -g gd 'git difftool'
 abbr -a -g gs 'git status'
-
-#                    o8o
-#                    `"'
-# ooo. .oo.  .oo.   oooo   .oooo.o  .ooooo.
-# `888P"Y88bP"Y88b  `888  d88(  "8 d88' `"Y8
-#  888   888   888   888  `"Y88b.  888
-#  888   888   888   888  o.  )88b 888   .o8
-# o888o o888o o888o o888o 8""888P' `Y8bod8P'
+abbr -a -g gitl 'git log --pretty=oneline'
 
 # show me job id
 alias jobs='jobs -l'
-
-# better git log
-alias gitl='git log --pretty=oneline'
-
-# better figlet font
-alias figlet="figlet -f roman"
-
-# vim should be = nvim
-alias vim="nvim"
 
 # source local overrides
 source ~/.localoverrides
@@ -104,4 +79,3 @@ fish_add_path "/usr/local/opt/ruby/bin"
 fish_add_path "/Users/sherif/.gem/ruby/2.6.0/bin"
 fish_add_path "/usr/local/sbin"
 fish_add_path "/Users/sherif/.cargo/bin"
-
