@@ -1,86 +1,59 @@
-" vim-plug
 call plug#begin('~/.config/nvim/bundle/')
 
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 Plug 'vim-pandoc/vim-pandoc',
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': ['md', 'markdown', 'pandoc'] }
-Plug 'airblade/vim-gitgutter'
-Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-surround'
-Plug 'scrooloose/nerdtree'
-Plug 'junegunn/goyo.vim'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'tomtom/tcomment_vim'
+Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'vim-pandoc/vim-criticmarkup'
 Plug 'dearrrfish/vim-applescript'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'dag/vim-fish', { 'for': 'fish' }
-Plug 'sirver/UltiSnips'
-Plug 'honza/vim-snippets'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'thiagoalessio/rainbow_levels.vim'
+
+Plug 'folke/lsp-colors.nvim'
+Plug 'folke/trouble.nvim'
+Plug 'hrsh7th/nvim-compe'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'onsails/lspkind-nvim'
+
 Plug 'liuchengxu/vista.vim'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 Plug 'ryanoasis/vim-devicons'
-Plug 'goerz/jupytext.vim'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'akinsho/nvim-bufferline.lua'
-Plug 'psliwka/vim-smoothie'
-" colorschemes
-Plug 'reedes/vim-colors-pencil'
+Plug 'karb94/neoscroll.nvim'
+
 Plug 'NLKNguyen/papercolor-theme'
-" javascript
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
-" R and Python
 Plug 'jalvesaq/Nvim-R', { 'for': ['r', 'rmd'] }
 Plug 'jalvesaq/vimcmdline', { 'for': 'python' }
 
 call plug#end()
 
 
-"######### Goyo functions #########
+" # gitgutter
+let g:gitgutter_sign_added = '•'
+let g:gitgutter_sign_modified = '•'
+let g:gitgutter_sign_removed = '•'
+let g:gitgutter_sign_modified_removed = '•'
 
-function! s:goyo_enter()
-    autocmd! numbertoggle
-    set norelativenumber
-    set nonumber
-endfunction
-
-function! s:goyo_leave()
-    set relativenumber
-    set number
-
-    " need to get things back to normal as much as possible
-    " maybe one day I will find a way to re-enable these
-    " settings in a nice seamless way without rewriting code
-    " if you're reading this and have a better way, please tell me!
-    " hi@sherif.io
-    highlight Pmenu ctermfg=15 ctermbg=30 guifg=#ffffff guibg=#000000
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
-"######### Various plugin settings #########
-
-" ## gitgutter
-" use • instead of +/-
-" https://github.com/statico/dotfiles/blob/master/.vim/vimrc
-let g:gitgutter_sign_added = ''
-let g:gitgutter_sign_modified = ''
-let g:gitgutter_sign_removed = ''
-let g:gitgutter_sign_modified_removed = ''
-
-" ## vim-pandoc
+" # vim-pandoc
 let g:pandoc#folding#fdc = 0
 let g:pandoc#spell#enabled = 0
 let g:pandoc#syntax#codeblocks#embeds#langs = ['yaml', 'sh', 'html', 'sql', 'python', 'fish']
 
-" ## nvim-R
+" # nvim-R
 let g:R_app = 'radian'
 let g:R_cmd = 'R'
 let g:R_hl_term = 0
@@ -95,46 +68,26 @@ let R_auto_scroll = 1                    " Scroll to end of output in console
 vmap <Space> <Plug>RDSendSelection
 nmap <Space> <Plug>RDSendLine
 
-" ## vimcmdline
+" # vimcmdline
 let cmdline_app = {}
 let cmdline_app['python'] = 'ipython'
-let cmdline_term_height = 20 " Initial height of interpreter window or pane
+let cmdline_term_height = 20
 
-" ## Ultisnips
-let g:UltiSnipsExpandTrigger="<c-a>"
-let g:UltiSnipsJumpForwardTrigger="<c-n>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/UltiSnips']
-
-" ## vim-table-mode
+" # vim-table-mode
 let g:table_mode_corner="|"
 
-" ## Ctrl-P
+" # Ctrl-P
 let g:ctrlp_open_multiple_files = 'v'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
-" vista
-let g:vista#renderer#icons = {
-\   "function": "\uf794",
-\   "variable": "\uf71b",
-\   "chapter" : "📖",
-\  }
-
-let g:vista_executive_for = { 'pandoc': 'markdown' }
-
-let g:pandoc#syntax#codeblocks#embeds#use = 0
-
-let g:vista_sidebar_width = 40
+let g:vista_sidebar_width = 50
 
 "######### Various vim settings #########
 
-syntax on            		    " syntax highlighting
-
-" change the mapleader from \ to ,
-let mapleader=","
-
-" create new splits below and to the right, like god intended
-set splitbelow
+syntax on
+nnoremap ; :
+let mapleader=","  " change from \
+set splitbelow  " new splits below and to the right, like god intended
 set splitright
 
 " Copy to clipboard
@@ -144,55 +97,48 @@ nnoremap <leader>Y  "+yg_
 nnoremap <leader>y  "+y
 nnoremap <leader>yy  "+yy
 
-" Paste from clipboard
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
-vnoremap <leader>p "+p
-vnoremap <leader>P "+P
-
-filetype indent on                      " OPTIONAL This enables automatic indentation as you type.
-set autoread                            " read changes to file that happen on disk
-set hidden                              " Makes vim not complain when there are hidden buffers
-
-" search
-set ignorecase		                    " Ignore case in search
-set incsearch                           " search as characters are entered
-set hlsearch                            " Highlights all search matches at the same time
+filetype indent on                                   " enables automatic indentation as you type
+set autoread                                         " read changes to file that happen on disk
+set hidden                                           " Makes vim not complain when there are hidden buffers
+                                                     " search
+set ignorecase                                       " Ignore case in search
+set incsearch                                        " search as characters are entered
+set hlsearch                                         " Highlights all search matches at the same time
 
 set linebreak
 
-" folding settings
-set foldenable                          " sets folding
-set foldlevelstart=2                    " open most folds by default
-set foldmethod=syntax                   " fold based on indent
+set foldenable                                       " sets folding
+set foldlevelstart=2                                 " open most folds by default
+set foldmethod=syntax                                " fold based on indent
 autocmd FileType markdown,pandoc nnoremap <space> za
+" use space for folds
+autocmd FileType md nnoremap <space> za
+autocmd FileType md vnoremap <space> zf
 
-" the next two in that order turn on hybrid line number;
-set relativenumber              " Show relative line numbers
-set number      		        " Show line numbers
+set relativenumber                                   " Show relative line numbers
+set number                                           " Show line numbers
 
-set scrolloff=8	    	        " Maintain 8 lines while scrolling
-set nosmartindent		        " Automatically indent with curly bracket
-set nospell                     " Spell check is off by default
-set spelllang=en_us             " American dictionary
-set showmatch                   " set show matching parentheses
+set scrolloff=8                                      " Maintain 8 lines while scrolling
+set nosmartindent                                    " Automatically indent with curly bracket
+set nospell                                          " Spell check is off by default
+set spelllang=en_us                                  " American dictionary
+set showmatch                                        " set show matching parentheses
 set inccommand=nosplit
 set laststatus=1
-
-" tabs
-set expandtab                   " Convert tabs into spaces
-set tabstop=4	            	" Specifies the number of spaces in a tab
-set softtabstop=4               " when editing
+                                                     " tabs
+set expandtab                                        " Convert tabs into spaces
+set tabstop=4                                        " Specifies the number of spaces in a tab
+set softtabstop=4                                    " when editing
 set shiftwidth=4
 set smarttab
 
+set undofile                                         " create a file that contains undo information
+set wrap                                             " The following two lines wrap lines without breaking the word
+set wildmenu                                         " file autocomplete will show up in menu
+set wildmode=list:longest                            " show list of all options and autocomplete to longest common string
+
 " for R/SQL files, 2 spaces
 autocmd Filetype r,rmd,sql,html,pandoc setlocal tabstop=2 softtabstop=0 shiftwidth=2
-
-set undofile                    " create a file that contains undo information
-set wrap                        " The following two lines wrap lines without breaking the word
-set wildmenu                    " file autocomplete will show up in menu
-set wildmode=list:longest       " show list of all options and autocomplete to longest common string
 
 " keep vim's backup, swap, and undo files in those directories.
 set backupdir=~/.config/nvim/backup//
@@ -202,18 +148,11 @@ set undodir=~/.config/nvim/undo//
 " leader + f will erase whitespace at end of line
 map <leader>w :s/\s\+$//<CR>
 
-"This unsets the 'last search pattern' register by hitting return
+" unsets the 'last search pattern' register by hitting return
 nnoremap <CR> :noh<CR><CR>
 " move around lines visually
 nnoremap j gj
 nnoremap k gk
-
-" not have to press shift before colon to type commands
-nnoremap ; :
-
-" use space for folds
-autocmd FileType md nnoremap <space> za
-autocmd FileType md vnoremap <space> zf
 
 map <C-c> :NERDTreeToggle<CR>
 map <M-o> :Clap files<CR>
@@ -242,43 +181,26 @@ set listchars=tab:▸\ ,eol:¬,space:·
 " Be able to escape to Normal mode in Terminal
 :tnoremap <Esc> <C-\><C-n>
 
-:tnoremap <A-h> <C-\><C-N><C-w>h
-:tnoremap <A-j> <C-\><C-N><C-w>j
-:tnoremap <A-k> <C-\><C-N><C-w>k
-:tnoremap <A-l> <C-\><C-N><C-w>l
-:inoremap <A-h> <C-\><C-N><C-w>h
-:inoremap <A-j> <C-\><C-N><C-w>j
-:inoremap <A-k> <C-\><C-N><C-w>k
-:inoremap <A-l> <C-\><C-N><C-w>l
-:nnoremap <A-h> <C-w>h
-:nnoremap <A-j> <C-w>j
-:nnoremap <A-k> <C-w>k
-:nnoremap <A-l> <C-w>l
-
 " from jvns
 " https://github.com/jvns/vimconfig/blob/master/vimrc
 " Return to last edit position when opening files<Paste>
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-function! s:patch_papercolor()
-    " Better split lines
+function! s:patch_theme()
     highlight VertSplit gui=None guibg=None guifg=#5F8787
-    " Make the background nicer
     highlight Normal guibg=None
     highlight Folded guibg=None
-
-    " change the highlight of the current line number to orange foreground
-    highlight CursorLineNR guibg=None
-
-    " fix more of the line number area
-    highlight LineNR guibg=None
-
-    " GitGutterChange isn't read from the colorscheme well
-    " for some reason
-    highlight GitGutterChange guifg=#ffa500 guibg=None
-
-    " No background for NonText
     highlight NonText guibg=None
+    highlight CursorLineNR guibg=None
+    highlight LineNR guibg=None
+    highlight SignColumn guibg=None
+
+    " Markdown/pandoc syntax highlighting improvements
+    highlight conceal guibg=None
+    highlight pandocAtxHeader guifg=#ff69b4
+    highlight Pmenu guifg=#426370 guibg=#dcffed
+
+    highlight GitGutterChange guifg=#ffa500 guibg=None
 
     " turn relativenumber off when in insert mode, back on when in normal mode
     " ref: https://jeffkreeftmeijer.com/vim-number/#hybrid-line-numbers
@@ -289,20 +211,29 @@ function! s:patch_papercolor()
     augroup END
 
     set fcs=eob:\ 
-
-    " Markdown/pandoc syntax highlighting improvements
-    highlight conceal guibg=None
-    highlight pandocAtxHeader guifg=#ff69b4
-    highlight Pmenu guifg=#426370 guibg=#dcffed
 endfunction
 
-autocmd! ColorScheme PaperColor call s:patch_papercolor()
+autocmd! ColorScheme onehalflight call s:patch_theme()
 
 set termguicolors
-colorscheme papercolor
-set background=light
+let g:one_allow_italics = 1
+colorscheme onehalflight
+
+" lsp diagnostics
+sign define LspDiagnosticsSignError text= texthl=LspDiagnosticsSignError linehl= numhl=
+sign define LspDiagnosticsSignWarning text= texthl=LspDiagnosticsSignWarning linehl= numhl=
+sign define LspDiagnosticsSignInformation text= texthl=LspDiagnosticsSignInformation linehl= numhl=
+sign define LspDiagnosticsSignHint text= texthl=LspDiagnosticsSignHint linehl= numhl=
 
 lua << EOF
+require'lspconfig'.jedi_language_server.setup{}
+require'lspconfig'.pyls.setup{}
+require('lspkind').init({})
+
+require("trouble").setup {
+    auto_close = true, -- automatically close the list when you have no diagnostics
+}
+
 require'bufferline'.setup {
     options = {
         show_buffer_close_icons = false,
@@ -315,128 +246,64 @@ require'bufferline'.setup {
         }
     }
 }
-EOF
 
-"  .ooooo.   .ooooo.   .ooooo.
-" d88' `"Y8 d88' `88b d88' `"Y8
-" 888       888   888 888
-" 888   .o8 888   888 888   .o8
-" `Y8bod8P' `Y8bod8P' `Y8bod8P'
+vim.o.completeopt = "menuone,noselect"
 
-" if hidden is not set, TextEdit might fail.
-set hidden
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
 
-" Some servers have issues with backup files, see #649
-set nobackup
-set nowritebackup
+  source = {
+    path = true;
+    nvim_lsp = true;
+  };
+}
 
-" You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
 
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
+local check_back_space = function()
+    local col = vim.fn.col('.') - 1
+    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+        return true
+    else
+        return false
+    end
+end
 
-" always show signcolumns
-set signcolumn=yes
-
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Use `[c` and `]c` to navigate diagnostics
-nmap <silent> {c <Plug>(coc-diagnostic-prev)
-nmap <silent> }c <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
+-- Use (s-)tab to:
+--- move to prev/next item in completion menuone
+--- jump to prev/next snippet's placeholder
+_G.tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-n>"
+  elseif check_back_space() then
+    return t "<Tab>"
   else
-    call CocAction('doHover')
-  endif
-endfunction
+    return vim.fn['compe#complete']()
+  end
+end
+_G.s_tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-p>"
+  else
+    return t "<S-Tab>"
+  end
+end
 
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-" Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
-
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
-" Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" use `:OR` for organize import of current buffer
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-autocmd BufNew,BufEnter *.json,*.md execute "silent! CocDisable"
+vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+EOF
