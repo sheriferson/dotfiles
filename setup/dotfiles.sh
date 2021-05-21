@@ -154,5 +154,6 @@ printf "\n"
 # `Y8bod8P'   "888" o888o o888o `Y8bod8P' d888b
 
 printf "\n"
-printf "Linking flake8 conf file..."
+printf "Linking flake8 and pycodestyle conf files..."
 ln -ns "$dotfiles_path/flake8" /Users/$USER/.config/
+ln -ns "$dotfiles_path/pycodestyle" /Users/$USER/.config/

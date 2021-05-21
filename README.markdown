@@ -25,13 +25,12 @@ $ ./setup.sh
 
 `setup.sh` runs a few other bash scripts that set up packages and settings in various categories:
 
-| file              | job                                                       |
-|-------------------|-----------------------------------------------------------|
-| `dotfiles.sh`     | Links all dotfiles to their proper locations.             |
-| `github-repos.sh` | Clones Github repos that I want on my system.             |
-| `hiddenprefs.sh`  | Sets hidden preferences for MacOS and a few applications. |
-| `homebrew.sh`     | Installs Homebrew recipes.                                |
-| `other.sh`        | Links MailMate Resources directory.                       |
-| `pip.sh`          | Installs Python packages.                                 |
-| `projects.sh`     | Clones a few of my personal projects from Github.         |
-| `rpackages.R`     | Installs R packages.                                      |
+| file               | job                                                       |
+|--------------------|-----------------------------------------------------------|
+| `dotfiles.sh`      | Links all dotfiles to their proper locations.             |
+| `github-repos.sh`  | Clones Github repos that I want on my system.             |
+| `hiddenprefs.sh`   | Sets hidden preferences for MacOS and a few applications. |
+| `Brewfile`         | Lists Homebrew recipes. Installed using `brew bundle`.    |
+| `requirements.txt` | Lists Python packages.                                    |
+| `projects.sh`      | Clones a few of my personal projects from Github.         |
+| `rpackages.R`      | Installs R packages.                                      |

@@ -61,7 +61,6 @@ let R_bracketed_paste = 1
 let R_assign_map = "--"                  " -- to insert <-
 let R_min_editor_width = 100
 let R_rconsole_width = 1000              " make sure the console is at the bottom by making it really wide
-let R_show_args = 0                      " do not show the preview window with function explanation
 let R_objbr_opendf = 0                   " Don't expand a dataframe to show columns by default
 let R_auto_scroll = 1                    " Scroll to end of output in console
 " press space bar to send lines to cnosole

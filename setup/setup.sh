@@ -2,10 +2,11 @@
 
 lightblue='\033[1;34m'
 nc='\033[0m'
-
 function sprint () {
     echo -e "\n${lightblue}$1${nc}\n"
 }
+
+dotfiles_path="/Users/$USER/dotfiles"
 
 # Xcode command line tools
 sprint "Installing Xcode Command Line Tools..."
@@ -17,11 +18,19 @@ bash $(dirname $0)/dotfiles.sh
 
 # homebrew
 sprint "Installing homebrew and homebrew packages..."
-bash $(dirname $0)/homebrew.sh
+sprint "\nChecking if Homebrew is installed..."
+
+if ! type "brew" > /dev/null; then
+    sprint "Installing Homebrew"
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+sprint "Installing Homebrew recipes"
+brew bundle --file ../Brewfile
 
 # pip
 sprint "Installing pip packages (for Python3)"
-bash $(dirname $0)/pip.sh
+pip3 install -r ../requirements.txt
 
 # personal projects
 sprint "Checking for and cloning personal projects..."
@@ -39,6 +48,20 @@ Rscript $(dirname $0)/rpackages.R
 sprint "Setting some hidden preferences..."
 bash $(dirname $0)/hiddenprefs.sh
 
-# Other (e.g., MailMate linking)
-sprint "Some final links..."
-bash $(dirname $0)/other.sh
+# link MailMate Resources
+printf "\n"
+echo "Linking MailMate Resources directory..."
+ln -ns "$dotfiles_path/MailMate/Resources/" /Users/$USER/Library/Application\ Support/MailMate/
+ln -ns "$dotfiles_path/MailMate/Styles.plist" /Users/$USER/Library/Application\ Support/MailMate/Styles.plist
+
+# link AppleScripts
+printf "\n"
+echo "Linking iTunes AppleScripts..."
+mkdir -p "/Users/$USER/Library/iTunes/Scripts/"
+ln -ns "$dotfiles_path/AppleScripts/Play Random Album.scptd" /Users/$USER/Library/iTunes/Scripts/
+
+echo "Linking user AppleScripts..."
+mkdir -p "/Users/$USER/Library/Scripts/"
+cp $dotfiles_path/AppleScripts/iTunes* "/Users/$USER/Library/Scripts/"
+ln -ns "$dotfiles_path/AppleScripts/Paste URL from Safari Tab.scpt" "/Users/$USER/Library/Scripts/"
+ln -ns "$dotfiles_path/AppleScripts/yougetclipboard.scpt" "/Users/$USER/Library/Scripts/"
