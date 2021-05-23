@@ -193,6 +193,9 @@ function! s:patch_theme()
     highlight CursorLineNR guibg=None
     highlight LineNR guibg=None
     highlight SignColumn guibg=None
+    " don't make comments italic, because I want to see PragmataPro's [TODO] ligature
+    highlight Comment gui=None
+    highlight Todo guifg=#a0a1a7
 
     " Markdown/pandoc syntax highlighting improvements
     highlight conceal guibg=None
@@ -215,7 +218,6 @@ endfunction
 autocmd! ColorScheme onehalflight call s:patch_theme()
 
 set termguicolors
-let g:one_allow_italics = 1
 colorscheme onehalflight
 
 " lsp diagnostics
@@ -227,7 +229,7 @@ sign define LspDiagnosticsSignHint text= texthl=LspDiagnosticsSignHint linehl
 lua << EOF
 require'lspconfig'.jedi_language_server.setup{}
 require'lspconfig'.pyls.setup{}
-require('lspkind').init({})
+require'lspkind'.init({})
 
 require("trouble").setup {
     auto_close = true, -- automatically close the list when you have no diagnostics
