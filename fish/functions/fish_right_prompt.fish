@@ -31,11 +31,13 @@ function __git_status
             set git_full "$git_status"
         end
 
-        if test $git_behind -gt 0
-            set git_full "$git_full $git_behind↓"
-        end
-        if test $git_ahead -gt 0
-            set git_full "$git_full $git_ahead↑"
+        if [ "$git_branch" != "HEAD" ]
+            if test $git_behind -gt 0
+                set git_full "$git_full $git_behind↓"
+            end
+            if test $git_ahead -gt 0
+                set git_full "$git_full $git_ahead↑"
+            end
         end
         if [ -n "$git_dirty" ]
             set branch_color fb9420
