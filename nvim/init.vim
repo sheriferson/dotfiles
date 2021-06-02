@@ -14,6 +14,8 @@ Plug 'dearrrfish/vim-applescript'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'dag/vim-fish', { 'for': 'fish' }
+Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'folke/lsp-colors.nvim'
 Plug 'folke/trouble.nvim'
@@ -80,6 +82,16 @@ let g:ctrlp_open_multiple_files = 'v'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 let g:vista_sidebar_width = 50
+
+" indent_blankline
+let g:indent_blankline_char = '│'
+let g:indent_blankline_use_treesitter = v:true
+let g:indent_blankline_show_current_context = v:true
+let g:indent_blankline_space_char_blankline = ' '
+let g:indent_blankline_space_char = ' '
+let g:indent_blankline_filetype = ['python']
+let g:indent_blankline_context_patterns = ['class', 'function', 'method', '^if', '^while', '^for']
+
 
 "######### Various vim settings #########
 
@@ -307,4 +319,15 @@ vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "rust" },  -- list of language that will be disabled
+  },
+  indent = {
+    enable = true
+  }
+}
 EOF
