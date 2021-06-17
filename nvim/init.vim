@@ -240,7 +240,7 @@ sign define LspDiagnosticsSignHint text= texthl=LspDiagnosticsSignHint linehl
 
 lua << EOF
 require'lspconfig'.jedi_language_server.setup{}
-require'lspconfig'.pyls.setup{}
+require'lspconfig'.pylsp.setup{}
 require'lspkind'.init({})
 
 require("trouble").setup {

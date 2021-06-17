@@ -10,7 +10,7 @@ pycodestyle
 pyflakes
 pynvim
 python-dateutil
-python-language-server[all]
+python-lsp-server[all]
 scikit-learn
 scipy
 termcolor
