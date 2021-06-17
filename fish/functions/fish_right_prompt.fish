@@ -1,12 +1,10 @@
 function fish_right_prompt -d "Write out the right prompt with non zero exit status and date/time"
-    __git_status
-
     set nstat $status
+    __git_status
     if test $nstat -ne 0
-        echo (set_color red)(set_color eeeeee)(set_color -b red)(fish_status_to_signal $nstat)(set_color -b normal)(set_color red)(set_color red)
+        print_bubble '⮾ '(fish_status_to_signal $nstat) red eeeeee
     end
-    echo -n (set_color 6d8cb8)(set_color eeeeee)(set_color -b 6d8cb8)(date +"%H:%M:%S")(set_color -b normal)(set_color 6d8cb8)(set_color normal)
-
+    print_bubble (echo "$CMD_DURATION 1000" | awk '{printf "%.3fs", $1 / $2}') 6d8cb8 eeeeee
 end
 
 function __git_status
@@ -45,6 +43,6 @@ function __git_status
             set branch_color 29c37b
 
         end
-        echo -n (set_color $branch_color)(set_color eeeeee)(set_color -b $branch_color)$git_full(set_color -b normal)(set_color $branch_color)(set_color normal)
+        print_bubble $git_full $branch_color eeeeee
     end
 end
