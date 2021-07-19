@@ -55,13 +55,7 @@ ln -ns "$dotfiles_path/MailMate/Resources/" /Users/$USER/Library/Application\ Su
 ln -ns "$dotfiles_path/MailMate/Styles.plist" /Users/$USER/Library/Application\ Support/MailMate/Styles.plist
 
 # link AppleScripts
-printf "\n"
-echo "Linking iTunes AppleScripts..."
-mkdir -p "/Users/$USER/Library/iTunes/Scripts/"
-ln -ns "$dotfiles_path/AppleScripts/Play Random Album.scptd" /Users/$USER/Library/iTunes/Scripts/
-
 echo "Linking user AppleScripts..."
 mkdir -p "/Users/$USER/Library/Scripts/"
-cp $dotfiles_path/AppleScripts/iTunes* "/Users/$USER/Library/Scripts/"
 ln -ns "$dotfiles_path/AppleScripts/Paste URL from Safari Tab.scpt" "/Users/$USER/Library/Scripts/"
 ln -ns "$dotfiles_path/AppleScripts/yougetclipboard.scpt" "/Users/$USER/Library/Scripts/"
