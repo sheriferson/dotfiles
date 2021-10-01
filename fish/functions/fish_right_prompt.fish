@@ -1,7 +1,6 @@
 function fish_right_prompt -d "Write out the right prompt with non zero exit status and date/time"
     set nstat $status
     __git_status
-    t_today
     if test $nstat -ne 0
         print_bubble '⮾ '(fish_status_to_signal $nstat) red eeeeee
     end
