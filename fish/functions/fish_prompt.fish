@@ -4,7 +4,7 @@
 function __ssh_badge
 	if test -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY"
 		set_color -b d6aeec -o 2a0a8b
-		echo -n " "(string upper (string sub -s 1 -l 1 (hostname -s)))" "(set_color normal)" "
+		echo " "(string upper (string sub -s 1 -l 1 (hostname -s)))" "(set_color normal)" "
 	end
 end
 
@@ -16,15 +16,13 @@ function __current_path
 	set parts[-1] (set_color normal)(set_color eca3c5)$parts[-1](set_color normal)
 	set path (string join "/" $parts)
 
-	echo -n $path(set_color normal)
+	echo $path(set_color normal) ' '
 end
 
 function fish_prompt
     test $USER = 'root'
     and echo (set_color red)"#"
 
-    echo -e '\r'
     __ssh_badge
     __current_path
-    echo -e ' '(random choice ◐ ◑ ◒ ◓ ◔ ◕) ' '
 end
