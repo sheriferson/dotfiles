@@ -5,6 +5,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-pandoc/vim-pandoc',
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': ['md', 'markdown', 'pandoc'] }
+Plug 'sheriferson/vim-criticmarkup'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'tomtom/tcomment_vim'
 Plug 'scrooloose/nerdtree'
@@ -152,8 +153,8 @@ set wildmode=list:longest                            " show list of all options 
 autocmd Filetype r,rmd,sql,html,pandoc setlocal tabstop=2 softtabstop=0 shiftwidth=2
 
 " keep vim's backup, swap, and undo files in those directories.
-set backupdir=~/.config/nvim/backup//
-set directory=~/.config/nvim/swap//
+set backupdir=~/.config/nvim/backup/
+set directory=~/.config/nvim/swap/
 set undodir=~/.config/nvim/undo//
 
 " leader + f will erase whitespace at end of line
@@ -167,6 +168,10 @@ nnoremap k gk
 
 map <C-c> :NERDTreeToggle<CR>
 map <M-o> :Clap files<CR>
+
+" telescope.nvim Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 
 " 2013/12/2
 " the following should allow me to use Ctrl-i to inspect
@@ -216,6 +221,11 @@ function! s:patch_theme()
 
     highlight GitGutterChange guifg=#ffa500 guibg=None
 
+    " CriticMarkup
+    highlight criticHighlight guibg=#F2C136
+    highlight criticComment guibg=#AFCEDB
+    highlight criticMeta guibg=#AFCEDB
+
     " turn relativenumber off when in insert mode, back on when in normal mode
     " ref: https://jeffkreeftmeijer.com/vim-number/#hybrid-line-numbers
     augroup numbertoggle
@@ -225,6 +235,7 @@ function! s:patch_theme()
     augroup END
 
     set fcs=eob:\ 
+
 endfunction
 
 autocmd! ColorScheme onehalflight call s:patch_theme()
@@ -329,5 +340,9 @@ require'nvim-treesitter.configs'.setup {
   indent = {
     enable = true
   }
+}
+
+require('telescope').setup{
+    set_env = { ['COLORTERM'] = 'truecolor' }
 }
 EOF
