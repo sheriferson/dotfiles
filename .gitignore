@@ -1,15 +1,10 @@
 .DS_Store
+Brewfile.lock.json
+Ubersicht/repos
+fish/completions
+fish/conf.d
 fishd.*
-jupyter/migrated
 ipython/profile_default/history.sqlite
 ipython/profile_default/startup/
-Ubersicht/repos
+jupyter/migrated
 kitty/cached.json
-
-# control which widgets are tracked
-artwork.widget
-daysto.widget
-itunes-now.widget
-ical.widget
-kindle-clippings.widget
-habitica.widget
