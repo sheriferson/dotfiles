@@ -17,6 +17,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'fladson/vim-kitty'
+Plug 'rcarriga/nvim-notify'
 
 Plug 'folke/lsp-colors.nvim'
 Plug 'folke/trouble.nvim'
@@ -214,6 +216,12 @@ function! s:patch_theme()
     highlight Comment gui=None
     highlight Todo guifg=#a0a1a7
 
+    " GitGutter
+    highlight GitGutterAdd guibg=None
+    highlight GitGutterChange guibg=None
+    highlight GitGutterDelete guibg=None
+    highlight GitGutterChangeDelete guibg=None
+
     " Markdown/pandoc syntax highlighting improvements
     highlight conceal guibg=None
     highlight pandocAtxHeader guifg=#ff69b4
@@ -253,6 +261,11 @@ lua << EOF
 require'lspconfig'.jedi_language_server.setup{}
 require'lspconfig'.pylsp.setup{}
 require'lspkind'.init({})
+require'lspconfig'.tsserver.setup{}
+require'notify'.setup{}
+
+vim.notify = require("notify")
+require("telescope").load_extension("notify")
 
 require("trouble").setup {
     auto_close = true, -- automatically close the list when you have no diagnostics
@@ -332,7 +345,8 @@ vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = {'php', 'phpdoc'},
   highlight = {
     enable = true,              -- false will disable the whole extension
     disable = { "c", "rust" },  -- list of language that will be disabled
