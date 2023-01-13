@@ -152,7 +152,7 @@ set wildmenu                                         " file autocomplete will sh
 set wildmode=list:longest                            " show list of all options and autocomplete to longest common string
 
 " for R/SQL files, 2 spaces
-autocmd Filetype r,rmd,sql,html,pandoc setlocal tabstop=2 softtabstop=0 shiftwidth=2
+autocmd Filetype r,rmd,sql,html,pandoc,tex setlocal tabstop=2 softtabstop=0 shiftwidth=2
 
 " keep vim's backup, swap, and undo files in those directories.
 set backupdir=~/.config/nvim/backup/
