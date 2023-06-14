@@ -5,7 +5,6 @@ function fish_right_prompt -d "Write out the right prompt with non zero exit sta
         print_bubble '⮾ '(fish_status_to_signal $nstat) red eeeeee
     end
     print_bubble (echo "$CMD_DURATION 1000" | awk '{printf "%.3fs", $1 / $2}') grey eeeeee
-    t_today
 end
 
 function t_today
