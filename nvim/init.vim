@@ -8,10 +8,9 @@ Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': ['md', 'markdown', 'pandoc'] }
 Plug 'sheriferson/vim-criticmarkup'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'tomtom/tcomment_vim'
-Plug 'scrooloose/nerdtree'
+Plug 'nvim-tree/nvim-tree.lua'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'dearrrfish/vim-applescript'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'dag/vim-fish', { 'for': 'fish' }
@@ -19,6 +18,7 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'fladson/vim-kitty'
 Plug 'rcarriga/nvim-notify'
+Plug 'lervag/vimtex'
 
 Plug 'folke/lsp-colors.nvim'
 Plug 'folke/trouble.nvim'
@@ -30,6 +30,9 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'onsails/lspkind-nvim'
 
+Plug 'folke/noice.nvim'
+Plug 'MunifTanjim/nui.nvim'
+
 Plug 'liuchengxu/vista.vim'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 Plug 'ryanoasis/vim-devicons'
@@ -37,7 +40,6 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'karb94/neoscroll.nvim'
 
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
@@ -57,6 +59,9 @@ let g:gitgutter_sign_modified_removed = '•'
 let g:pandoc#folding#fdc = 0
 let g:pandoc#spell#enabled = 0
 let g:pandoc#syntax#codeblocks#embeds#langs = ['yaml', 'sh', 'html', 'sql', 'python', 'fish']
+
+" vimtex
+let g:vimtex_complete_enabled = 1
 
 " # nvim-R
 let g:R_app = 'radian'
@@ -111,7 +116,7 @@ nnoremap <leader>Y  "+yg_
 nnoremap <leader>y  "+y
 nnoremap <leader>yy  "+yy
 
-filetype indent on                                   " enables automatic indentation as you type
+filetype plugin indent on                                   " enables automatic indentation as you type
 set autoread                                         " read changes to file that happen on disk
 set hidden                                           " Makes vim not complain when there are hidden buffers
                                                      " search
@@ -152,7 +157,7 @@ set wildmenu                                         " file autocomplete will sh
 set wildmode=list:longest                            " show list of all options and autocomplete to longest common string
 
 " for R/SQL files, 2 spaces
-autocmd Filetype r,rmd,sql,html,pandoc,tex setlocal tabstop=2 softtabstop=0 shiftwidth=2
+autocmd Filetype r,rmd,sql,html,htmldjango,scss,css,pandoc,tex setlocal tabstop=2 softtabstop=0 shiftwidth=2
 
 " keep vim's backup, swap, and undo files in those directories.
 set backupdir=~/.config/nvim/backup/
@@ -161,6 +166,7 @@ set undodir=~/.config/nvim/undo//
 
 " leader + f will erase whitespace at end of line
 map <leader>w :s/\s\+$//<CR>
+let g:better_whitespace_guicolor='None'
 
 " unsets the 'last search pattern' register by hitting return
 nnoremap <CR> :noh<CR><CR>
@@ -168,12 +174,18 @@ nnoremap <CR> :noh<CR><CR>
 nnoremap j gj
 nnoremap k gk
 
-map <C-c> :NERDTreeToggle<CR>
+map <C-c> :NvimTreeToggle<CR>
 map <M-o> :Clap files<CR>
+
+nmap <leader>t i<C-R>=strftime("%Y-%m-%dT%H:%M:%S%z")<CR><Esc>
 
 " telescope.nvim Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+
+" bufferline config here because it's related
+nnoremap <silent> gb :BufferLinePick<CR>
 
 " 2013/12/2
 " the following should allow me to use Ctrl-i to inspect
@@ -212,6 +224,10 @@ function! s:patch_theme()
     highlight CursorLineNR guibg=None
     highlight LineNR guibg=None
     highlight SignColumn guibg=None
+
+    highlight StatusLine guibg=#e5c07b guifg=black cterm=bold
+    highlight StatusLineNC guibg=#e5c07b guifg=black cterm=bold
+
     " don't make comments italic, because I want to see PragmataPro's [TODO] ligature
     highlight Comment gui=None
     highlight Todo guifg=#a0a1a7
@@ -260,9 +276,12 @@ sign define LspDiagnosticsSignHint text= texthl=LspDiagnosticsSignHint linehl
 lua << EOF
 require'lspconfig'.jedi_language_server.setup{}
 require'lspconfig'.pylsp.setup{}
+require'lspconfig'.texlab.setup{}
 require'lspkind'.init({})
 require'lspconfig'.tsserver.setup{}
-require'notify'.setup{}
+require'notify'.setup({
+  background_colour = "#000000",
+})
 
 vim.notify = require("notify")
 require("telescope").load_extension("notify")
@@ -346,10 +365,10 @@ vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  ignore_install = {'php', 'phpdoc'},
+  ignore_install = {'php', 'phpdoc', 'tex', 'latex'},
   highlight = {
     enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust" },  -- list of language that will be disabled
+    disable = { "c", "rust", "latex", "tex" },  -- list of language that will be disabled
   },
   indent = {
     enable = true
@@ -359,4 +378,8 @@ require'nvim-treesitter.configs'.setup {
 require('telescope').setup{
     set_env = { ['COLORTERM'] = 'truecolor' }
 }
+
+require('nvim-tree').setup{}
+require("noice").setup{}
+
 EOF
