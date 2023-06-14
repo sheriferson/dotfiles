@@ -1,32 +1,14 @@
-getthese <- c('caret',
-              'classInt',
-              'DBI',
+getthese <- c(
               'data.table',
               'devtools',
-              'doMC',
-              'doParallel',
               'dplyr',
-              'forecast',
-              'ggmap',
+              'ggplot2',
               'ggrepel',
               'gridExtra',
-              'httr',
-              'jsonlite',
-              'knitr',
-              'languageserver',
-              'lintr',
               'lubridate',
-              'magrittr',
-              'purrr',
-              'RColorBrewer',
-              'RPostgreSQL',
               'readr',
-              'rdoc',
-              'rmarkdown',
-              'scales',
-              'svglite',
-              'viridis',
-              'zoo'
+              'reshape2',
+              'svglite'
               )
 
 for (package in getthese) {
