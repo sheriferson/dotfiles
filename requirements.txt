@@ -11,8 +11,8 @@ pyflakes
 pynvim
 python-dateutil
 python-lsp-server[all]
-scikit-learn
-scipy
+requests
+rich
 termcolor
 terminaltables
-you-get
+yt-dlp
