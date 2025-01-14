@@ -8,7 +8,9 @@ set --export EDITOR "nvim -f"
 set --export GIT_EDITOR "nvim -f"
 
 # have z
-source ~/Github/z-fish/z.fish
+if test -e ~/Github/z-fish/
+    source ~/Github/z-fish/z.fish
+end
 
 #           oooo   o8o
 #           `888   `"'
@@ -19,8 +21,8 @@ source ~/Github/z-fish/z.fish
 # `Y888""8o o888o o888o `Y888""8o 8""888P' `Y8bod8P' 8""888P'
 
 # better ls
-if type -q exa
-    alias ls='exa --group-directories-first --icons -la --no-user --no-permissions'
+if type -q eza
+    alias ls='eza --group-directories-first --icons -la --no-user --no-permissions'
 else
     alias ls='ls -lGFah'
 end
@@ -42,6 +44,8 @@ alias projects 'fish ~/mytasks/doing.fish'
 alias haskell='ghci'
 alias vim="nvim"
 alias figlet="figlet -f roman"
+
+alias venv="source .venv/bin/activate.fish"
 
 # use kitty diff tool
 abbr -a -g d 'kitty +kitten diff'
@@ -69,11 +73,30 @@ source ~/.localoverrides
 set -gx GPG_TTY (tty)
 set -g PINENTRY_USER_DATA "USE_CURSES=1"
 
-set gpgstart "gpg-agent --daemon"
-
-if [ -z (pgrep gpg-agent) ]
-    eval $gpgstart
-end > /dev/null
-
 fish_add_path "/usr/local/opt/ruby/bin"
 fish_add_path "/usr/local/sbin"
+fish_add_path "~/.local/bin"
+fish_add_path "~/.ghcup/bin"
+
+# On Apple silicon machines
+if test -e /opt/homebrew/bin
+    fish_add_path "/opt/homebrew/bin"
+end
+
+# source theme
+source ~/.config/fish/tokyonight_day.fish
+
+# some special symbols for git branch status segment
+set -u __fish_git_prompt_showstashstate 1
+set -u __fish_git_prompt_char_stateseparator ' | '
+
+set -u ___fish_git_prompt_char_upstream_ahead '⬘'
+set -u ___fish_git_prompt_char_upstream_behind '⬙'
+set -u ___fish_git_prompt_char_upstream_diverged '⬥'
+set -u ___fish_git_prompt_char_dirtystate '●'
+set -u ___fish_git_prompt_char_invalidstate '⦻'
+set -u ___fish_git_prompt_char_stagedstate '●'
+set -u ___fish_git_prompt_char_untrackedfiles '○'
+set -u ___fish_git_prompt_char_stashstate ' '
+
+set -u VIRTUAL_ENV_DISABLE_PROMPT 1
