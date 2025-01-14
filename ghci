@@ -1,1 +1,1 @@
-:set prompt "\ESC[94m\STX \ESC[m\STX"
+:set prompt "\ESC[94m\STX  \ESC[m\STX"
