@@ -14,7 +14,7 @@
     "f" = "toggleFlag:";
     "u" = "toggleReadState:";
 
-    "a" = "archive:";
+    "y" = "archive:";
     "n" = "newMessage:";
     "r" = "replySender:";
     "R" = "replyAll:";
