@@ -1,10 +1,11 @@
 .DS_Store
 Brewfile.lock.json
-Ubersicht/repos
 fish/completions
 fish/conf.d
+fish_variables
 fishd.*
-ipython/profile_default/history.sqlite
-ipython/profile_default/startup/
 jupyter/migrated
 kitty/cached.json
+nvim/lazy-lock.json
+nvim/swap
+nvim/undo
