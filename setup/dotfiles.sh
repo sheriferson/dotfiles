@@ -30,17 +30,8 @@ ln -ns "$dotfiles_path/tmux.conf" /Users/$USER/.tmux.conf
 #
 # link neovim config (~/.config/nvim/init.vim)
 printf "\n"
-echo "Creating ~/.config/nvim/ directory if it doesn't already exist..."
-mkdir -p /Users/$USER/.config/nvim
-mkdir -p /Users/$USER/.config/nvim/bundle
-printf "\n"
-echo "Linking neovim config file (init.vim)..."
-ln -ns "$dotfiles_path/nvim/init.vim" /Users/$USER/.config/nvim/init.vim
-echo "Linking coc-settings.json..."
-ln -ns "$dotfiles_path/nvim/coc-settings.json" /Users/$USER/.config/nvim/
-echo "Installing vim-plug..."
-mkdir -p /Users/$USER/.config/nvim/autoload
-curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > /Users/$USER/.config/nvim/autoload/plug.vim
+echo "Linking nvim files..."
+ln -ns "$dotfiles_path/nvim/" /Users/$USER/.config/
 
 #  .o88o.  o8o           oooo
 #  888 `"  `"'           `888
