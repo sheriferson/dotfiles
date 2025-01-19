@@ -1,11 +1,12 @@
 brew "cmake"
-brew "exa"
+brew "ctags"  # For Neovim lspconfig features
+brew "eza"
+brew "fd"  # For Neovim Telescope
 brew "ffmpeg"
 brew "figlet"
 brew "fish"
 brew "gcc"
 brew "git"
-brew "ghcup"
 brew "gnupg"
 brew "harfbuzz"
 brew "imagemagick"
@@ -20,10 +21,9 @@ brew "pkg-config"
 brew "python3"
 brew "r"
 brew "raycast"
-brew "ripgrep"
+brew "ripgrep"  # For Neovim Telescope
 brew "texlab"
 brew "trash"
-brew "uv"
 brew "yarn"
 
 cask "1password"
