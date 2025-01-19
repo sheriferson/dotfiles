@@ -59,7 +59,9 @@ abbr -a -g gitl 'git log --pretty=oneline'
 alias jobs='jobs -l'
 
 # rm files to trash
-alias rm=trash
+if type -q trash
+    alias rm=trash
+end
 
 # source local overrides
 source ~/.localoverrides
