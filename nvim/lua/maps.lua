@@ -26,3 +26,9 @@ map("n", "<leader>vd", vim.diagnostic.open_float, opts)
 
 -- sane exiting from terminal
 map("t", "<Esc>", [[<C-\><C-n>]])
+
+-- fuzzy file finding with Telescope
+map("n", "<C-p>", "<cmd>Telescope find_files<cr>")
+
+-- rename symbol
+map('n', 'grn', vim.lsp.buf.rename)
