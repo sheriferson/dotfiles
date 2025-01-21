@@ -10,21 +10,25 @@ end
 
 function __current_path
     # Replace HOME with ~
-    set -l path (string replace "$HOME" (set_color 6d8cb8)"~" (pwd))
-    echo (set_color blue)"┌"(set_color normal) $path " "
+    set -l path (string replace "$HOME" "~" (pwd))
+    echo $path
+end
+
+function __line
+    set_color a6a6a6 # grey
+    echo "* * *"
+    set_color normal
 end
 
 function fish_prompt
     set -l status_num $status
 
-    echo ""
+    echo (__line)
     echo -n (__current_path)
     echo (venv_prompt)
 
-    echo -n (set_color blue)"└"(set_color normal)
-
     if test $status_num -eq 0
-        echo -n (set_color green) " "(set_color normal)
+        echo -n "  »"
     else
         echo -n (print_bubble '⮾ '(fish_status_to_signal $status_num) red eeeeee)
     end
