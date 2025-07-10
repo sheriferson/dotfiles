@@ -12,6 +12,7 @@ brew "harfbuzz"
 brew "imagemagick"
 brew "inetutils"
 brew "jq"
+brew "leader-key"
 brew "librsvg"
 brew "neovim", args: ["HEAD"]
 brew "optipng"
