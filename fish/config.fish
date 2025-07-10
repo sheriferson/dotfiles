@@ -99,4 +99,11 @@ set -u ___fish_git_prompt_char_stagedstate '●'
 set -u ___fish_git_prompt_char_untrackedfiles '○'
 set -u ___fish_git_prompt_char_stashstate ' '
 
+# set some different colors for Mac OS and linux
+# since they run different themes
+set -u __fish_darwin_clean_branch_bg "effcf6"
+set -u __fish_darwin_dirty_branch_bg "fff4e8"
+set -u __fish_linux_clean_branch_bg "167449"
+set -u __fish_linux_dirty_branch_bg "864600"
+
 set -u VIRTUAL_ENV_DISABLE_PROMPT 1
