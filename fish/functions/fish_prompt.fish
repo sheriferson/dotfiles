@@ -15,28 +15,29 @@ function __current_path
 end
 
 function __line
-    set_color a6a6a6 # grey
-    echo "* * *"
-    set_color normal
+    echo "\n"
 end
 
 function fish_prompt
     set -l status_num $status
 
-    echo (__line)
+    echo -e (__line)
     echo -n (__current_path)
     echo (venv_prompt)
 
     if test $status_num -eq 0
-        echo -n "  »"
+        echo -n "» "
     else
         echo -n (print_bubble '⮾ '(fish_status_to_signal $status_num) red eeeeee)
     end
 
     echo -n (check_env)
+    echo -n (tasks)
+    echo -n ""
 
     test $USER = 'root'
     and echo (set_color red)"#"
 
     __ssh_badge
+    echo -n " "
 end
