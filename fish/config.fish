@@ -77,16 +77,14 @@ set -g PINENTRY_USER_DATA "USE_CURSES=1"
 
 fish_add_path "/usr/local/opt/ruby/bin"
 fish_add_path "/usr/local/sbin"
-fish_add_path "~/.local/bin"
-fish_add_path "~/.ghcup/bin"
+fish_add_path ~/.local/bin
+fish_add_path ~/.ghcup/bin
+fish_add_path ~/.rbenv/shims/
 
 # On Apple silicon machines
 if test -e /opt/homebrew/bin
     fish_add_path "/opt/homebrew/bin"
 end
-
-# source theme
-source ~/.config/fish/tokyonight_day.fish
 
 # some special symbols for git branch status segment
 set -u __fish_git_prompt_showstashstate 1
