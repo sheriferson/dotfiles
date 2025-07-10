@@ -13,6 +13,7 @@ brew "imagemagick"
 brew "inetutils"
 brew "jq"
 brew "leader-key"
+brew "luarocks" # For Neovim
 brew "librsvg"
 brew "neovim", args: ["HEAD"]
 brew "optipng"
