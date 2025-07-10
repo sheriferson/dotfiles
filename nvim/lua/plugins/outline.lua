@@ -5,5 +5,12 @@ return {
     keys = { -- Example mapping to toggle outline
         { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
     },
-    opts = {},
+    dependencies = {
+      'epheien/outline-treesitter-provider.nvim'
+    },
+    opts = {
+        providers = {
+            priority = { 'treesitter', 'lsp' }
+        }
+    }
 }
