@@ -1,5 +1,6 @@
 brew "cmake"
 brew "ctags"  # For Neovim lspconfig features
+brew "deno"   # for toppair/peek.nvim Markdown preview
 brew "eza"
 brew "fd"  # For Neovim Telescope
 brew "ffmpeg"
