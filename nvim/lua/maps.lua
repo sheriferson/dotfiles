@@ -27,6 +27,8 @@ map("n", "<leader>vd", vim.diagnostic.open_float, opts)
 -- sane exiting from terminal
 map("t", "<Esc>", [[<C-\><C-n>]])
 
+-- diagnostics with Telescope
+map("n", "<C-s>", "<cmd>Telescope diagnostics<cr>")
 -- fuzzy file finding with Telescope
 map("n", "<C-p>", "<cmd>Telescope find_files<cr>")
 map("n", "<C-g>", "<cmd>Telescope grep_string<cr>")
@@ -36,15 +38,3 @@ map('n', 'grn', vim.lsp.buf.rename)
 
 -- Toggle NvimTree
 map('n', '<Leader>t', ':NvimTreeToggle<CR>')
-
--- chatty G's suggestion for Esc dismissing
--- cmp if it's open without cancelling copilot
--- suggestions
-vim.keymap.set("i", "<Esc>", function()
-  local cmp = require("cmp")
-  if cmp.visible() then
-    cmp.abort()
-  else
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), 'n', false)
-  end
-end, { silent = true })
