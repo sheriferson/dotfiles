@@ -13,6 +13,7 @@
 - `tmux-workspaces/` containing script(s) for setting up various tmux workspaces.
 - `terminfo/` containing `*.terminfo` files to enable italics in terminal and tmux.
 - [MailMate] keybindings.
+- Hyprland (`hypr/`) and waybar (`waybar/`) config files for linux setups. I'm new at this, so they are currently very barebones.
 
 [MailMate]: https://freron.com "MailMate IMAP email client"
 
