@@ -21,6 +21,7 @@ end)
 
 -- use system clipboard because you're not unhinged
 map('v','<leader>y','"+y')
+map({'n', 'v', 'i'}, '<C-v>', '"+p', { noremap = true, silent = true })
 
 map("n", "<leader>vd", vim.diagnostic.open_float, opts)
 

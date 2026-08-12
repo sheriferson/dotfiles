@@ -4,7 +4,7 @@ return {
     init = function()
         require('lualine').setup({
             options = {
-                theme = "tomorrow",
+                theme = "nord",
                 component_separators = { left = '|', right = '|'},
                 section_separators = { left = '', right = ''},
 

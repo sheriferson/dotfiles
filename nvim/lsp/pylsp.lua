@@ -3,12 +3,13 @@ return {
   cmd = { 'pylsp' },
   filetypes = { 'python' },
   root_markers = {
-    'pyproject.toml',
-    'setup.py',
-    'setup.cfg',
-    'requirements.txt',
-    'Pipfile',
     '.git',
+    'Pipfile',
+    'main.py',
+    'pyproject.toml',
+    'requirements.txt',
+    'setup.cfg',
+    'setup.py',
   },
   plugins = {
     pycodestyle = {
