@@ -47,6 +47,11 @@ alias figlet="figlet -f roman"
 
 alias venv="source .venv/bin/activate.fish"
 
+# log out on Arch
+if test -e /usr/bin/loginctl
+    alias logout="loginctl kill-session $XDG_SESSION_ID"
+end
+
 # use kitty diff tool
 abbr -a -g d 'kitty +kitten diff'
 
@@ -107,3 +112,10 @@ set -u __fish_linux_clean_branch_bg "167449"
 set -u __fish_linux_dirty_branch_bg "864600"
 
 set -u VIRTUAL_ENV_DISABLE_PROMPT 1
+
+# Added by `rbenv init` on Tue Dec 16 07:39:42 PM PST 2025
+status --is-interactive; and rbenv init - --no-rehash fish | source
+
+
+# source theme
+source ~/dotfiles/fish/colors/(uname).fish
