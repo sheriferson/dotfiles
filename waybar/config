@@ -1,0 +1,218 @@
+// ──────────────────────────────────────────────────────────────────────────
+//  °˖* ૮(  • ᴗ ｡)っ🍸  pewdiepie/archdaemon/dionysh shhheersh
+//  Waybar config
+//  vers. 1.0.0
+//  modified by Sherif
+// ──────────────────────────────────────────────────────────────────────────
+
+{
+  "layer": "top",
+  "position": "top",
+  "margin-top": 8,
+  "margin-bottom": -8,
+  "height": 34,
+
+  // ── Modules Layout ───────────────────────────────────────────────
+  "modules-left": [
+    "custom/power",
+    "network",
+    "bluetooth",
+    "custom/microphone",
+    "custom/airpods",
+    "custom/nowplaying",
+  ],
+
+  "modules-center": [
+    "custom/workspace-1",
+    "custom/workspace-2",
+    "custom/workspace-3",
+    "custom/workspace-4",
+    "custom/workspace-5",
+    "custom/workspace-6",
+  ],
+
+  "modules-right": [
+    "custom/battery",
+    "custom/volume",
+    "custom/brightness",
+    "custom/loadavg",
+    "clock"
+  ],
+
+  // ── Clock ────────────────────────────────────────────────────────
+  "clock": {
+    "tooltip-format": "{calendar}",
+    "format-alt": "  {:%a, %d %b %Y}",
+    "format": " {:%I:%M %p} "
+  },
+
+  // ── Network ──────────────────────────────────────────────────────
+  "network": {
+    "format-wifi": "{icon}",
+    "format-icons": [" 󰤯 ", " 󰤟 ", " 󰤢 ", " 󰤥 ", " 󰤨 " ],
+    "format-ethernet": "󰀂",
+    "format-alt": "󱛇",
+    "format-disconnected": "󰖪",
+    "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "nm-connection-editor",
+    "interval": 5,
+    "nospacing": 1
+  },
+
+  // ── Bluetooth ────────────────────────────────────────────────────
+  "bluetooth": {
+    "format": "{icon}",
+    "format-icons": {
+      "enabled": "  ",
+      "disabled": " 󰂲 "
+    },
+    "on-click": "~/.config/waybar/scripts/bluetooth-toggle.sh",
+    "tooltip-format": "Bluetooth is {status}",
+    "interval": 5
+  },
+
+
+  // ── Battery (scripted + built-in) ────────────────────────────────
+  "custom/battery": {
+    "exec": "~/.config/waybar/scripts/battery.sh",
+    "return-type": "json",
+    "interval": 10,
+    "tooltip": false,
+  },
+
+
+  "battery": {
+    "format": "{icon}  {capacity}%",
+    "format-icons": {
+      "charging": [
+        "󰢜","󰂆","󰂇","󰂈","󰢝","󰂉","󰢞","󰂊","󰂋","󰂅"
+      ],
+      "default": [
+        "󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"
+      ]
+    },
+    "format-full": "Charged ",
+    "interval": 5,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "tooltip": true
+  },
+
+  // ── Microphone ───────────────────────────────────────────────────
+  "custom/microphone": {
+    "exec": "~/.config/waybar/scripts/mic.sh",
+    "interval": 1,
+    "tooltip": true,
+    "tooltip-format": "Mic Toggle",
+    "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+  },
+
+  // ── Brightness ───────────────────────────────────────────────────
+  "custom/brightness": {
+    "exec": "~/.config/waybar/scripts/brightness.sh",
+    "return-type": "json",
+    "interval": 2,
+    "on-click": "~/.config/waybar/scripts/brightness-toggle.sh",
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-"
+  },
+
+  "backlight": {
+    "format": "󰛨  {percent}%",
+    "format-icons": ["󰃞","󰃟","󰃠","󰃝","󰃜","󰃛"],
+    "class": "flicker-bar",
+    "on-click": "~/.config/waybar/scripts/brightness-slider.sh"
+  },
+
+  // ── Workspaces (custom scripts) ──────────────────────────────────
+  "custom/workspace-1": {
+    "exec": "~/.config/waybar/scripts/workspaces/workspace-1.sh",
+    "interval": 1,
+    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"1\" })'",
+    "tooltip": false,
+  },
+  "custom/workspace-2": {
+    "exec": "~/.config/waybar/scripts/workspaces/workspace-2.sh",
+    "interval": 1,
+    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"2\" })'",
+    "tooltip": false,
+  },
+  "custom/workspace-3": {
+    "exec": "~/.config/waybar/scripts/workspaces/workspace-3.sh",
+    "interval": 1,
+    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"3\" })'",
+    "tooltip": false,
+  },
+  "custom/workspace-4": {
+    "exec": "~/.config/waybar/scripts/workspaces/workspace-4.sh",
+    "interval": 1,
+    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"4\" })'",
+    "tooltip": false,
+  },
+  "custom/workspace-5": {
+    "exec": "~/.config/waybar/scripts/workspaces/workspace-5.sh",
+    "interval": 1,
+    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"5\" })'",
+    "tooltip": false,
+  },
+  "custom/workspace-6": {
+    "exec": "~/.config/waybar/scripts/workspaces/workspace-6.sh",
+    "interval": 1,
+    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"6\" })'",
+    "tooltip": false,
+  },
+
+  // ── Volume and Audio ─────────────────────────────────────────────
+  "custom/volume": {
+    "exec": "~/.config/waybar/scripts/volume.sh",
+    "return-type": "json",
+    "interval": 1,
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+  },
+
+  // ── Power ────────────────────────────────────────────────────────
+  "custom/power": {
+    "format": " 󰤆 ",
+    "tooltip": true,
+    "tooltip-format": "Power Menu",
+    "on-click": "~/.config/waybar/scripts/powermenu.sh"
+  },
+
+  // ── Spacer ───────────────────────────────────────────────────────
+  "custom/squares": {
+    "format": " ",
+    "tooltip": false
+  },
+
+  // ── Now Playing ──────────────────────────────────────────────────
+   "custom/nowplaying": {
+       "exec": "~/.config/waybar/scripts/nowplaying.fish",
+       "interval": 5,
+       "return-type": "json",
+       "format": "{}",
+       "on-click": "xdg-open https://last.fm/user/thespeckofme",
+       "max-length": 100,
+       "tooltip": true,
+       "tooltip-format": "{}",
+   },
+
+  // ── AirPods connection ───────────────────────────────────────────
+   "custom/airpods": {
+       "exec": "~/.config/waybar/scripts/airpods.sh --status 74:77:86:40:89:EA",
+       "interval": 3,
+       "on-click": "~/.config/waybar/scripts/airpods.sh --toggle 74:77:86:40:89:EA",
+   },
+
+  // CPU
+  "custom/loadavg": {
+      "exec": "cat /proc/loadavg | cut -d ' ' -f1-3",
+      "interval": 5,
+  },
+
+}
