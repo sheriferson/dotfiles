@@ -32,7 +32,6 @@ function fish_prompt
     end
 
     echo -n (check_env)
-    echo -n (tasks)
     echo -n ""
 
     test $USER = 'root'

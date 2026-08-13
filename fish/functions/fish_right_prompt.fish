@@ -5,7 +5,7 @@ function fish_right_prompt -d "Write out the right prompt with non zero exit sta
     __git_status
 
     if test "$CMD_DURATION" -gt 3000
-        print_bubble (echo -n $CMD_DURATION | __human_time) purple ededed
+        print_bubble (echo -n $CMD_DURATION | __human_time) white 7d393d
     end
 end
 
