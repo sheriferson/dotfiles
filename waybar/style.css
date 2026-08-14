@@ -71,6 +71,7 @@ window#waybar {
 #custom-microphone,
 #custom-nowplaying,
 #custom-power,
+#custom-username,
 #custom-volume,
 #mpd,
 #network,
@@ -92,6 +93,11 @@ window#waybar {
 #custom-loadavg {
   border: none;
   color: #fab387;
+}
+
+#custom-username {
+  border: 1px solid lightgray;
+  color: lightgray;
 }
 
 #backlight {
