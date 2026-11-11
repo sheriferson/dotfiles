@@ -253,3 +253,13 @@ hl.on("hyprland.start", function ()
   -- script to auto rotate the touchscreen based on orientation
   hl.exec_cmd("bash ~/.config/hypr/scripts/auto-rotate.sh")
 end)
+
+
+-- added in 2026-11
+-- without this kitty starts in maximized mode all the time
+hl.window_rule({
+  match = {
+    class = ".*"
+  },
+  suppress_event = "maximize"
+});
