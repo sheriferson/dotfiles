@@ -28,7 +28,7 @@ hl.monitor ({
     output = "DP-1",
     mode = "preferred",
     position = "auto",
-    scale = 1.25,
+    scale = 1.2,
 })
 
 -- Devices
@@ -70,17 +70,11 @@ hl.config({
         inactive_opacity = 1.0,
 
         shadow = {
-            enabled      = true,
-            range        = 4,
-            render_power = 3,
-            color        = 0xee1a1a1a,
+            enabled      = false,
         },
 
         blur = {
-            enabled   = true,
-            size      = 3,
-            passes    = 1,
-            vibrancy  = 0.1696,
+            enabled   = false,
         },
     },
 
